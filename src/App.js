@@ -1,15 +1,22 @@
-import './App.css';
-import Navbar from './components/Navbar/Navbar';
-import ProductsList from './components/Products-List/ProductsList';
-import Slider from './components/Slider/Slider';
+import "./App.css";
+import { BrowserRouter as Router,Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar/Navbar";
+import ProductDetails from "./components/ProductDetails/ProductDetails";
+import Home from "./pages/Home/Home";
+import Cart from "./pages/Cart/Cart";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar/>      
-      <Slider/>
-      <ProductsList/>
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar/>
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="cart" element={<Cart/>} />
+          <Route path="product/:productID" element={<ProductDetails/>}/>
+        </Routes>
+      </div>
+      </Router>
   );
 }
 
