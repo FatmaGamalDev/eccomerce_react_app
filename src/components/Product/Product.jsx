@@ -1,14 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../rtk/slices/Cart-Slice";
 
 function Product(props) {
-  console.log(props);
+
+  const dispatch = useDispatch()
+
   const { product } = props;
   return (
     <>
       <div className="card" style={{ width: "18rem" }}>
         <img
-          src={product.images}
+          src={product.images?.[0] || product.images?.[1] || product.images?.[2]}
           className="card-img-top"
           alt={product.title}
         />
@@ -18,6 +22,9 @@ function Product(props) {
             <Link to={`/product/${product.id}`} className="btn btn-primary">
               Details
             </Link>
+            <button onClick={()=>dispatch(addToCart(product))} className="btn btn-primary">
+              AddToCart
+            </button>
         </div>
       </div>
     </>
