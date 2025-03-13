@@ -52,7 +52,7 @@ function ProductReviews() {
               Lorem ipsum dolor sit amet suscipit id ab expedita rem accusamus
               aperiam itaque eaque a natus. Eaque!
             </p>
-            <p className="text-gray-500">{review.date.slice(0, 10)}</p>
+            <p className="text-gray-500 italic">{review.date.slice(0, 10)}</p>
           </div>
         );
       })}

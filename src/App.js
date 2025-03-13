@@ -7,11 +7,13 @@ import Cart from "./pages/Cart";
 import Footer from "./components/Footer";
 import SignUp from "./pages/SignUp";
 import {Toaster} from "react-hot-toast"; 
+import ToastNotification from "./components/ToastNotification";
 
 function App() {
   return (
     <>
     <Toaster reverseOrder={false}/>
+    <ToastNotification/>
     <Router>
       <div className="App">
         <Navbar />

@@ -3,34 +3,20 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../rtk/slices/Cart-Slice";
 import toast from "react-hot-toast";
+import { showToast } from "../rtk/slices/Toast-Slice";
 
 function Product(props) {
   const dispatch = useDispatch();
-  const handleAddToCart = () => {
-    toast.success("Product Added Successfully", {
-      duration: 4000,
-      position: "top-center",
-      style: {
-        background: "#f5f5f5",
-        color: "#FF497C",
-        width: "50rem",
-        maxWidth: "none",
-      },
-      iconTheme: {
-        primary: "#FF497C",
-        secondary: "#f5f5f5",
-      },
-    });
-  };
+
   const { product } = props;
   return (
     <>
-      <div className="card bg-base-100 w-54 shadow-sm h-[28rem] border border-gray-200 ">
+      <div className="card bg-base-100 w-54 shadow-sm h-[28rem] border border-gray-300 ">
         <div className="h-1/2">
           <Link to={`/product/${product.id}`}>
-            <figure className="h-full object-cover">
+            <figure className="object-cover h-full">
               <img
-                className="h-full w-2/3 cursor-pointer"
+                className="w-2/3 h-full cursor-pointer"
                 src={
                   product.images?.[0] ||
                   product.images?.[1] ||
@@ -44,13 +30,13 @@ function Product(props) {
         <div className="card-body">
           <h2 className="card-title ">
             {product.title}
-            <div className="badge badge-secondary w-12">NEW</div>
+            <div className="w-12 badge badge-secondary">NEW</div>
           </h2>
           <p>{product.description.slice(0, 60)}</p>
-          <div className="card-actions justify-end"></div>
+          <div className="justify-end card-actions"></div>
           {/* <Link to={`/product/${product.id}`}>Details</Link> */}
-          <div className="flex justify-between items-center ">
-            <p className="text-lg line-through text-gray-600">
+          <div className="flex items-center justify-between ">
+            <p className="text-lg text-gray-600 line-through">
               $
               {(
                 product.price +
@@ -60,12 +46,12 @@ function Product(props) {
 
             <p className="text-lg">${product.price}</p>
           </div>
-          <div className="flex align-center justify-between">
+          <div className="flex justify-between align-center">
             <button
               className="btn btn-neutral"
               onClick={() => {
                 dispatch(addToCart(product));
-                handleAddToCart();
+                dispatch(showToast({message:"Product Added Successfully",type:"success"}))
               }}
             >
               AddToCart

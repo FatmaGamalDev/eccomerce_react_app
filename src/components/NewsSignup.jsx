@@ -16,8 +16,8 @@ function NewsSignup() {
           type="email"
           placeholder="Your email address"
         />
-<MdOutlineArrowForwardIos size={28} />
-</div>
+        <MdOutlineArrowForwardIos size={28} />
+      </div>
       <p className="uppercase text-center text-[13px]">
         By entering your email address you agree to receive marketing emails
         from Huda Beauty. Unsubscribe at any time.

@@ -26,12 +26,12 @@ function Slider() {
            style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
         {images.map((img, index) => (
           <div key={index} className="min-w-full">
-            <img src={img} className="w-full h-96 object-cover" alt={`Slide ${index + 1}`} />
+            <img src={img} className="object-cover w-full h-96" alt={`Slide ${index + 1}`} />
           </div>
         ))}
       </div>
       <button
-        className="absolute left-20 top-2/3 -translate-y-1/2 bg-pink text-white p-2 w-32 rounded-full"
+        className="absolute w-32 p-2 text-white -translate-y-1/2 rounded-full left-20 top-2/3 bg-pink"
         onClick={prevSlide}
       >
         SHOP NOW
@@ -39,13 +39,13 @@ function Slider() {
 
       {/* أزرار التنقل */}
       <button
-        className=" w-8 h-8 absolute left-5 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full flex flex justify-center items-center"
+        className="absolute flex items-center justify-center w-8 h-8 p-2 text-white -translate-y-1/2 rounded-full bg-pink left-5 top-1/2 bg-black/50"
         onClick={prevSlide}
       >
         ❮
       </button>
       <button
-        className="absolute right-5 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full  w-8 h-8 flex justify-center items-center"
+        className="absolute flex items-center justify-center w-8 h-8 p-2 text-white -translate-y-1/2 rounded-full bg-pink right-5 top-1/2 bg-black/50"
         onClick={nextSlide}
       >
         ❯

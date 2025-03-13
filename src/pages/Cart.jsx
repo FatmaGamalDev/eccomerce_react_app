@@ -6,19 +6,9 @@ function Cart() {
 
   return (
     <div className="overflow-x-auto">
+      <h1 className="text-2xl font-semibold text-center my-4 uppercase">MY CART</h1>
       <table className="table">
-        {/* head */}
-        <thead>
-          <tr>
-            <th>
-              <label></label>
-            </th>
-            <th>Name</th>
-            <th>description</th>
-            <th>price</th>
-            <th>details</th>
-          </tr>
-        </thead>
+      
         <tbody>
           {/* row 1 */}
           {cartProducts.map((cartItem) => {
@@ -43,23 +33,24 @@ function Cart() {
                     </div>
                   </div>
                 </td>
-                <td>
+                {/* <td>
                   {cartItem.description.slice(0, 60)}
                   <br />
-                  <span className="badge badge-ghost badge-sm">
-                    Desktop Support Technician
-                  </span>
+
+                </td> */}
+                <td>
+
                 </td>
                 <td>{cartItem.price}</td>
                 <th>
                   <button
-                    className="btn btn-outline btn-error"
+                    className="btn btn-outline w-[90px] p-[12px] text-xs rounded-full border-pink text-pink hover:text-black hover:border-black hover:bg-white"
                     type="button"
                     onClick={() => {
                       dispatch(deleteFromCart(cartItem));
                     }}
                   >
-                    DELETE
+                    REMOVE
                   </button>
                 </th>
               </tr>

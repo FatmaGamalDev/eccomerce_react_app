@@ -2,13 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import NewsSignup from "./NewsSignup";
 import ProductReviews from "./productReviews";
-
-// import { ShareFat } from "@phosphor-icons/react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../rtk/slices/Cart-Slice";
+import toast from "react-hot-toast";
+import { showToast } from "../rtk/slices/Toast-Slice";
 
 function ProductDetails() {
   const { productID } = useParams();
   const [productDetails, setProductDetails] = useState({});
   const [rating, setRating] = useState(0);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetch(`https://dummyjson.com/products/${productID}`)
@@ -21,12 +25,13 @@ function ProductDetails() {
 
   return (
     <>
-      <div className="flex flex-col gap-2  p-4 md:flex-row">
-        <div className="relative  mt-4 mx-1">
-          <div className="badge badge-secondary w-12  absolute top-0 left-0">
+      <div className="flex flex-col gap-2 p-4 md:flex-row">
+        <div className="relative mx-1 mt-4">
+          <div className="absolute top-0 left-0 w-12 badge badge-secondary">
             NEW
           </div>
         </div>
+        <div className="w-[80%]">
         <img
           className="w-84 md:w-1/2 md:h-84"
           src={
@@ -36,12 +41,16 @@ function ProductDetails() {
           }
           alt={productDetails.title}
         />
+        </div>
+        
         {/*display product informations */}
         <div className="flex-col space-y-4 md:mt-10 ">
-          <div className="text-2xl capitalize font-semibold">
+          <div className="text-2xl font-semibold capitalize">
             {productDetails.title}
           </div>
-          <div className="text-md capitalize ">
+          <span className="badge badge-soft badge-neutral" > {productDetails.brand}
+          </span>
+          <div className="capitalize text-md ">
             <p>Discription:</p>
             {productDetails.description}
           </div>
@@ -52,15 +61,15 @@ function ProductDetails() {
                 key={index + 1}
                 type="radio"
                 name="rating-10"
-                className="mask mask-star-2 bg-black"
+                className="bg-black mask mask-star-2"
                 aria-label={`${index + 1} star`}
                 checked={index + 1 === Math.round(rating)}
                 readOnly
               />
             ))}
           </div>
-          <div className="flex justify-start items-center ">
-            <p className="text-lg line-through text-gray-600 mr-4 ">
+          <div className="flex items-center justify-start ">
+            <p className="mr-4 text-lg text-gray-600 line-through ">
               $
               {(
                 productDetails.price +
@@ -71,10 +80,13 @@ function ProductDetails() {
             <p className="text-lg">${productDetails.price}</p>
           </div>
 
-          <div className="flex align-center justify-between">
+          <div className="flex justify-between align-center">
             <button
-              className="btn btn-secondary w-64 hover:bg-secondary"
-              // onClick={() => dispatch(addToCart(product))}
+              className="w-64 btn btn-secondary hover:bg-secondary"
+              onClick={() => {dispatch(addToCart(productDetails))
+                dispatch(showToast({message:"Product Added Successfully",type:"success"}))
+              }
+              }
             >
               AddToCart
             </button>
@@ -98,32 +110,21 @@ function ProductDetails() {
           </div>
         </div>
       </div>
+    
       {/* -------------------------banner1------------------- */}
-      {/* <div className="bg-softbeige w-full h-28 flex justify-center items-center text-sm uppercase my-8">
-       Login to Huda’s Loyalty club to earn up to 22 points. Not a member? Sign up      </div> */}
-      {/* -----------------------FQA---------------- */}
-      {/* <div className="collapse bg-red-100 border-base-300 border">
-  <input type="checkbox" />
-  <div className="collapse-title font-semibold">How do I create an account?</div>
-  <div className="collapse-content text-sm">
-    Click the "Sign Up" button in the top right corner and follow the registration process.
-  </div>
-</div> */}
-      {/* -------------------------banner1------------------- */}
-      <div className="bg-beige w-full h-28 flex justify-center items-center text-xl uppercase my-8">
+      <div className="flex items-center justify-center w-full my-8 text-xl uppercase bg-beige h-28">
         reviews & questions
       </div>
       <ProductReviews />
-      <div className="bg-nude w-full h-28 flex flex-col justify-center items-center py-12 my-8 space-y-2">
+      <div className="flex flex-col items-center justify-center w-full py-12 my-8 space-y-2 bg-nude h-28">
         <h1 className="font-bold">#HUDABEAUTIES</h1>
         <p className="text-center">
           Show us your looks and tag @hudabeauty #hudabeauties for a chance to
           be featured!
         </p>
       </div>
-<div className="flex justify-center items-center">
+<div className="flex items-center justify-center">
 <NewsSignup />
-
 </div>
     </>
   );

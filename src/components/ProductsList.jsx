@@ -15,12 +15,12 @@ function ProductsList() {
   }, [dispatch]);
 
   return (
-    <div className="container my-8">
+    <div className=" m-8">
       {/* <button onClick={() => dispatch(fetchProducts())}>All</button> */}
 
       {/* desplay all the products we get from the api in the home page*/}
       <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4  ">
-        {products.slice(0, 30).map((product) => {
+        {products.slice(0, 16).map((product) => {
           return (
             <div key={product.id}>
               <Product product={product} />
