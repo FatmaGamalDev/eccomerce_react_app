@@ -20,12 +20,7 @@ function ProductDetails() {
   const cartItem = useSelector((state) =>
     state.cart.find((item) => item.id === product.id)
   );
-  // const quantity= cartItem? cartItem.quantity:1;
-
   const [quantity, setQuantity] = useState(cartItem ? cartItem.quantity : 1);
-
-  // const [quantity, setQuantity] = useState(1);
-  // console.log(quantity)
 
 // ✅ تحديث الكمية إذا تغيرت في السلة
   useEffect(() => {

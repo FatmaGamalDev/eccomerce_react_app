@@ -47,7 +47,7 @@ function Cart() {
             </div>
             {/* price*/}
             <div className="col-span-1 text-lg font-semibold">
-              ${cartItem.price}
+              ${cartItem.subtotal}
             </div>
 
             {/* remove button*/}

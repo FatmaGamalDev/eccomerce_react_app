@@ -12,11 +12,16 @@ const cartSlice = createSlice({
     addToCart: (state, action) => {
       const existingItem = state.find((item) => item.id === action.payload.id);
       if (existingItem) {
-        existingItem.quantity =action.payload.quantity;
+        existingItem.quantity += action.payload.quantity;
+        existingItem.subtotal = action.payload.quantity * action.payload.price;
       } else {
-        state.push({ ...action.payload, quantity: 1 });
+        state.push({
+          ...action.payload,
+          quantity: action.payload.quantity,
+          subtotal: action.payload.price,
+        });
       }
-      localStorage.setItem("cart", JSON.stringify(state)); 
+      localStorage.setItem("cart", JSON.stringify(state));
     },
     deleteFromCart: (state, action) => {
       const updatedcart = state.filter(
@@ -32,8 +37,9 @@ const cartSlice = createSlice({
       });
       if (item) {
         item.quantity = quantity;
+        item.subtotal = quantity * item.price;
       }
-      localStorage.setItem("cart", JSON.stringify(state)); 
+      localStorage.setItem("cart", JSON.stringify(state));
     },
     // clear: (state, action) => {
     //     localStorage.removeItem("cart")
