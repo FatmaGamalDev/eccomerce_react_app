@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { RiEyeCloseFill } from "react-icons/ri";
 
 const getInitialState = () => {
   const cart = localStorage.getItem("cart");
@@ -11,9 +12,17 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const existingItem = state.find((item) => item.id === action.payload.id);
+
       if (existingItem) {
-        existingItem.quantity += action.payload.quantity;
-        existingItem.subtotal = action.payload.quantity * action.payload.price;
+        const newQuantity = existingItem.quantity + action.payload.quantity;
+        if (newQuantity <= existingItem.stock) {
+          existingItem.quantity += action.payload.quantity;
+          existingItem.subtotal +=
+            action.payload.quantity * action.payload.price;
+        } else {
+          existingItem.quantity = existingItem.stock;
+          existingItem.subtotal = existingItem.quantity * action.payload.price;
+        }
       } else {
         state.push({
           ...action.payload,

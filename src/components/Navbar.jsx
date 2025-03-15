@@ -6,12 +6,13 @@ import { useSelector } from "react-redux";
 
 export default function Navbar() {
   const cartProducts = useSelector((state) => state.cart);
-  const [cartItems, setCartItems] = useState(null);
+  const [cartItems, setCartItems] = useState(0);
   useEffect(() => {
-    setCartItems(cartProducts.length);
+    const totalQuantity = cartProducts.reduce((total, cartProduct) => total + cartProduct.quantity, 0);
+    setCartItems(totalQuantity);
   }, [cartProducts]);
   return (
-    <div className="shadow-sm  -top-8 navbar bg-grayColor">
+    <div className="shadow-sm -top-8 navbar bg-grayColor">
       <div className="flex-1">
         <Link className="text-xl text-2xl btn btn-ghost text-pink " to="/">
           shopingo

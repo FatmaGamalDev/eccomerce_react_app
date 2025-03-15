@@ -17,17 +17,19 @@ function ProductDetails() {
   const product = useSelector((state) => state.productDetails.productDetails);
 
   // get the selected product from the cart state we stored in redux and its quantity
-  const cartItem = useSelector((state) =>
-    state.cart.find((item) => item.id === product.id)
-  );
-  const [quantity, setQuantity] = useState(cartItem ? cartItem.quantity : 1);
+  // const cartItem = useSelector((state) =>
+  //   state.cart.find((item) => item.id === product.id)
+  // );
+  // const [quantity, setQuantity] = useState(cartItem ? cartItem.quantity : 1);
+  const [quantity, setQuantity] = useState( 1);
 
-// ✅ تحديث الكمية إذا تغيرت في السلة
-  useEffect(() => {
-    if (cartItem) {
-      setQuantity(cartItem.quantity); 
-    }
-  }, [cartItem]);
+
+//  update quantity in cart
+  // useEffect(() => {
+  //   if (cartItem) {
+  //     setQuantity(cartItem.quantity); 
+  //   }
+  // }, [cartItem]);
 
   useEffect(() => {
     if (!product || product.id !== Number(productID)) {
@@ -87,6 +89,7 @@ function ProductDetails() {
           <div className="flex align-center">
             <AddToCartButton
               selectedProduct={productDetails}
+              fromDetails={true}
               quantity={quantity}
               className="w-64"
             />

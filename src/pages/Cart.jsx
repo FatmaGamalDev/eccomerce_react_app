@@ -2,8 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteFromCart, updateQuantity } from "../rtk/slices/Cart-Slice";
 import { showToast } from "../rtk/slices/Toast-Slice";
 import QuantitySelector from "../components/product/QuantitySelector";
-import { useEffect, useState } from "react";
-import AddToCartButton from "../components/product/AddToCartButton";
 
 function Cart() {
   const cartProducts = useSelector((state) => state.cart) || [];
@@ -47,7 +45,7 @@ function Cart() {
             </div>
             {/* price*/}
             <div className="col-span-1 text-lg font-semibold">
-              ${cartItem.subtotal}
+              ${cartItem.subtotal.toFixed(2)}
             </div>
 
             {/* remove button*/}
