@@ -1,8 +1,4 @@
-import img2 from "../Assets/categories/perfume.png";
-import img3 from "../Assets/categories/couch.png";
-import img5 from "../Assets/categories/decoration.png";
-import img1 from "../Assets/categories/eyeshadow.png";
-import img4 from "../Assets/categories/apple.png";
+
 
 const categoryImages = {
   beauty:

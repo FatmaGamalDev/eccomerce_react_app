@@ -1,18 +1,18 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import ProductDetails from "./components/ProductDetails";
+import ProductDetails from "./pages/ProductDetails";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import Footer from "./components/Footer";
 import SignUp from "./pages/SignUp";
-import {Toaster} from "react-hot-toast"; 
 import ToastNotification from "./components/ToastNotification";
+import 'react-toastify/dist/ReactToastify.css';
+import NewsSignup from "./components/NewsSignup";
 
 function App() {
   return (
     <>
-    <Toaster reverseOrder={false}/>
     <ToastNotification/>
     <Router>
       <div className="App">
@@ -23,6 +23,7 @@ function App() {
           <Route path="signUp" element={<SignUp/>} />
           <Route path="product/:productID" element={<ProductDetails />} />
         </Routes>
+        <NewsSignup/>
         <Footer/>
 
       </div>

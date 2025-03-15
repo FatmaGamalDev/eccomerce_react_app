@@ -9,7 +9,7 @@ export const fetchProducts = createAsyncThunk(
     return data;
   }
 );
-//fetch all the product from the api
+//fetch  the categories from the api
 export const fetchCategories = createAsyncThunk(
   "Categories/fetchCategories",
   async () => {
@@ -79,5 +79,4 @@ const productsSlice = createSlice({
   },
 });
 
-// export const {} = productsSlice.actions;
 export default productsSlice.reducer;

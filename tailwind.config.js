@@ -7,7 +7,7 @@ export default {
     theme: {
       extend: {
       colors:{
-        pink:"#FF497C",
+        pink:"#e31870",
         grayColor:"#f5f5f5",
         beige:"#f9f3eb",
         softbeige:"#f6f0ef",

@@ -11,18 +11,18 @@ export default function Navbar() {
     setCartItems(cartProducts.length);
   }, [cartProducts]);
   return (
-    <div className="navbar bg-grayColor shadow-sm static z-10">
+    <div className="shadow-sm  -top-8 navbar bg-grayColor">
       <div className="flex-1">
-        <Link className="btn btn-ghost text-xl text-pink text-2xl " to="/">
+        <Link className="text-xl text-2xl btn btn-ghost text-pink " to="/">
           shopingo
         </Link>
       </div>
       <div className="flex-none">
-        <ul className="menu flex-row justify-center items-center px-1">
+        <ul className="flex-row items-center justify-center px-1 menu">
           <li>
             <Link to="/cart">
-              <MdOutlineShoppingCart size={24} />
-              <span className="absolute top-0 right-1 w-4 h-4 rounded-full bg-pink text-white flex justify-center items-center">
+              <MdOutlineShoppingCart size={28} />
+              <span className="absolute top-0 flex items-center justify-center w-[18px] h-[18px] text-white rounded-full right-1 bg-pink">
                 {cartItems}
               </span>
             </Link>

@@ -57,22 +57,22 @@ function Categories() {
 
   return (
     <div className="p-4 my-8 overflow-hidden">
-    <div  className="mb-14  flex items-center justify-between">
+    <div  className="flex items-center justify-between mb-14">
     <div className="mb-12 ">
-       <h6 className="text-pink font-semibold text-xl">Top Categories</h6>
+       <h6 className="text-xl font-semibold text-pink">Top Categories</h6>
 
-        <h1 className="font-bold text-3xl">Choose by Top Category</h1>
+        <h1 className="text-3xl font-bold">Choose by Top Category</h1>
       </div>
-      <div className="flex flex-row items-center  justify-center gap-4">
+      <div className="flex flex-row items-center justify-center gap-4">
                    <button
           onClick={prevSlide}
-          className= "  w-[40px] h-[40px] rounded-full border border-pink flex items-center  justify-center text-pink "
+          className= " circle-btn"
           >
             <FaArrowLeftLong />
           </button>
           <button
           onClick={nextSlide}
-          className="  w-[40px] h-[40px] rounded-full border border-pink flex items-center  justify-center text-pink "
+          className=" circle-btn"
           >
             <FaArrowRightLong />
           </button>
@@ -80,7 +80,7 @@ function Categories() {
     </div>
       <div className="relative flex items-center">
      
-        <div className="overflowx-hidden w-full">
+        <div className="w-full overflowx-hidden">
           <div
             className="flex gap-4 transition-transform duration-500 ease-in-out"
             style={{ transform: `translateX(-${currentIndex * categoryWidth}px)` }}
@@ -88,14 +88,14 @@ function Categories() {
             {filteredCategories.map((category) => (
               <div
                 key={category}
-                className=" relative bg-gray-100 min-w-64 h-24 p-6 rounded-sm flex items-center cursor-pointer"
+                className="relative flex items-center h-24 p-6 bg-gray-100 rounded-sm cursor-pointer min-w-64"
                 onClick={() => getProductsByCategory(category)}
               >
-                <p className="text-xl capitalize font-semibold text-gray-700">
+                <p className="text-xl font-semibold text-gray-700 capitalize">
                   {category}
                 </p>
                 
-              <div className="w-20 h-28 bg-white absolute bottom-3 right-3  border-gray-200 border rounded-md flex align-center content-center">
+              <div className="absolute flex content-center w-20 bg-white border border-gray-200 rounded-md h-28 bottom-3 right-3 align-center">
               <img
                     src={
                       categoryImages[category] ||

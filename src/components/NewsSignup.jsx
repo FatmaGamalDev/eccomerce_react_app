@@ -3,16 +3,15 @@ import { MdOutlineArrowForwardIos } from "react-icons/md";
 
 function NewsSignup() {
   return (
-    <div className="flex flex-col items-center justify-center space-y-4 w-96 md:w-1/2  p-2 ">
+    <div className="flex items-center justify-center">
+    <div className="flex flex-col items-center justify-center p-2 space-y-4 w-96 md:w-1/2 ">
       <hr />
-      <h1 className="text-center font-semibold text-2xl w-1/2 ">
+      <h1 className="w-1/2 text-2xl font-semibold text-center ">
         STAY IN THE KNOW - SIGN UP NOW
       </h1>
-
       <div className="flex items-center justify-between w-full">
         <input
-          className="w-full border-b border-black outline-none mt-0 py-4 placeholder-black 
-       placeholder:text-md placeholder:mb-4 focus:border-secondary-500  "
+          className="w-full py-4 mt-0 placeholder-black border-b border-black outline-none placeholder:text-md placeholder:mb-4 focus:border-secondary-500 "
           type="email"
           placeholder="Your email address"
         />
@@ -23,6 +22,7 @@ function NewsSignup() {
         from Huda Beauty. Unsubscribe at any time.
       </p>
       <hr />
+    </div>
     </div>
   );
 }
