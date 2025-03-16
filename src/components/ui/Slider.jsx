@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import img1 from "../Assets/banner/main-banner.webp";
-import img2 from "../Assets/carousel/clothes-1839935_1280.jpg";
-import img3 from "../Assets/carousel/ecommerce-2607114_1280.jpg";
+import img1 from "../../Assets/banner/main-banner.webp";
+import img2 from "../../Assets/carousel/clothes-1839935_1280.jpg";
+import img3 from "../../Assets/carousel/ecommerce-2607114_1280.jpg";
 
 const images = [img1, img2, img3, img2]; 
 

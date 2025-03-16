@@ -3,11 +3,11 @@ import { useParams } from "react-router-dom";
 import ProductReviews from "../components/product/productReviews";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductDetails } from "../rtk/slices/ProaductDetails-Slice";
-import QuantitySelector from "../components/product/QuantitySelector";
-import AddToCartButton from "../components/product/AddToCartButton";
+import QuantitySelector from "../components/common/QuantitySelector";
+import AddToCartButton from "../components/common/AddToCartButton";
 import ProductRating from "../components/product/ProductRating";
 import ProductPrice from "../components/product/ProductPrice";
-import WishlistButton from "../components/product/WishlistButton";
+import WishlistButton from "../components/ui/WishlistButton";
 
 function ProductDetails() {
   const { productID } = useParams();
@@ -15,21 +15,7 @@ function ProductDetails() {
   const [rating, setRating] = useState(0);
   const dispatch = useDispatch();
   const product = useSelector((state) => state.productDetails.productDetails);
-
-  // get the selected product from the cart state we stored in redux and its quantity
-  // const cartItem = useSelector((state) =>
-  //   state.cart.find((item) => item.id === product.id)
-  // );
-  // const [quantity, setQuantity] = useState(cartItem ? cartItem.quantity : 1);
   const [quantity, setQuantity] = useState( 1);
-
-
-//  update quantity in cart
-  // useEffect(() => {
-  //   if (cartItem) {
-  //     setQuantity(cartItem.quantity); 
-  //   }
-  // }, [cartItem]);
 
   useEffect(() => {
     if (!product || product.id !== Number(productID)) {

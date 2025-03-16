@@ -5,7 +5,7 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import { useSelector } from "react-redux";
 
 export default function Navbar() {
-  const cartProducts = useSelector((state) => state.cart);
+  const cartProducts = useSelector((state) => state.cart.cart);
   const [cartItems, setCartItems] = useState(0);
   useEffect(() => {
     const totalQuantity = cartProducts.reduce((total, cartProduct) => total + cartProduct.quantity, 0);

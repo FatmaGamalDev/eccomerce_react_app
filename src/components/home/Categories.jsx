@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FaArrowRightLong, FaArrowLeftLong } from "react-icons/fa6";
-import { fetchCategories, fetchProductsByCategory } from "../rtk/slices/Products-Slice";
-import categoryImages from "../utils/categoryImages";
+import { fetchCategories, fetchProductsByCategory } from "../../rtk/slices/Products-Slice";
+import categoryImages from "../../utils/categoryImages";
 
 function Categories() {
   const categories = useSelector((state) => state.products.categories);

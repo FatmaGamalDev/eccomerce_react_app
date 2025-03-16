@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import WishlistButton from "./product/WishlistButton";
-import ProductPrice from "./product/ProductPrice";
-import AddToCartButton from "./product/AddToCartButton";
+import WishlistButton from "../ui/WishlistButton";
+import ProductPrice from "../product/ProductPrice";
+import AddToCartButton from "../common/AddToCartButton";
 
-function Product(props) {
+function ProductCard(props) {
   const { product } = props;
   return (
     <>
@@ -46,4 +46,4 @@ function Product(props) {
   );
 }
 
-export default Product;
+export default  ProductCard;

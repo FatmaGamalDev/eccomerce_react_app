@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import Product from "./Product";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchProducts,
-} from "../rtk/slices/Products-Slice";
+} from "../../rtk/slices/Products-Slice";
+import ProductCard from "./ProductCard";
 function ProductsList() {
   const products = useSelector((state) => state.products.products);
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ function ProductsList() {
         {products.slice(0, 16).map((product) => {
           return (
             <div key={product.id}>
-              <Product product={product} />
+              <ProductCard product={product} />
             </div>
           );
         })}
