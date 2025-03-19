@@ -4,22 +4,14 @@ import { updateQuantity } from "../../rtk/slices/Cart-Slice";
 import { useDispatch } from "react-redux";
 
 function QuantitySelector({ quantity, setQuantity, selectedProduct }) {
-  // const dispatch = useDispatch();
-
   function increaseItem() {
     if (quantity < selectedProduct.stock) {
       setQuantity( quantity + 1)
-      // dispatch(
-      //   updateQuantity({ id: selectedProduct.id, quantity: quantity + 1 })
-      // );
     }
   }
   function decreaseItem() {
     if (quantity > 1) {
       setQuantity(quantity - 1 )
-      // dispatch(
-      //   updateQuantity({ id: selectedProduct.id, quantity: quantity - 1 })
-      // );
     }
   }
 

@@ -1,14 +1,25 @@
 import React from 'react'
-import Slider from '../components/ui/Slider'
+import Slider from '../components/home/Slider'
 import ProductsList from '../components/home/ProductsList'
 import Categories from '../components/home/Categories'
-
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchProducts,
+} from "../rtk/slices/Products-Slice";
+// import ProductCard from "./ProductCard";
 function Home() {
+    const products = useSelector((state) => state.products.products);
+    const dispatch = useDispatch();
+  
+    useEffect(() => {
+      dispatch(fetchProducts());
+    }, [dispatch]);
   return (
     <>
     <Slider/>
     <Categories/>
-    <ProductsList/>
+    <ProductsList products={products}/>
     </>
   )
 }

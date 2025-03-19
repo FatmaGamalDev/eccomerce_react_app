@@ -45,7 +45,7 @@ function Categories() {
     }
   };
 
-  const maxIndex = Math.max(0, filteredCategories.length - categoriesPerView);
+  const maxIndex = Math.max(0, filteredCategories.length - categoriesPerView + 1);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev < maxIndex ? prev + 1 : prev));
@@ -80,10 +80,13 @@ function Categories() {
     </div>
       <div className="relative flex items-center">
      
-        <div className="w-full overflowx-hidden">
+        <div className="px-4 overflowx-hidden min-w-max">
           <div
             className="flex gap-4 transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${currentIndex * categoryWidth}px)` }}
+            style={{
+              transform: `translateX(-${Math.min(currentIndex, maxIndex) * categoryWidth}px)`
+            }}
+            
           >
             {filteredCategories.map((category) => (
               <div

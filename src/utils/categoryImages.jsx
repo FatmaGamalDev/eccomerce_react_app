@@ -32,7 +32,7 @@ const categoryImages = {
     "https://img.ltwebstatic.com/images3_pi/2024/12/31/0c/1735622564d1dfcc7e05144f7666aefcfde3431c61.webp",
   "womens-jewellery":
     "https://cdn.pixabay.com/photo/2018/09/03/15/46/jewlery-3651532_1280.jpg",
-  "womens-shoes": "https://via.placeholder.com/150/womens-shoes.png",
+  "womens-shoes": "https://cdn.dummyjson.com/products/images/womens-shoes/Red%20Shoes/1.png",
   "womens-watches":
     "https://media.istockphoto.com/id/471712723/photo/watch.webp?b=1&s=612x612&w=0&k=20&c=Ut0t-OJ1UIr82EveyFZSbjdpW0HkR7_PWOYr1cyZYfs=",
 };
