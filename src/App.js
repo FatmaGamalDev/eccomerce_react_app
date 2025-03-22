@@ -10,12 +10,14 @@ import Home from "./pages/Home";
 import ProductDetails from "./pages/ProductDetails";
 import SignUp from "./pages/SignUp";
 import SearchResults from "./pages/SearchResults";
+import ScrollToTop from "./components/ui/ScrollToTop";
 
 function App() {
   return (
     <>
       <ToastNotification />
       <Router>
+        <ScrollToTop/>
         <div className="App">
           <Navbar />
           <Routes>
@@ -24,7 +26,6 @@ function App() {
             <Route path="signUp" element={<SignUp />} />
             <Route path="search" element={<SearchResults />} />
             <Route path="product/:productID" element={<ProductDetails />} />
-
           </Routes>
           <NewsSignup />
           <Footer />

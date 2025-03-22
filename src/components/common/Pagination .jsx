@@ -2,18 +2,18 @@ import React, { useState } from "react";
 import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";
 
-function Pagination({ currentPage,totalPages ,setCurrentPage}) {
-    const handleNext = () => {
-        setCurrentPage((prevPage) =>
-          prevPage + 1 <= totalPages ? prevPage + 1 : prevPage
-        );
-      };
-    
-      const handlePrev = () => {
-        setCurrentPage((prevPage) => (prevPage - 1 > 0 ? prevPage - 1 : prevPage));
-      };
+function Pagination({ currentPage, totalPages, setCurrentPage }) {
+  const handleNext = () => {
+    setCurrentPage((prevPage) =>
+      prevPage + 1 <= totalPages ? prevPage + 1 : prevPage
+    );
+  };
+
+  const handlePrev = () => {
+    setCurrentPage((prevPage) => (prevPage - 1 > 0 ? prevPage - 1 : prevPage));
+  };
   return (
-    <div className="flex items-center justify-center gap-6 mt-8">
+    <div className="flex items-center justify-center gap-6 my-8">
       <button onClick={handlePrev} className="circle-btn">
         <GrPrevious />
       </button>

@@ -6,31 +6,40 @@ function CartProducts({ cartProducts, showToast }) {
   const dispatch = useDispatch();
 
   return (
-    <div className="flex flex-col items-center">
-      <h1 className="my-4 text-2xl font-semibold text-center uppercase">
-        MY CART
+    <div className="flex flex-col items-center w-full md:w-2/3">
+    
+      <div className="flex flex-col w-[95%] gap-4 ">
+      <h1 className="self-start mt-4 text-2xl font-semibold uppercase ">
+      Bag Summary ({cartProducts.length} )
       </h1>
-      <div className="w-[90%] flex flex-col gap-4">
         {cartProducts.map((cartItem) => (
-          <div
-            key={cartItem.id}
-            className="grid items-center grid-cols-4 gap-4 p-4 bg-white shadow-md rounded-xl"
-          >
+          <div key={cartItem.id} className="p-4 bg-white shadow-md rounded-xl">
             {/* product image*/}
-            <div className="flex items-center col-span-1 gap-4">
+            <div className="flex items-center gap-2">
               <img
                 src={cartItem.images[0]}
-                className="w-20 h-20 rounded-lg"
+                className="w-[7rem]  opject-cover "
                 alt={cartItem.title}
               />
-              <div className="w-[100%]">
-                <div className="font-bold">{cartItem.title}</div>
-                <div className="text-sm opacity-50">{cartItem.brand}</div>
+              {/* title */}
+              <div className="flex flex-col justify-start min-h-0 ">
+                <div>
+                  <div className="font-bold">{cartItem.title}</div>
+                  <div className="text-sm opacity-50">{cartItem.brand}</div>
+
+                  <div className="text-sm text-gray-700 font-simi-bold">
+                    {cartItem.shippingInformation}
+                  </div>
+                </div>
+                {/* price*/}
+                <div className="flex text-lg font-semibold ">
+                  ${cartItem.subtotal.toFixed(2)}
+                </div>
               </div>
             </div>
-
+<div className="flex justify-between">
             {/* products quantity*/}
-            <div className="col-span-1 ml-8">
+            <div className="flex mt-4 ">
               <QuantitySelector
                 selectedProduct={cartItem}
                 setQuantity={(newQuantity) =>
@@ -41,13 +50,9 @@ function CartProducts({ cartProducts, showToast }) {
                 quantity={cartItem.quantity}
               />
             </div>
-            {/* price*/}
-            <div className="col-span-1 text-lg font-semibold">
-              ${cartItem.subtotal.toFixed(2)}
-            </div>
 
             {/* remove button*/}
-            <div className="col-span-1">
+            <div className="flex justify-end">
               <button
                 className="text-xs font-bold underline text-pink hover:text-black hover:border-black"
                 onClick={() => {
@@ -62,6 +67,7 @@ function CartProducts({ cartProducts, showToast }) {
               >
                 REMOVE
               </button>
+            </div>
             </div>
           </div>
         ))}

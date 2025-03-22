@@ -1,16 +1,25 @@
 import React from "react";
 import { addToCart } from "../../rtk/slices/Cart-Slice";
 import { showToast } from "../../rtk/slices/Toast-Slice";
-import { useDispatch} from "react-redux";
-function AddToCartButton({selectedProduct, quantity, fromDetails = false, className = ""}) {
+import { useDispatch } from "react-redux";
+function AddToCartButton({
+  selectedProduct,
+  quantity,
+  fromDetails = false,
+  className = "",
+}) {
   const dispatch = useDispatch();
   return (
-    <div className="flex justify-between align-center">
       <button
-        className={`text-white btn bg-pink hover:bg-pink ${className}`}
+        className={`main-btn
+           ${className}`}
         onClick={() => {
-          dispatch(addToCart({...selectedProduct,
-             quantity: fromDetails? quantity:1}));
+          dispatch(
+            addToCart({
+              ...selectedProduct,
+              quantity: fromDetails ? quantity : 1,
+            })
+          );
           dispatch(
             showToast({
               message: "Product Added Successfully",
@@ -19,9 +28,8 @@ function AddToCartButton({selectedProduct, quantity, fromDetails = false, classN
           );
         }}
       >
-        AddToCart
+        <span className="z-10">Add To Bag</span>
       </button>
-    </div>
   );
 }
 

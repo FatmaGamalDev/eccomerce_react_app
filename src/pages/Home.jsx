@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchProducts,
 } from "../rtk/slices/Products-Slice";
-// import ProductCard from "./ProductCard";
+
 function Home() {
     const products = useSelector((state) => state.products.products);
     const dispatch = useDispatch();

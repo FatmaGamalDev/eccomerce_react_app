@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import ProductCard from "./ProductCard";
 
 import Pagination from "../common/Pagination ";
+import  Container from "../common/Container";
 
 function ProductsList({ products }) {
-  let productsPerPage = 16;
+  let productsPerPage = 12;
   let totalPages = Math.ceil(products.length / productsPerPage);
 
   let [currentPage, setCurrentPage] = useState(1);
@@ -15,7 +16,7 @@ function ProductsList({ products }) {
   const endIndex = startIndex + productsPerPage;
 
   return (
-    <div className="m-8 ">
+   <Container size="xl" >
       {/* <button onClick={() => dispatch(fetchProducts())}>All</button> */}
       {/* desplay all the products we get from the api in the home page*/}
       <div className="grid grid-cols-1 gap-4 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
@@ -29,7 +30,7 @@ function ProductsList({ products }) {
       </div>
 <Pagination setCurrentPage={setCurrentPage} currentPage={currentPage} totalPages={totalPages}/>
      
-    </div>
+   </Container>
   );
 }
 

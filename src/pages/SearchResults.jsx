@@ -1,17 +1,20 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import ProductsList from '../components/home/ProductsList'
+import SearchEmpty from '../components/common/SearchEmpty'
 
 
 function SearchResults() {
 const SearchResults= useSelector((state)=> state.products.searchResult)
 console.log(SearchResults)
-  return (
+return (
+SearchResults.length>0 ?
    <div>
-     <div>SearchResults</div>
      <ProductsList products={SearchResults} />
    </div>
-  )
+  :
+    <SearchEmpty/>
+)
 }
 
 export default SearchResults

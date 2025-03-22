@@ -72,16 +72,14 @@ function ProductDetails() {
             selectedProduct={productDetails}
           />
           <p className="text-sm font-semibold text-green-600">In Stock</p>
-          <div className="flex align-center">
+          <div className="flex justify-between w-full ">
             <AddToCartButton
               selectedProduct={productDetails}
               fromDetails={true}
               quantity={quantity}
-              className="w-64"
+              className="w-2/3"
             />
-            
             <WishlistButton />
-            <hr />
           </div>
         </div>
       </div>
