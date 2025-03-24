@@ -15,8 +15,8 @@ export default function Navbar() {
     setCartItems(totalQuantity);
   }, [cartProducts]);
   return (
-    <nav>
-      <Container className="z-20 shadow-sm navbar">
+    <nav className="sticky top-0 left-0 z-50 w-full bg-white shadow-sm navbar">
+      <Container className="navbar">
         <div className="flex-1 ">
           <NavLink
             className="text-4xl border-none text-pink hover:bg-transparent"
@@ -25,19 +25,19 @@ export default function Navbar() {
             luva
           </NavLink>
         </div>
-        
+
         <SearchBar />
         <div className="flex-none">
           <ul className="flex-row items-center justify-center px-1 menu">
             <li>
-              <NavLink to="/cart">
+              <NavLink to="/cart" className="hover:bg-transparent">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  class="size-6"
+                  className="w-6 h-6 cursor-pointer "
                 >
                   <path
                     stroke-linecap="round"

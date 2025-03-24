@@ -8,10 +8,7 @@ function CartSummary({ cartTotal }) {
     <div className="w-[90%] flex flex-col flex-grow gap-6 bg-white my-4 rounded-lg md:mt-16 border-black p-4 md:border-none md:w-1/3  md:h-full">
       <div className="relative flex flex-col gap-2">
         <label className="font-semibold">Do you have a promo code?</label>
-        <input
-          type="text"
-          className="w-full p-2 border border-gray-700 rounded-full focus:outline-none focus:border-none focus:ring-2 focus:ring-blue-500"
-        />
+        <input type="text" className="border-gray-700 form-input" />
         <FiPlus className="absolute text-2xl top-10 right-4" />
       </div>
       <div className="flex flex-col gap-6">

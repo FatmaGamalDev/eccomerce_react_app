@@ -11,20 +11,21 @@ function ToastNotification() {
   useEffect(() => {
     if (show) {
       const toastId = toast[type](message, {
-        position: "top-center", // ✅ تغيير الموضع إلى وسط الشاشة العلوي
+        position: "top-center", 
         autoClose: 3000,
-        hideProgressBar: true, // إزالة شريط التقدم
+        hideProgressBar: true, 
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
-        transition: Slide, // انتقال سلس
+        transition: Slide, 
         style: {
-          background: "#f5f5f5", // لون الخلفية
-          color: "#FF497C", // لون النص
-          width: "400px",
+          background: "#fffff",
+          color: "black", 
+          width: "700px",
+          height:"200px",
           maxWidth: "none",
-          borderRadius: "8px", // حواف ناعمة
-          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", // ظل خفيف
+          borderRadius: "20px", 
+          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", 
           position: "relative",
         },
         icon: (
@@ -66,7 +67,7 @@ function ToastNotification() {
       });
 
       return () => {
-        toast.dismiss(toastId); // إزالة التوست عند انتهاء المكون
+        toast.dismiss(toastId); 
       };
     }
   }, [message, type, show, dispatch]);

@@ -2,7 +2,7 @@ import React from "react";
 
 function SignUp() {
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <section className="flex items-center justify-center min-h-screen ">
       <div className="p-6 bg-white sm:w-2/3">
         <h2 className="mb-4 text-2xl font-semibold text-center uppercase">
           create an account
@@ -10,7 +10,7 @@ function SignUp() {
         <form>
           <div className="flex gap-4">
             <div className="w-1/2">
-              <label className="block text-gray-700">First Name</label>
+              <label className=" form-label">First Name</label>
               <input
                 type="text"
                 className="form-input"
@@ -18,7 +18,7 @@ function SignUp() {
               />
             </div>
             <div className="w-1/2">
-              <label className="block text-gray-700">Last Name</label>
+              <label className="form-label">Last Name</label>
               <input
                 type="text"
                 className="form-input"
@@ -27,7 +27,7 @@ function SignUp() {
             </div>
           </div>
           <div className="mt-4 mb-4">
-            <label className="block text-gray-700">Email</label>
+            <label className="form-label">Email</label>
             <input
               type="email"
               className="form-input"
@@ -35,7 +35,7 @@ function SignUp() {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">Password</label>
+            <label className="form-label">Password</label>
             <input
               type="password"
               className="form-input"
@@ -59,9 +59,9 @@ function SignUp() {
           </div>
           <button
             type="submit"
-            className="w-full py-2 text-white transition rounded-lg bg-pink hover:bg-black"
+            className="w-full main-btn"
           >
-            Create Account & Countinue
+            <span className="z-10">Create Account & Countinue</span>
           </button>
           <p className="relative text-center my-4 text-gray-600 before:content-[''] before:absolute before:w-[45%] before:h-[1px] before:bg-gray-400 before:left-0 before:top-1/2 after:content-[''] after:absolute after:w-[45%]  after:h-[1px] after:bg-gray-400 after:right-0 after:top-1/2">
             or
@@ -123,7 +123,7 @@ function SignUp() {
           </div>
         </form>
       </div>
-    </div>
+    </section>
   );
 }
 

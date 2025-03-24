@@ -11,14 +11,11 @@ function Cart() {
   if (cartProducts.length > 0) {
     return ( 
       <Container className='bg-softbeige'>
-
       <section className="flex flex-col items-center pb-8 h-max md:items-start bg-softbeige md:flex-row">
-
           <CartProducts cartProducts={cartProducts} showToast={showToast} />
           <CartSummary cartTotal={cartTotal} />
       </section>
       </Container>
-
     );
   } else {
     return <CartEmpty />;

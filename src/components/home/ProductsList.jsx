@@ -7,11 +7,7 @@ import  Container from "../common/Container";
 function ProductsList({ products }) {
   let productsPerPage = 12;
   let totalPages = Math.ceil(products.length / productsPerPage);
-
   let [currentPage, setCurrentPage] = useState(1);
-
-
-  // lama el currentpage bytghayar el startIndexwe el endIndex bytghyar
   const startIndex = (currentPage - 1) * productsPerPage;
   const endIndex = startIndex + productsPerPage;
 

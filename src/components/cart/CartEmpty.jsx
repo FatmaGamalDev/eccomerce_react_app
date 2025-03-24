@@ -7,9 +7,9 @@ function CartEmpty() {
         <img src={CartSvg} alt="Cart Icon" className="w-80 h-80" />
         <h1 className='mt-1 text-gray-500'>Your Shopping Cart is Empty</h1>
         <button
-        className="w-32 p-2 mt-12 text-white -translate-y-1/2 rounded-full left-20 top-2/3 bg-pink"
+        className="w-32 mt-8 main-btn"
       >
-        SHOP NOW
+       <span className='z-10'> SHOP NOW</span>
       </button>
     </div>
   )
