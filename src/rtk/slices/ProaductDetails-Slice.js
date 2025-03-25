@@ -10,24 +10,28 @@ export const fetchProductDetails = createAsyncThunk(
     return data;
   }
 );
-
 const productDetails = createSlice({
   name: "productDetails",
   initialState: {
-    productDetails: {},
+    product: {},
     loading: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    clearProduct: (state) => {
+      state.product = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
+    .addCase(fetchProductDetails.pending, (state) => {
+      state.loading = true;
+      state.error=null
+    })
       .addCase(fetchProductDetails.fulfilled, (state, action) => {
-        state.productDetails = action.payload;
+        state.product = action.payload;
         state.loading = false;
-      })
-      .addCase(fetchProductDetails.pending, (state, action) => {
-        state.loading = true;
-        state.error=null
+
       })
       .addCase(fetchProductDetails.rejected, (state, action) => {
         state.loading = false;

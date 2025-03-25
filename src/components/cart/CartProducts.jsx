@@ -7,11 +7,10 @@ function CartProducts({ cartProducts, showToast }) {
 
   return (
     <div className="flex flex-col items-center w-full md:w-2/3">
-    
       <div className="flex flex-col w-[95%] gap-4 ">
-      <h1 className="self-start mt-4 text-2xl font-semibold uppercase ">
-      Bag Summary ({cartProducts.length} )
-      </h1>
+        <h1 className="self-start mt-4 text-2xl font-semibold uppercase ">
+          Bag Summary ({cartProducts.length} )
+        </h1>
         {cartProducts.map((cartItem) => (
           <div key={cartItem.id} className="p-4 bg-white shadow-md rounded-xl">
             {/* product image*/}
@@ -37,37 +36,39 @@ function CartProducts({ cartProducts, showToast }) {
                 </div>
               </div>
             </div>
-<div className="flex justify-between">
-            {/* products quantity*/}
-            <div className="flex mt-4 ">
-              <QuantitySelector
-                selectedProduct={cartItem}
-                setQuantity={(newQuantity) =>
-                  dispatch(
-                    updateQuantity({ id: cartItem.id, quantity: newQuantity })
-                  )
-                }
-                quantity={cartItem.quantity}
-              />
-            </div>
+            <div className="flex justify-between">
+              {/* products quantity*/}
+              <div className="flex mt-4 ">
+                <QuantitySelector
+                  selectedProduct={cartItem}
+                  setQuantity={(newQuantity) =>
+                    dispatch(
+                      updateQuantity({ id: cartItem.id, quantity: newQuantity })
+                    )
+                  }
+                  quantity={cartItem.quantity}
+                />
+              </div>
 
-            {/* remove button*/}
-            <div className="flex justify-end">
+              {/* remove button*/}
+              <div className="flex justify-end">
               <button
-                className="text-xs font-bold underline text-pink hover:text-black hover:border-black"
-                onClick={() => {
-                  dispatch(deleteFromCart(cartItem));
-                  dispatch(
-                    showToast({
-                      message: "Product removed from cart",
-                      type: "success",
-                    })
-                  );
-                }}
-              >
-                REMOVE
-              </button>
-            </div>
+  className="text-xs font-bold underline text-pink hover:text-black hover:border-black"
+  onClick={() => {
+    dispatch(
+      showToast({
+        message: "متأكد إنك عايز تحذف المنتج؟",
+        type: "delete",
+        product: cartItem, // لازم نرسل المنتج عشان نحذفه بعدين
+      })
+    );
+  }}
+>
+  REMOVE
+</button>
+
+               
+              </div>
             </div>
           </div>
         ))}

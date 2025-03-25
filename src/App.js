@@ -11,6 +11,7 @@ import ProductDetails from "./pages/ProductDetails";
 import SignUp from "./pages/SignUp";
 import SearchResults from "./pages/SearchResults";
 import ScrollToTop from "./components/ui/ScrollToTop";
+import Loader from "./components/common/Loader";
 
 function App() {
   return (
@@ -18,8 +19,11 @@ function App() {
       <ToastNotification />
       <Router>
         <ScrollToTop/>
+
         <div className="App">
           <Navbar />
+          <Loader />
+
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="cart" element={<Cart />} />

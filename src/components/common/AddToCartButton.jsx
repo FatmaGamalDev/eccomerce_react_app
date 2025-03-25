@@ -22,8 +22,10 @@ function AddToCartButton({
           );
           dispatch(
             showToast({
-              message: "Product Added Successfully",
-              type: "success",
+              message: "Added to Bag",
+              type: "add",
+              product: selectedProduct,
+              quantity: fromDetails ? quantity : 1,
             })
           );
         }}

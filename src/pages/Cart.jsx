@@ -6,8 +6,8 @@ import CartEmpty from "../components/cart/CartEmpty";
 import Container from "../components/common/Container";
 
 function Cart() {
-  const cartProducts = useSelector((state) => state.cart.cart) || [];
-  const cartTotal = useSelector((state) => state.cart.cartTotal) || 0;
+  const cartProducts = useSelector((state) => state.cart.cart) ?? [];
+  const cartTotal = useSelector((state) => state.cart.cartTotal) ?? 0;
   if (cartProducts.length > 0) {
     return ( 
       <Container className='bg-softbeige'>
