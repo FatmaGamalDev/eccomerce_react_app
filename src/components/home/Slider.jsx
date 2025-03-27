@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import img1 from "../../Assets/banner/main-banner.webp";
 import img2 from "../../Assets/carousel/clothes-1839935_1280.jpg";
 import img3 from "../../Assets/carousel/ecommerce-2607114_1280.jpg";
 
-const images = [img1, img2, img3, img2];
+const images = [img1, img2, img3];
 
 function Slider() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -19,18 +19,25 @@ function Slider() {
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   };
-
+  //change the slide every 4 seconds automaticly
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [currentIndex]);
+  
   return (
-    <div className="relative w-full overflow-hidden">
+    <div className="relative w-full overflow-hidden h-[70vh]">
       <div
-        className="flex transition-transform duration-700 ease-in-out"
+        className="flex h-full transition-transform duration-700 ease-in-out"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {images.map((img, index) => (
-          <div key={index} className="min-w-full">
+          <div key={index} className="h-full min-w-full ">
             <img
               src={img}
-              className="object-cover w-full h-96"
+              className="object-cover w-full h-full "
               alt={`Slide ${index + 1}`}
             />
           </div>
@@ -43,16 +50,10 @@ function Slider() {
         <span className="z-10"> SHOP NOW</span>
       </button>
 
-      <button
-        className="absolute flex items-center justify-center w-8 h-8 p-2 text-white -translate-y-1/2 rounded-full bg-pink left-5 top-1/2 bg-black/50"
-        onClick={prevSlide}
-      >
+      <button className="slider-btn left-5 top-1/2 " onClick={prevSlide}>
         ❮
       </button>
-      <button
-        className="absolute flex items-center justify-center w-8 h-8 p-2 text-white -translate-y-1/2 rounded-full bg-pink right-5 top-1/2 bg-black/50"
-        onClick={nextSlide}
-      >
+      <button className="slider-btn right-5 top-1/2" onClick={nextSlide}>
         ❯
       </button>
     </div>
@@ -60,3 +61,5 @@ function Slider() {
 }
 
 export default Slider;
+
+

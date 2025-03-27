@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import ProductCard from "./ProductCard";
-
+import ProductCard from "../product/ProductCard";
 import Pagination from "../common/Pagination ";
-import  Container from "../common/Container";
+import Container from "../common/Container";
 
 function ProductsList({ products }) {
   let productsPerPage = 12;
@@ -12,10 +11,11 @@ function ProductsList({ products }) {
   const endIndex = startIndex + productsPerPage;
 
   return (
-   <Container size="xl" >
+    <Container size="xl">
       {/* <button onClick={() => dispatch(fetchProducts())}>All</button> */}
       {/* desplay all the products we get from the api in the home page*/}
-      <div className="grid grid-cols-1 gap-4 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
+      <h1 className="my-12 text-3xl font-bold underline underline-offset-4">NEW ARRIVALS</h1>
+      <div className="grid grid-cols-1 gap-x-2 gap-y-8 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
         {products.slice(startIndex, endIndex).map((product) => {
           return (
             <div key={product.id}>
@@ -24,9 +24,12 @@ function ProductsList({ products }) {
           );
         })}
       </div>
-<Pagination setCurrentPage={setCurrentPage} currentPage={currentPage} totalPages={totalPages}/>
-     
-   </Container>
+      <Pagination
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+        totalPages={totalPages}
+      />
+    </Container>
   );
 }
 

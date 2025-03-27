@@ -15,14 +15,14 @@ export default function Navbar() {
     setCartItems(totalQuantity);
   }, [cartProducts]);
   return (
-    <nav className="sticky top-0 left-0 z-50 w-full bg-white shadow-sm navbar">
+    <nav className="sticky top-0 left-0 z-50 w-full bg-white shadow-md navbar">
       <Container className="navbar">
         <div className="flex-1 ">
           <NavLink
             className="text-4xl border-none text-pink hover:bg-transparent"
             to="/"
           >
-            luva
+            Shopingo
           </NavLink>
         </div>
 

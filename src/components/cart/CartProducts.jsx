@@ -1,22 +1,31 @@
 import { useDispatch } from "react-redux";
 import { deleteFromCart, updateQuantity } from "../../rtk/slices/Cart-Slice";
 import QuantitySelector from "../common/QuantitySelector";
+import { useEffect, useState } from "react";
 
 function CartProducts({ cartProducts, showToast }) {
   const dispatch = useDispatch();
-
+  //Calculate the total number of items in the cart
+    const [cartItems, setCartItems] = useState(0);
+    useEffect(() => {
+      const totalQuantity = cartProducts.reduce(
+        (total, cartProduct) => total + cartProduct.quantity,
+        0
+      );
+      setCartItems(totalQuantity);
+    }, [cartProducts]);
   return (
     <div className="flex flex-col items-center w-full md:w-2/3">
       <div className="flex flex-col w-[95%] gap-4 ">
         <h1 className="self-start mt-4 text-2xl font-semibold uppercase ">
-          Bag Summary ({cartProducts.length} )
+          Bag Summary ({cartItems} )
         </h1>
         {cartProducts.map((cartItem) => (
           <div key={cartItem.id} className="p-4 bg-white shadow-md rounded-xl">
             {/* product image*/}
             <div className="flex items-center gap-2">
               <img
-                src={cartItem.images[0]}
+                src={cartItem.thumbnail || "default-image.jpg"}
                 className="w-[7rem]  opject-cover "
                 alt={cartItem.title}
               />
@@ -32,7 +41,7 @@ function CartProducts({ cartProducts, showToast }) {
                 </div>
                 {/* price*/}
                 <div className="flex text-lg font-semibold ">
-                  ${cartItem.subtotal.toFixed(2)}
+                  ${cartItem.subtotal?cartItem.subtotal.toFixed(2):"0.00"}
                 </div>
               </div>
             </div>
@@ -52,22 +61,20 @@ function CartProducts({ cartProducts, showToast }) {
 
               {/* remove button*/}
               <div className="flex justify-end">
-              <button
-  className="text-xs font-bold underline text-pink hover:text-black hover:border-black"
-  onClick={() => {
-    dispatch(
-      showToast({
-        message: "متأكد إنك عايز تحذف المنتج؟",
-        type: "delete",
-        product: cartItem, // لازم نرسل المنتج عشان نحذفه بعدين
-      })
-    );
-  }}
->
-  REMOVE
-</button>
-
-               
+                <button
+                  className="text-xs font-bold underline text-pink hover:text-black hover:border-black"
+                  onClick={() => {
+                    dispatch(
+                      showToast({
+                        message: " ",
+                        type: "delete",
+                        product: cartItem, 
+                      })
+                    );
+                  }}
+                >
+                  REMOVE
+                </button>
               </div>
             </div>
           </div>

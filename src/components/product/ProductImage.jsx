@@ -9,7 +9,7 @@ function ProductImage({ imageUrl, discount, title }) {
     <img
       className="object-cover w-full h-full "
       src={
-      imageUrl
+      imageUrl || "/assets/ImagePlaceholder.jpg"
       }
       alt={title}
     />

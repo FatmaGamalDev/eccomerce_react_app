@@ -35,4 +35,10 @@
   .form-label{
     @apply text-sm font-semibold text-gray-800;
   }
+  .activePage {
+    @apply text-pink
+}
+.slider-btn {
+  @apply absolute flex items-center justify-center w-8 h-8 p-2 text-white -translate-y-1/2 rounded-full bg-pink right-5 top-1/2 
+}
 }

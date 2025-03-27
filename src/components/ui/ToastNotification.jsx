@@ -13,7 +13,7 @@ function ToastNotification() {
   //  object mapping on toast types
   const toastTypes = {
     add: (
-      <div className="text-center">
+      <div className="text-center ">
         <h1 className="text-2xl font-semibold uppercase">{message}</h1>
         <hr />
         <div className="flex items-center justify-center gap-8 p-4 rounded-xl w-[600px] border border-gray-300 my-8">

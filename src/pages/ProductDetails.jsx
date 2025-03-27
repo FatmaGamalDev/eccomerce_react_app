@@ -34,7 +34,7 @@ function ProductDetails() {
           title={product?.title}
         />
         {/*display product informations */}
-        <div className="flex-col space-y-4 md:w-[50%]">
+        <div className="flex-col w-[70%] space-y-4 md:w-[50%]">
           <ProductInfo
             title={product?.title}
             brand={product?.brand}
@@ -48,7 +48,7 @@ function ProductDetails() {
             setQuantity={setQuantity}
             selectedProduct={product}
           />
-          <p className="text-sm font-semibold text-green-600">In Stock</p>
+          <p className="text-sm font-semibold text-green-600">Only <span>{product.stock}</span> left in stock</p>
           <div className="flex justify-start w-full gap-8 ">
             <AddToCartButton
               selectedProduct={product}
@@ -64,7 +64,9 @@ function ProductDetails() {
       <div className="flex items-center justify-center w-full my-8 text-xl uppercase bg-beige h-28">
         reviews & questions
       </div>
-      <ProductReviews />
+      <div className="flex flex-col items-center ">
+      <ProductReviews reviews={product?.reviews} />
+      </div>
     </section>
   );
 }
