@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import img1 from "../../Assets/banner/main-banner.webp";
 import img2 from "../../Assets/carousel/clothes-1839935_1280.jpg";
-import img3 from "../../Assets/carousel/ecommerce-2607114_1280.jpg";
 
-const images = [img1, img2, img3];
+const images = [img1, img2];
 
 function Slider() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -28,7 +27,7 @@ function Slider() {
   }, [currentIndex]);
   
   return (
-    <div className="relative w-full overflow-hidden h-[70vh]">
+    <div className="relative w-full overflow-hidden h-[60vh] md:h-[70vh] sm:h-[40vh] min-h-[300px]">
       <div
         className="flex h-full transition-transform duration-700 ease-in-out"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}

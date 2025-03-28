@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.1",
+    "@supabase/supabase-js": "^2.49.3",
     "cra-template": "1.2.0",
     "daisyui": "^5.0.0",
     "downshift": "^9.0.9",

@@ -30,24 +30,6 @@ export const fetchProductsByCategory = createAsyncThunk(
   }
 );
 
-//fetch all the product from the api
-// export const fetchProductsByNameOrBrand = createAsyncThunk(
-//   "products/fetchProductsByNameOrBrand",
-//   async (searchQuery) => {
-//     if (!searchQuery.trim()) {
-//       return []; 
-//     }
-//     const res = await fetch("https://dummyjson.com/products");
-//     const data = await res.json();
-//     const searchResult = data.products.filter((product) => (
-//       product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-//         product.brand?.toLowerCase().includes(searchQuery.toLowerCase())
-//     ));
-//     return searchResult ;
-
-//   }
-// );
-
 export const fetchProductsByNameOrBrand = createAsyncThunk(
   "products/fetchProductsByNameOrBrand",
   async (searchQuery, { getState }) => {
@@ -125,19 +107,6 @@ const productsSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-       //search result products reducers
-      //  .addCase(fetchProductsByNameOrBrand.fulfilled, (state, action) => {
-      //   state.searchResult= action.payload || [];
-      //   state.loading = false;
-      // })
-      // .addCase(fetchProductsByNameOrBrand.pending, (state) => {
-      //   state.loading = true;
-      //   state.error = null;
-      // })
-      // .addCase(fetchProductsByNameOrBrand.rejected, (state, action) => {
-      //   state.loading = false;
-      //   state.error = action.error.message;
-      // })
   },
 });
 export const { searchProducts } = productsSlice.actions;

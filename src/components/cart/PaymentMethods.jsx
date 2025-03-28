@@ -10,7 +10,7 @@ const paymentLogos = [
   ];
 function PaymentMethods() {
   return (
-    <div className="flex flex-col items-center gap-2 mt-4">
+    <div className="flex flex-col items-center gap-2 mt-4 ">
       <h6 className="text-sm font-semibold text-gray-600 uppercase">We Accept</h6>
       <div className="flex flex-wrap gap-2">
         {paymentLogos.map((logo, index) => (

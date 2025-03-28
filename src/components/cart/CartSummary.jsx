@@ -5,7 +5,7 @@ import PaymentMethods from "./PaymentMethods";
 
 function CartSummary({ cartTotal }) {
   return (
-    <div className="w-[90%] flex flex-col flex-grow gap-6 bg-white my-4 rounded-lg md:mt-16 border-black p-4 md:border-none md:w-1/3  md:h-full">
+    <div className="w-[90%] flex flex-col flex-grow gap-6 bg-white my-4 rounded-lg md:mt-16 border-black pb-8 p-4 md:border-none md:w-1/3  md:h-full">
       <div className="relative flex flex-col gap-2">
         <label className="font-semibold">Do you have a promo code?</label>
         <input type="text" className="border-gray-700 form-input" />

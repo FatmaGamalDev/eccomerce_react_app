@@ -2,17 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @font-face {
-  font-display: swap; 
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 400;
-  src: url('/fonts/poppins-latin-regular.woff2') format('woff2');
- }  */
-
-/* @import url('/fonts/poppins-v22-latin-regular.woff2');  */
-
-
  body {
   font-family: 'Poppins', sans-serif;
 }

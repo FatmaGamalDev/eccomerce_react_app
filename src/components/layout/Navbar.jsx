@@ -19,16 +19,61 @@ export default function Navbar() {
       <Container className="navbar">
         <div className="flex-1 ">
           <NavLink
-            className="text-4xl border-none text-pink hover:bg-transparent"
+            className="text-2xl border-none text-pink hover:bg-transparent"
             to="/"
           >
             Shopingo
           </NavLink>
         </div>
-
         <SearchBar />
         <div className="flex-none">
-          <ul className="flex-row items-center justify-center px-1 menu">
+          <ul className="flex-row items-center justify-center px-1 menu ">
+            {/* ---dropdown ---*/}
+            <div className="dropdown dropdown-hover">
+              <div tabIndex={0} role="button" className="btn m-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                  />
+                </svg>
+              </div>
+              <ul
+                tabIndex={0}
+                className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm "
+              >
+                <li>
+                  <NavLink
+                    to="signUp"
+                    className={({ isActive }) =>
+                      `text-lg font-semibold  ${
+                        isActive ? "text-pink-500" : "text-gray-700"
+                      } `
+                    }
+                  >
+                    
+                    signup
+                  </NavLink>
+                </li>
+                <li>
+            
+                  <NavLink to="signIn">signIn</NavLink>
+                </li>
+                <li>
+                  
+                  <NavLink to="profile">profile</NavLink>
+                </li>
+              </ul>
+            </div>
+            {/* ------------------------- */}
             <li>
               <NavLink to="/cart" className="hover:bg-transparent">
                 <svg
@@ -56,30 +101,6 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
-
-        <NavLink
-          to="signUp"
-          className={({ isActive }) =>
-            `text-lg font-semibold ${
-              isActive ? "text-pink-500" : "text-gray-700"
-            }`
-          }
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-6"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
-            />
-          </svg>
-        </NavLink>
       </Container>
     </nav>
   );

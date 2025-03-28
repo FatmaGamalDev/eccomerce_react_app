@@ -20,7 +20,7 @@ function ProductCard({ product }) {
     <div className="relative w-full border border-gray-300 shadow-md card lg:w-[96%] bg-base-100">
       <figure className=" w-[80%] h-[80%] bg-white aspect-square self-center">
         <div onClick={handleClick} className="cursor-pointer">
-          <div className="absolute left-0 w-16 px-2 py-1 text-lg text-white bg-red-200 border-none rounded-none badge top-3">
+          <div className="absolute left-0 w-16 px-2 py-1 text-lg text-white bg-pink border-none rounded-none badge top-3">
             <h6>{`- ${Math.ceil(product.discountPercentage)}% `}</h6>
           </div>
           <img

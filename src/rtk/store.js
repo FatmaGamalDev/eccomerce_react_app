@@ -4,6 +4,7 @@ import cartSlice from "./slices/Cart-Slice";
 import toastSlice from"./slices/Toast-Slice";
 import ProductDetailsSlice  from "./slices/ProaductDetails-Slice";
 import loadingSlice from "./slices/loadingSlice";
+import authSlice from "./slices/authSlice"
 const store = configureStore({
   reducer: {
     products: productsSlice,
@@ -11,6 +12,7 @@ const store = configureStore({
     productDetails:ProductDetailsSlice,
     toast:toastSlice,
     loading: loadingSlice,
+    auth:authSlice
   },
 });
 export default store;

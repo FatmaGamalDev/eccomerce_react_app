@@ -46,14 +46,14 @@ function ProductReviews({reviews}) {
               <FaShareFromSquare />
               <span > share</span>
             </div>
-          <div className="flex items-center justify-center gap-4 text-sm text-gray-500">
+          <div className="flex items-center justify-center gap-[8px] text-sm text-gray-500">
          <div className="flex items-center ">
          <ThumbsUp size={20}/>
-         <span>5</span>
+         <span  className="mt-[6px]">5</span>
          </div>
           <div className="flex items-center">
-          <ThumbsDown size={20} />
-          <span>0</span>
+          <ThumbsDown size={20}  className="mt-[12px]" />
+          <span  className="mt-[6px]">0</span>
           </div>
           </div>
             </div>

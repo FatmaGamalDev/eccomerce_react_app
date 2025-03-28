@@ -34,10 +34,6 @@ function CartProducts({ cartProducts, showToast }) {
                 <div>
                   <div className="font-bold">{cartItem.title}</div>
                   <div className="text-sm opacity-50">{cartItem.brand}</div>
-
-                  <div className="text-sm text-gray-700 font-simi-bold">
-                    {cartItem.shippingInformation}
-                  </div>
                 </div>
                 {/* price*/}
                 <div className="flex text-lg font-semibold ">
