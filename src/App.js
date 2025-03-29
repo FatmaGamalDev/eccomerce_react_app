@@ -17,6 +17,7 @@ import Profile from "./pages/Profile";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getSession } from "./rtk/slices/authSlice";
+import Wishlist from "./pages/Wishlist";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ function App() {
   useEffect(() => {
     dispatch(getSession());
   }, [dispatch]);
+
   return (
     <>
       <ToastNotification />
@@ -38,6 +40,7 @@ function App() {
             <Route path="cart" element={<Cart />} />
             <Route path="signUp" element={<SignUp />} />
             <Route path="signIn" element={<SignIn />} />
+            <Route path="wishList" element={user?<Wishlist/>: <SignIn />} />
             <Route path="search" element={<SearchResults />} />
             <Route path="profile" element={user ? <Profile /> : <SignIn />} />
             <Route path="product/:productID" element={<ProductDetails />} />

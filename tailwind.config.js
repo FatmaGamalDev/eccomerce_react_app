@@ -13,15 +13,11 @@ export default {
         softbeige:"#f6f0ef",
         nude:"#f5ddd8"
       },
-      screens:{
-        xs: "480px"
-      }
       },
       container: {
         center: true, 
         padding: "2rem", 
-      },
-     
+      },  
     },
     plugins: [require("daisyui")], 
   };

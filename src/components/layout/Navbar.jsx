@@ -3,8 +3,11 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import SearchBar from "../common/SearchBar";
 import Container from "../common/Container";
+import WishlistButton from "../common/WishlistButton";
+import { Heart } from "lucide-react";
 
 export default function Navbar() {
+  //get total number of product in the cart to show it on the cart icon on the nav
   const cartProducts = useSelector((state) => state.cart.cart);
   const [cartItems, setCartItems] = useState(0);
   useEffect(() => {
@@ -14,6 +17,11 @@ export default function Navbar() {
     );
     setCartItems(totalQuantity);
   }, [cartProducts]);
+
+
+  //get total number of product in the cart to show it on the cart icon on the nav
+  const wishlist = useSelector((state) => state.wishlist.wishlist);
+
   return (
     <nav className="sticky top-0 left-0 z-50 w-full bg-white shadow-md navbar">
       <Container className="navbar">
@@ -59,21 +67,28 @@ export default function Navbar() {
                       } `
                     }
                   >
-                    
                     signup
                   </NavLink>
                 </li>
                 <li>
-            
                   <NavLink to="signIn">signIn</NavLink>
                 </li>
                 <li>
-                  
                   <NavLink to="profile">profile</NavLink>
                 </li>
               </ul>
             </div>
             {/* ------------------------- */}
+            <NavLink to="/wishList" className="relative">
+              <Heart />
+              <div
+                style={{ display: wishlist.length > 0 ? " block" : "none" }}
+                className="absolute bottom-3 left-4 flex text-white font-semibold text-md items-center justify-center bg-pink  w-[18px] h-[18px]  text-[11px] rounded-full  "
+              >
+                <h6 className="text-center"> {wishlist.length}</h6>
+              </div>
+            </NavLink>
+
             <li>
               <NavLink to="/cart" className="hover:bg-transparent">
                 <svg

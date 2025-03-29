@@ -4,6 +4,7 @@ import { hideToast } from "../../rtk/slices/Toast-Slice";
 import { Slide, toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { deleteFromCart } from "../../rtk/slices/Cart-Slice";
+import { deleteFromWishlist } from "../../rtk/slices/wishlistSlice";
 
 function ToastNotification() {
   const { message, type, show, product, quantity } = useSelector(
@@ -13,7 +14,7 @@ function ToastNotification() {
   //  object mapping on toast types
   const toastTypes = {
     add: (
-      <div className="text-center ">
+      <div className="text-center">
         <h1 className="text-2xl font-semibold uppercase">{message}</h1>
         <hr />
         <div className="flex items-center justify-center gap-8 p-4 rounded-xl w-[600px] border border-gray-300 my-8">
@@ -35,10 +36,10 @@ function ToastNotification() {
       </div>
     ),
 
-    delete: ({ closeToast }) => (
+    deleteFromCart: ({ closeToast }) => (
       <div className=" text-center flex flex-col items-center justify-center gap-4 p-4 rounded-xl w-[600px] border border-gray-300 my-4">
         <h1 className="text-xl ">
-          Are you sure you want to delete these items from your cart ?{" "}
+          Are you sure you want to delete these items from your cart ?
         </h1>
         <div className="flex justify-center gap-4 mt-4">
           <button

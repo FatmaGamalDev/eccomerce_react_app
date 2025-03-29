@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProductDetails } from "../rtk/slices/ProaductDetails-Slice";
 import QuantitySelector from "../components/common/QuantitySelector";
 import AddToCartButton from "../components/common/AddToCartButton";
-import WishlistButton from "../components/ui/WishlistButton";
+import WishlistButton from "../components/common/WishlistButton";
 import ProductInfo from "../components/product/ProductInfo";
 import ProductImage from "../components/product/ProductImage";
 import { startLoading, stopLoading } from "../rtk/slices/loadingSlice";
@@ -34,7 +34,7 @@ function ProductDetails() {
           title={product?.title}
         />
         {/*display product informations */}
-        <div className="flex-col w-[70%] space-y-4 md:w-[50%]">
+        <div className="flex-col w-[90%] space-y-4 md:w-[50%]">
           <ProductInfo
             title={product?.title}
             brand={product?.brand}
@@ -56,7 +56,7 @@ function ProductDetails() {
               quantity={quantity}
               className="w-1/2"
             />
-            <WishlistButton />
+            <WishlistButton product={product} />
           </div>
         </div>
       </div>

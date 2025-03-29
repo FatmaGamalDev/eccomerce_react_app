@@ -6,7 +6,6 @@ import { ShoppingCart } from "lucide-react";
 
 function CartIconButton({ selectedProduct, quantity = 1 }) {
   const dispatch = useDispatch();
-
   const handleAddToCart = () => {
     dispatch(addToCart({ ...selectedProduct, quantity }));
     dispatch(
@@ -20,10 +19,7 @@ function CartIconButton({ selectedProduct, quantity = 1 }) {
   };
 
   return (
-    <button
-      onClick={handleAddToCart}
-      className="p-2 transition "
-    >
+    <button onClick={handleAddToCart} className="p-2 transition ">
       <ShoppingCart className="w-6 h-6 text-gray-700 hover:text-pink" />
     </button>
   );
