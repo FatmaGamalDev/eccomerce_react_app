@@ -7,34 +7,27 @@ import { useNavigate } from "react-router-dom";
 function SearchBar() {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const products = useSelector((state) => state.products.products);
-
   const handleInputChange = (event) => {
     const value = event.target.value;
     setSearchQuery(value);
-
     if (!value.trim()) {
       setFilteredProducts([]);
       return;
     }
-
     const lowerCaseValue = value.toLowerCase();
-
     const filtered = products
       .filter((product) =>
         product.title.toLowerCase().startsWith(lowerCaseValue)
       )
       .map((product) => product.title);
-
     setFilteredProducts(filtered);
   };
 
   const handleSelect = (selectedItem) => {
-    setSearchQuery(""); // تصفير الحقل بعد البحث
+    setSearchQuery(""); 
     setFilteredProducts([]);
     dispatch(searchProducts(selectedItem));
     navigate("/search");
@@ -44,9 +37,8 @@ function SearchBar() {
     if (!searchQuery) return;
     dispatch(searchProducts(searchQuery));
     navigate("/search");
-    setSearchQuery(""); // مسح البحث بعد التنقل
+    setSearchQuery(""); 
   }
-
   return (
     <div className="relative flex items-center justify-center w-[25%]">
       <div className="relative w-full">

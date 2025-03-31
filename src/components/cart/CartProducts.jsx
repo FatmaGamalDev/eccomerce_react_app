@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { deleteFromCart, updateQuantity } from "../../rtk/slices/Cart-Slice";
+import { updateQuantity } from "../../rtk/slices/Cart-Slice";
 import QuantitySelector from "../common/QuantitySelector";
 import AddToCartButton from "../common/AddToCartButton";
 import { deleteFromWishlist } from "../../rtk/slices/wishlistSlice";

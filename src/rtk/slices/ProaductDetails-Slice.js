@@ -1,15 +1,28 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { supabase } from "../../supabaseClient";
 
 //fetch productDetails from the api
-//create thunk action called fetchProductDetails and the action payload is the api response
 export const fetchProductDetails = createAsyncThunk(
   "product/fetchProductDetails",
   async (productID) => {
-    const res = await fetch(`https://dummyjson.com/products/${productID}`);
-    const data = await res.json();
-    return data;
+    const { data: product, error: productError } = await supabase
+      .from("products")
+      .select("*")
+      .eq("id", productID)
+      .single(); 
+
+    if (productError) throw new Error(productError.message);
+    const { data: reviews, error: reviewsError } = await supabase
+      .from("reviews") 
+      .select("*")
+      .eq("product_id", productID); 
+
+    if (reviewsError) throw new Error(reviewsError.message);
+
+    return { ...product, reviews }; 
   }
 );
+
 const productDetails = createSlice({
   name: "productDetails",
   initialState: {
@@ -24,14 +37,13 @@ const productDetails = createSlice({
   },
   extraReducers: (builder) => {
     builder
-    .addCase(fetchProductDetails.pending, (state) => {
-      state.loading = true;
-      state.error=null
-    })
+      .addCase(fetchProductDetails.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
       .addCase(fetchProductDetails.fulfilled, (state, action) => {
         state.product = action.payload;
         state.loading = false;
-
       })
       .addCase(fetchProductDetails.rejected, (state, action) => {
         state.loading = false;

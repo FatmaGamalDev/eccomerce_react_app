@@ -1,51 +1,74 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { supabase } from "../../supabaseClient";
 
-//fetch all the product from the api
+const API_URL = process.env.REACT_APP_API_URL;
+//fetch all products from the data base
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async () => {
-    const res = await fetch("https://dummyjson.com/products");
-    const data = await res.json();
-    return data;
+    const { data, error } = await supabase
+      .from("products")
+      .select("*")
+      .order("id", { ascending: true })
+      .limit(100)
+      .neq("category", "mens-shoes")
+      .neq("category", "mens-shirts")
+      .neq("category", "groceries")
+      .neq("category", "vehicle")
+      .neq("category", "motorcycle")
+      .neq("category", "mens-watches")
+      .neq("category", "sports-accessories");
+      // .not("category", "in", '( "mens-shoes", "mens-shirts","groceries", "vehicle","motorcycle", "mens-watches", "sports-accessories")');
+    if (error) {
+      throw new Error(error.message);
+    }
+    return data; 
   }
 );
 //fetch  the categories from the api
 export const fetchCategories = createAsyncThunk(
   "Categories/fetchCategories",
   async () => {
-    const res = await fetch("https://dummyjson.com/products/category-list");
-    const data = await res.json();
-    return data;
+    const { data, error } = await supabase
+      .from("products")
+      .select("category") 
+      .order("id", { ascending: true })
+      .neq("category", null); 
+    if (error) throw new Error(error.message);
+    const uniqueCategories = [...new Set(data.map((item) => item.category))];
+    return uniqueCategories;
   }
 );
+
 //fetch products by category name
 export const fetchProductsByCategory = createAsyncThunk(
-  "Categories/fetchProductsByCategory",
+  "products/fetchProductsByCategory",
   async (categoryName) => {
-    const res = await fetch(
-      `https://dummyjson.com/products/category/${categoryName}`
-    );
-    const data = await res.json();
+    let { data, error } = await supabase
+      .from("products")
+      .select("*")
+      .eq("category", categoryName);
+    
+    if (error) throw error;
     return data;
   }
 );
 
-export const fetchProductsByNameOrBrand = createAsyncThunk(
-  "products/fetchProductsByNameOrBrand",
-  async (searchQuery, { getState }) => {
-    if (!searchQuery.trim()) {
-      return []; 
-    }
-    const state= getState();
-    let products = state.products.products
-    const searchResult = products.filter((product) => (
-      product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.brand?.toLowerCase().includes(searchQuery.toLowerCase())
-    ));
-    return searchResult ;
+// export const searchProducts = createAsyncThunk(
+//   "products/searchProducts",
+//   async (searchQuery) => {
+//     if (!searchQuery.trim()) return [];
 
-  }
-);
+//     const { data, error } = await supabase
+//       .from("products")
+//       .select("*")
+//       .or(`title.ilike.%${searchQuery}%, brand.ilike.%${searchQuery}%, category.ilike.%${searchQuery}%`);
+
+//     if (error) throw new Error(error.message);
+//     return data;
+//   }
+// );
+
 const productsSlice = createSlice({
   name: "products",
   initialState: {
@@ -56,21 +79,22 @@ const productsSlice = createSlice({
     error: null,
   },
   reducers: {
-    searchProducts:(state,action)=>{
+    searchProducts: (state, action) => {
       const searchQuery = action.payload.toLowerCase();
-        if (!searchQuery.trim()) {
-          return []; 
-        }
- state.searchResult= state.products.filter((product) => (
-  product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    product.brand?.toLowerCase().includes(searchQuery.toLowerCase())
-));
-    }
+      if (!searchQuery.trim()) {
+        return [];
+      }
+      state.searchResult = state.products.filter(
+        (product) =>
+          product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          product.brand?.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.products = action.payload.products;
+        state.products = action.payload;
         state.loading = false;
       })
       .addCase(fetchProducts.pending, (state, action) => {
@@ -96,7 +120,7 @@ const productsSlice = createSlice({
       })
       //category products reducers
       .addCase(fetchProductsByCategory.fulfilled, (state, action) => {
-        state.products = action.payload.products ;
+        state.products = action.payload;
         state.loading = false;
       })
       .addCase(fetchProductsByCategory.pending, (state) => {
@@ -106,9 +130,8 @@ const productsSlice = createSlice({
       .addCase(fetchProductsByCategory.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
-      })
+      });
   },
 });
 export const { searchProducts } = productsSlice.actions;
-
 export default productsSlice.reducer;
