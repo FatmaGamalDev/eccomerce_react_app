@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import SearchBar from "../common/SearchBar";
 import Container from "../common/Container";
-import WishlistButton from "../common/WishlistButton";
 import { Heart } from "lucide-react";
 
 export default function Navbar() {
@@ -18,7 +17,6 @@ export default function Navbar() {
     setCartItems(totalQuantity);
   }, [cartProducts]);
 
-
   //get total number of product in the cart to show it on the cart icon on the nav
   const wishlist = useSelector((state) => state.wishlist.wishlist);
 
@@ -27,10 +25,10 @@ export default function Navbar() {
       <Container className="navbar">
         <div className="flex-1 ">
           <NavLink
-            className="text-2xl border-none text-pink hover:bg-transparent"
+            className="text-2xl font-semibold border-none text-pink hover:bg-transparent"
             to="/"
           >
-            Shopingo
+            Lumea
           </NavLink>
         </div>
         <SearchBar />
@@ -38,7 +36,7 @@ export default function Navbar() {
           <ul className="flex-row items-center justify-center px-1 menu ">
             {/* ---dropdown ---*/}
             <div className="dropdown dropdown-hover">
-              <div tabIndex={0} role="button" className="btn m-1">
+              <div tabIndex={0} role="button" className="m-1 btn">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -56,7 +54,7 @@ export default function Navbar() {
               </div>
               <ul
                 tabIndex={0}
-                className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm "
+                className="p-2 shadow-sm dropdown-content menu bg-base-100 rounded-box z-1 w-52 "
               >
                 <li>
                   <NavLink

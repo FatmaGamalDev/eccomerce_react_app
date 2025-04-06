@@ -18,7 +18,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getSession } from "./rtk/slices/authSlice";
 import Wishlist from "./pages/Wishlist";
-import { supabase } from "./supabaseClient";
+import {
+  addToCartInSupabase,
+  fetchCartFromSupabase,
+} from "./rtk/slices/Cart-Slice";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,68 +30,28 @@ function App() {
   useEffect(() => {
     dispatch(getSession());
   }, [dispatch]);
-
-  // const fetchAndUploadReviews = async () => {
-  //   try {
-  //     // 🟢 1️⃣ جلب المنتجات من Supabase لمعرفة الـ `id` الصحيح لكل منتج
-  //     const { data: products, error: productsError } = await supabase.from("products").select("id, title");
-
-  //     if (productsError) {
-  //       console.error("❌ Error fetching products from Supabase:", productsError.message);
-  //       return;
-  //     }
-
-  //     // 🟢 2️⃣ إنشاء خريطة تربط عنوان المنتج بالـ `id` الجديد من Supabase
-  //     const productIdMap = {};
-  //     products.forEach((product) => {
-  //       productIdMap[product.title] = product.id;
-  //     });
-
-  //     // 🟢 3️⃣ جلب المنتجات والتقييمات من DummyJSON
-  //     const response = await fetch("https://dummyjson.com/products?limit=100");
-  //     const { products: dummyProducts } = await response.json();
-
-  //     let reviewsData = [];
-
-  //     dummyProducts.forEach((product) => {
-  //       product.reviews?.forEach((review) => {
-  //         const supabaseProductId = productIdMap[product.title]; // جلب `id` الصحيح
-  //         if (supabaseProductId) {
-  //           reviewsData.push({
-  //             product_id: supabaseProductId,
-  //             rating: review.rating,
-  //             comment: review.comment,
-  //             reviewerName: review.reviewerName,
-  //             reviewerEmail: review.reviewerEmail,
-  //             date: review.date,
-  //           });
-  //         }
-  //       });
-  //     });
-
-  //     if (reviewsData.length === 0) {
-  //       console.log("⚠️ No reviews to upload.");
-  //       return;
-  //     }
-
-  //     // 🟢 4️⃣ رفع التقييمات إلى Supabase
-  //     const { error: reviewsError } = await supabase.from("reviews").insert(reviewsData);
-
-  //     if (reviewsError) {
-  //       console.error("❌ Error uploading reviews:", reviewsError.message);
-  //     } else {
-  //       console.log("✅ All reviews uploaded successfully!");
-  //     }
-  //   }
-  //   catch (error) {
-  //     console.error("❌ Fetching reviews failed:", error.message);
-  //   }
-  // };
-
-  // // 🔹 تشغيل تحميل التقييمات بعد تحميل المنتجات
-  // useEffect(() => {
-  //     fetchAndUploadReviews();
-  // }, []);
+   // fetch cart products from supabase if user sign in and delete the local cart
+  useEffect(() => {
+    if (user) {
+      dispatch(fetchCartFromSupabase(user.id)).then((res) => {
+        const localCart = JSON.parse(localStorage.getItem("cart")) || [];
+        localCart.forEach((item) => {
+          const exists = res.payload?.some(
+            (dbItem) => dbItem.product_id === item.id
+          );
+          if (!exists) {
+            dispatch(
+              addToCartInSupabase({
+                product: item,
+                userId: user.id,
+              })
+            );
+          }
+        });
+        localStorage.removeItem("cart");
+      });
+    }
+  }, [user]);
 
   return (
     <>

@@ -53,22 +53,6 @@ export const fetchProductsByCategory = createAsyncThunk(
     return data;
   }
 );
-
-// export const searchProducts = createAsyncThunk(
-//   "products/searchProducts",
-//   async (searchQuery) => {
-//     if (!searchQuery.trim()) return [];
-
-//     const { data, error } = await supabase
-//       .from("products")
-//       .select("*")
-//       .or(`title.ilike.%${searchQuery}%, brand.ilike.%${searchQuery}%, category.ilike.%${searchQuery}%`);
-
-//     if (error) throw new Error(error.message);
-//     return data;
-//   }
-// );
-
 const productsSlice = createSlice({
   name: "products",
   initialState: {

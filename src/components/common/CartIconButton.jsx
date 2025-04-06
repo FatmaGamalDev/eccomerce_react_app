@@ -2,7 +2,9 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../rtk/slices/Cart-Slice";
 import { showToast } from "../../rtk/slices/Toast-Slice";
-import { ShoppingCart } from "lucide-react";
+// import { ShoppingCart } from "lucide-react";
+import { BsBagPlus } from "react-icons/bs";
+
 
 function CartIconButton({ selectedProduct, quantity = 1 }) {
   const dispatch = useDispatch();
@@ -20,7 +22,8 @@ function CartIconButton({ selectedProduct, quantity = 1 }) {
 
   return (
     <button onClick={handleAddToCart} className="p-2 transition ">
-      <ShoppingCart className="w-6 h-6 text-gray-700 hover:text-pink" />
+      < BsBagPlus 
+      className="w-6 h-6 text-gray-700 hover:text-pink" />
     </button>
   );
 }

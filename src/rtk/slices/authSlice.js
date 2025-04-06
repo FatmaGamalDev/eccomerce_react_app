@@ -51,11 +51,11 @@ const authSlice = createSlice({
     user: null,
     loading: false,
     error: null,
-    loginSuccess: false, // <-- متغير جديد عشان نعرف هل المستخدم سجل الدخول الآن
+    loginSuccess: false,
 
   },
   reducers: { resetLoginState: (state) => {
-      state.loginSuccess = false; // <-- لإعادة تعيين الحالة بعد التنقل
+      state.loginSuccess = false; 
     },
   },
   extraReducers: (builder) => {
@@ -68,7 +68,7 @@ const authSlice = createSlice({
       .addCase(signUp.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action.payload.user;
-        state.loginSuccess = true;  // <-- لازم نحدثها هنا عشان تتفعل useEffect في SignIn.js
+        state.loginSuccess = true; 
 
       })
       .addCase(signUp.rejected, (state, action) => {
@@ -84,8 +84,7 @@ const authSlice = createSlice({
       .addCase(signIn.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action.payload.user;
-        state.loginSuccess = true;  // <-- لازم نحدثها هنا عشان تتفعل useEffect في SignIn.js
-
+        state.loginSuccess = true; 
       })
       .addCase(signIn.rejected, (state, action) => {
         state.loading = false;
@@ -99,16 +98,23 @@ const authSlice = createSlice({
       .addCase(signOut.fulfilled, (state) => {
         state.loading = false;
         state.user = null;
-        
       })
       .addCase(signOut.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
       //get session cases
+      .addCase(getSession.pending, (state) => {
+        state.loading = true;
+      })
       .addCase(getSession.fulfilled, (state, action) => {
+        state.loading = false;
         state.user = action.payload;
       })
+      .addCase(getSession.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
   },
 });
 export const {resetLoginState} = authSlice.actions;

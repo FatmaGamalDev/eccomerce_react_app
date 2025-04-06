@@ -3,13 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { hideToast } from "../../rtk/slices/Toast-Slice";
 import { Slide, toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { deleteFromCart } from "../../rtk/slices/Cart-Slice";
+import { deleteFromCart, deleteFromCartInSupabase } from "../../rtk/slices/Cart-Slice";
 import { deleteFromWishlist } from "../../rtk/slices/wishlistSlice";
 
 function ToastNotification() {
   const { message, type, show, product, quantity } = useSelector(
     (state) => state.toast
   );
+  const user = useSelector((state) => state.auth.user);
+  
   const dispatch = useDispatch();
   //  object mapping on toast types
   const toastTypes = {
@@ -45,6 +47,12 @@ function ToastNotification() {
           <button
             className="w-48 px-4 py-2 text-black border-2 border-pink"
             onClick={() => {
+              if(user){
+                dispatch(deleteFromCartInSupabase({ 
+                  id: product?.id, 
+                  userId: user?.id 
+                }))
+              }
               dispatch(deleteFromCart(product));
               closeToast();
             }}

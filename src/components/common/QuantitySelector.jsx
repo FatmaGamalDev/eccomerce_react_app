@@ -12,7 +12,6 @@ function QuantitySelector({ quantity, setQuantity, selectedProduct }) {
       setQuantity(quantity - 1);
     }
   }
-
   return (
     <div className="flex items-center ">
       <button

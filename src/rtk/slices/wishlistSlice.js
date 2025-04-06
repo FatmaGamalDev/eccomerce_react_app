@@ -6,7 +6,6 @@ const getInitialState = () => {
     wishlist: wishlist ? JSON.parse(wishlist) : [],
   };
 };
-
 const wishlistSlice = createSlice({
   name: "wishlistSlice",
   initialState: getInitialState(),
@@ -21,9 +20,7 @@ const wishlistSlice = createSlice({
           ...action.payload,
         });
       }
-
       localStorage.setItem("wishlist", JSON.stringify(state.wishlist));
-    
     },
     deleteFromWishlist: (state, action) => {
       state.wishlist = state.wishlist.filter(
@@ -51,7 +48,6 @@ const wishlistSlice = createSlice({
       );
       localStorage.setItem("wishlist", JSON.stringify(state.wishlist));
     },
- 
   },
 });
 

@@ -1,11 +1,13 @@
-import { useDispatch } from "react-redux";
-import { updateQuantity } from "../../rtk/slices/Cart-Slice";
+import { useDispatch, useSelector } from "react-redux";
+import { updateQuantity, updateQuantityInSupabase } from "../../rtk/slices/Cart-Slice";
 import QuantitySelector from "../common/QuantitySelector";
 import AddToCartButton from "../common/AddToCartButton";
 import { deleteFromWishlist } from "../../rtk/slices/wishlistSlice";
 
 function CartProducts({ cartProducts, showToast ,isWishlist}) {
+  const userId = useSelector((state) => state.auth.user?state.auth.user.id:null);
   const dispatch = useDispatch();
+  
   return (
     <div className="flex flex-col items-center w-full md:w-2/3">
       <div className="flex flex-col w-[95%] gap-4 ">
@@ -42,13 +44,17 @@ function CartProducts({ cartProducts, showToast ,isWishlist}) {
               </div>:
               <div className="flex mt-4 ">
               <QuantitySelector
+               quantity={cartItem.quantity}
                 selectedProduct={cartItem}
-                setQuantity={(newQuantity) =>
+                setQuantity={(newQuantity) =>{
                   dispatch(
                     updateQuantity({ id: cartItem.id, quantity: newQuantity })
                   )
-                }
-                quantity={cartItem.quantity}
+                  if(userId){
+                    dispatch(
+                      updateQuantityInSupabase({ userId:userId, productId: cartItem.id, quantity:newQuantity, price:cartItem.price })
+                    )
+                  } }  }
               />
             </div>
               }
@@ -62,7 +68,7 @@ function CartProducts({ cartProducts, showToast ,isWishlist}) {
                       showToast({
                         message: " ",
                         type:"deleteFromCart",
-                        product: cartItem, 
+                        product:cartItem, 
                       })
                     );
                   }}
