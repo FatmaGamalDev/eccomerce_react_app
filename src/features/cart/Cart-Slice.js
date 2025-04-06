@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { supabase } from "../../supabaseClient";
+import { supabase } from "../../api/supabaseClient";
 // first manage the cart actions (fetch ,add, delete, update) in supabase
 //fetch the cart items with products details from supabase
 export const fetchCartFromSupabase = createAsyncThunk(
@@ -7,21 +7,23 @@ export const fetchCartFromSupabase = createAsyncThunk(
   async (userId) => {
     const { data, error } = await supabase
       .from("cart")
-      .select(`
+      .select(
+        `
         *,
         products ( id, title, thumbnail, price,brand,stock )
-      `)
-      .eq("user_id", userId);       
-      if (error) {
-        throw new Error(error.message);
-      }
-//  merging the cart data with product details into a flat structure
-const cartItems = data.map((cartItem) => ({
-  ...cartItem.products,
-  quantity: cartItem.quantity,
-  subtotal: cartItem.subtotal,
-}));
-    return cartItems; 
+      `
+      )
+      .eq("user_id", userId);
+    if (error) {
+      throw new Error(error.message);
+    }
+    //  merging the cart data with product details into a flat structure
+    const cartItems = data.map((cartItem) => ({
+      ...cartItem.products,
+      quantity: cartItem.quantity,
+      subtotal: cartItem.subtotal,
+    }));
+    return cartItems;
   }
 );
 //add product to cart table
@@ -39,16 +41,16 @@ export const addToCartInSupabase = createAsyncThunk(
             subtotal: product.price * product.quantity,
           },
         ],
-         //make  update in case of repeated item
+        //make  update in case of repeated item
         {
-          onConflict: ['user_id', 'product_id']
+          onConflict: ["user_id", "product_id"],
         }
       )
       .select("*");
     if (error) throw new Error(error.message);
-     return {
-      ...data[0],      
-      products: product 
+    return {
+      ...data[0],
+      products: product,
     };
   }
 );
@@ -76,7 +78,7 @@ export const updateQuantityInSupabase = createAsyncThunk(
       .eq("user_id", userId)
       .eq("product_id", productId);
     if (error) throw error;
-  
+
     return { productId, quantity, price };
   }
 );
@@ -85,10 +87,15 @@ const getInitialState = () => {
   const cart = localStorage.getItem("cart");
   return {
     cart: cart ? JSON.parse(cart) : [],
-    cartTotal: cart ?
-   JSON.parse(cart).reduce((total, cartItem) => total + (cartItem.subtotal || 0),  0 ) : 0  };
-     };
-  const cartSlice = createSlice({
+    cartTotal: cart
+      ? JSON.parse(cart).reduce(
+          (total, cartItem) => total + (cartItem.subtotal || 0),
+          0
+        )
+      : 0,
+  };
+};
+const cartSlice = createSlice({
   name: "cartSlice",
   initialState: getInitialState(),
   reducers: {
@@ -148,8 +155,8 @@ const getInitialState = () => {
     clearCart: (state) => {
       state.cart = [];
       state.cartTotal = 0;
-      localStorage.removeItem("cart"); 
-    }
+      localStorage.removeItem("cart");
+    },
   },
 
   extraReducers: (builder) => {
@@ -168,18 +175,21 @@ const getInitialState = () => {
       //-------------------add to cart-----------------------------
       .addCase(addToCartInSupabase.fulfilled, (state, action) => {
         const newItem = {
-          ...action.payload.products,  
-          quantity: action.payload.quantity, 
-          subtotal: action.payload.subtotal, 
+          ...action.payload.products,
+          quantity: action.payload.quantity,
+          subtotal: action.payload.subtotal,
         };
         const exists = state.cart.find((item) => item.id === newItem.id);
         if (exists) {
           exists.quantity = newItem.quantity;
-          exists.subtotal = newItem.subtotal;  
+          exists.subtotal = newItem.subtotal;
         } else {
-          state.cart.push(newItem); 
+          state.cart.push(newItem);
         }
-        state.cartTotal = state.cart.reduce((total, item) => total + item.subtotal, 0);
+        state.cartTotal = state.cart.reduce(
+          (total, item) => total + item.subtotal,
+          0
+        );
         // localStorage.setItem("cart", JSON.stringify(state.cart));
       })
       //--------------------delete from cart state-------------------------
@@ -190,24 +200,23 @@ const getInitialState = () => {
           0
         );
       })
-       // ----------------update product quantity in redux state------------------
-       .addCase(updateQuantityInSupabase.fulfilled, (state, action) => {
+      // ----------------update product quantity in redux state------------------
+      .addCase(updateQuantityInSupabase.fulfilled, (state, action) => {
         const { productId, quantity, price } = action.payload;
         const item = state.cart.find((item) => item.id === productId);
         if (item) {
           item.quantity = quantity;
           item.subtotal = quantity * price;
-          console.log(item)
-
+          console.log(item);
         }
         state.cartTotal = state.cart.reduce(
           (total, item) => total + (item.subtotal || 0),
           0
         );
       });
-      
-    },
+  },
 });
 
-export const { addToCart, deleteFromCart, updateQuantity, clearCart } = cartSlice.actions;
+export const { addToCart, deleteFromCart, updateQuantity, clearCart } =
+  cartSlice.actions;
 export default cartSlice.reducer;

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import ProductsList from '../components/home/ProductsList'
+import ProductsList from '../features/products/components/ProductsList'
 import SearchEmpty from '../components/common/SearchEmpty'
 
 function SearchResults() {

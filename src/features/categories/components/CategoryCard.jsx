@@ -1,5 +1,5 @@
 import React from "react";
-import categoryImages from "../../utils/categoryImages";
+import categoryImages from "../../../utils/categoryImages";
 
 function CategoryCard({ category, getProductsByCategory }) {
   return (

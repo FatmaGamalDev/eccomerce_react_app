@@ -1,6 +1,6 @@
 import React from "react";
-import { addToCart, addToCartInSupabase } from "../../rtk/slices/Cart-Slice";
-import { showToast } from "../../rtk/slices/Toast-Slice";
+import { addToCart, addToCartInSupabase } from "../../features/cart/Cart-Slice";
+import { showToast } from "../../features/toast/Toast-Slice";
 import { useDispatch, useSelector } from "react-redux";
 
 function AddToCartButton({

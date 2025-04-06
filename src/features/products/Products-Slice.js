@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { supabase } from "../../supabaseClient";
+import { supabase } from "../../api/supabaseClient";
 
-const API_URL = process.env.REACT_APP_API_URL;
 //fetch all products from the data base
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
@@ -18,28 +17,12 @@ export const fetchProducts = createAsyncThunk(
       .neq("category", "motorcycle")
       .neq("category", "mens-watches")
       .neq("category", "sports-accessories");
-      // .not("category", "in", '( "mens-shoes", "mens-shirts","groceries", "vehicle","motorcycle", "mens-watches", "sports-accessories")');
     if (error) {
       throw new Error(error.message);
     }
     return data; 
   }
 );
-//fetch  the categories from the api
-export const fetchCategories = createAsyncThunk(
-  "Categories/fetchCategories",
-  async () => {
-    const { data, error } = await supabase
-      .from("products")
-      .select("category") 
-      .order("id", { ascending: true })
-      .neq("category", null); 
-    if (error) throw new Error(error.message);
-    const uniqueCategories = [...new Set(data.map((item) => item.category))];
-    return uniqueCategories;
-  }
-);
-
 //fetch products by category name
 export const fetchProductsByCategory = createAsyncThunk(
   "products/fetchProductsByCategory",
@@ -57,7 +40,6 @@ const productsSlice = createSlice({
   name: "products",
   initialState: {
     products: [],
-    categories: [],
     searchResult: [],
     loading: false,
     error: null,
@@ -81,24 +63,11 @@ const productsSlice = createSlice({
         state.products = action.payload;
         state.loading = false;
       })
-      .addCase(fetchProducts.pending, (state, action) => {
+      .addCase(fetchProducts.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message;
-      })
-      //categories reducers
-      .addCase(fetchCategories.fulfilled, (state, action) => {
-        state.categories = action.payload;
-        state.loading = false;
-      })
-      .addCase(fetchCategories.pending, (state, action) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(fetchCategories.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })

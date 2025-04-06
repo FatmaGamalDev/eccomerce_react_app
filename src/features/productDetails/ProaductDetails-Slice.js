@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { supabase } from "../../supabaseClient";
+import { supabase } from "../../api/supabaseClient";
 
 //fetch productDetails from the api
 export const fetchProductDetails = createAsyncThunk(

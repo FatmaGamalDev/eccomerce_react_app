@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { supabase } from "../../supabaseClient";
+import { supabase } from "../../api/supabaseClient";
 
 //create thunk action called signUp and the action payload is the api response
 //data => {user: {…}, session: {…}}

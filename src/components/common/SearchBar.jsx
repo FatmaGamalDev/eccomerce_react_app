@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
-import { searchProducts } from "../../rtk/slices/Products-Slice";
+import { searchProducts } from "../../features/products/Products-Slice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 

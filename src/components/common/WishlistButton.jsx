@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addToWishlist,
   deleteFromWishlist,
-} from "../../rtk/slices/wishlistSlice";
+} from "../../features/wishlist/wishlistSlice";
 import { Heart } from "lucide-react";
 
 function WishlistButton({ product }) {

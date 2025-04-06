@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { hideToast } from "../../rtk/slices/Toast-Slice";
+import { hideToast } from "./Toast-Slice";
 import { Slide, toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { deleteFromCart, deleteFromCartInSupabase } from "../../rtk/slices/Cart-Slice";
-import { deleteFromWishlist } from "../../rtk/slices/wishlistSlice";
+import { deleteFromCart, deleteFromCartInSupabase } from "../cart/Cart-Slice";
+import { deleteFromWishlist } from "../wishlist/wishlistSlice";
 
 function ToastNotification() {
   const { message, type, show, product, quantity } = useSelector(

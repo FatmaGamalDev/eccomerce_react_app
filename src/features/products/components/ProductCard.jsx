@@ -1,11 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import ProductPrice from "./ProductPrice";
-import { startLoading, stopLoading } from "../../rtk/slices/loadingSlice";
+import ProductPrice from "../../productDetails/components/ProductPrice";
+import { startLoading, stopLoading } from "../../loading/loadingSlice";
 import { useDispatch} from "react-redux";
-import { fetchProductDetails } from "../../rtk/slices/ProaductDetails-Slice";
-import CartIconButton from "../common/CartIconButton";
-import WishlistButton from "../common/WishlistButton";
+import { fetchProductDetails } from "../../productDetails/ProaductDetails-Slice";
+import CartIconButton from "../../../components/common/CartIconButton";
+import WishlistButton from "../../../components/common/WishlistButton";
 import { Heart } from "lucide-react";
 
 function ProductCard({ product }) {

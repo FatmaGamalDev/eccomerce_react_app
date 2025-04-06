@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import ProductCard from "../product/ProductCard";
-import Pagination from "../common/Pagination ";
-import Container from "../common/Container";
+import ProductCard from "./ProductCard";
+import Pagination from "../../../components/common/Pagination ";
+import Container from "../../../components/common/Container";
 
 function ProductsList({ products }) {
   let productsPerPage = 12;

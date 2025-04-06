@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signUp } from "../rtk/slices/authSlice";
+import { signUp } from "../features/auth/authSlice";
 
 function SignUp() {
   const dispatch = useDispatch();

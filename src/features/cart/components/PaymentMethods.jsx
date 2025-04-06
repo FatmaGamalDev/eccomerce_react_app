@@ -1,5 +1,4 @@
 import React from "react";
-
 const paymentLogos = [
     { src: "/payment/visa.webp", alt: "Visa" },
     { src: "/payment/maestro.webp", alt: "MasterCard" },

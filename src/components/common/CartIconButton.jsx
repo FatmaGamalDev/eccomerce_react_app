@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../rtk/slices/Cart-Slice";
-import { showToast } from "../../rtk/slices/Toast-Slice";
+import { addToCart } from "../../features/cart/Cart-Slice";
+import { showToast } from "../../features/toast/Toast-Slice";
 // import { ShoppingCart } from "lucide-react";
 import { BsBagPlus } from "react-icons/bs";
 

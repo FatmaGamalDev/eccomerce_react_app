@@ -4,24 +4,24 @@ import "./App.css";
 import Footer from "./components/layout/Footer";
 import Navbar from "./components/layout/Navbar";
 import NewsSignup from "./components/ui/NewsSignup";
-import ToastNotification from "./components/ui/ToastNotification";
+import ToastNotification from "./features/toast/ToastNotification";
 import Cart from "./pages/Cart";
 import Home from "./pages/Home";
 import ProductDetails from "./pages/ProductDetails";
 import SignUp from "./pages/SignUp";
 import SearchResults from "./pages/SearchResults";
 import ScrollToTop from "./components/ui/ScrollToTop";
-import Loader from "./components/common/Loader";
+import Loader from "./features/loading/Loader";
 import SignIn from "./pages/SignIn";
 import Profile from "./pages/Profile";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getSession } from "./rtk/slices/authSlice";
+import { getSession } from "./features/auth/authSlice";
 import Wishlist from "./pages/Wishlist";
 import {
   addToCartInSupabase,
   fetchCartFromSupabase,
-} from "./rtk/slices/Cart-Slice";
+} from "./features/cart/Cart-Slice";
 
 function App() {
   const dispatch = useDispatch();

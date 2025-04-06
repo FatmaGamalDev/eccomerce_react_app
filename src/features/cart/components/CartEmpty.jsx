@@ -1,5 +1,5 @@
 import React from 'react'
-import CartSvg from "../../Assets/download.svg";
+import CartSvg from "../../../Assets/download.svg";
 
 function CartEmpty() {
   return (

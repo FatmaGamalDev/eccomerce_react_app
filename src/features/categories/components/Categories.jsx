@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  fetchCategories,
   fetchProductsByCategory,
-} from "../../rtk/slices/Products-Slice";
-import Container from "../common/Container";
-import CategoryCard from "../categories/CategoryCard";
-import CategoryCarousel from "../categories/CategoryCarousel";
+} from "../../products/Products-Slice";
+import {  fetchCategories} from "../CategoriesSlice";
+import Container from "../../../components/common/Container";
+import CategoryCard from "../components/CategoryCard";
+import CategoryCarousel from "../components/CategoryCarousel";
 
 function Categories() {
-  const categories = useSelector((state) => state.products.categories);
+  const { categories, loading, error } = useSelector((state) => state.categories);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,7 +20,7 @@ function Categories() {
     dispatch(fetchProductsByCategory(categoryName));
   }
 
-  const filteredCategories = categories.filter(
+  const filteredCategories = categories?.filter(
     (category) => ![
       "groceries",
       "vehicle",

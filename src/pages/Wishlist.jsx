@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import CartProducts from "../components/cart/CartProducts";
-import { showToast } from "../rtk/slices/Toast-Slice";
+import CartProducts from "../features/cart/components/CartProducts";
+import { showToast } from "../features/toast/Toast-Slice";
 import Container from "../components/common/Container";
 
 const Wishlist = () => {

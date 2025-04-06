@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
-import { showToast } from "../rtk/slices/Toast-Slice";
-import CartSummary from "../components/cart/CartSummary";
-import CartProducts from "../components/cart/CartProducts";
-import CartEmpty from "../components/cart/CartEmpty";
+import { showToast } from "../features/toast/Toast-Slice";
+import CartSummary from "../features/cart/components/CartSummary";
+import CartProducts from "../features/cart/components/CartProducts";
+import CartEmpty from "../features/cart/components/CartEmpty";
 import Container from "../components/common/Container";
 import { useEffect, useState } from "react";
 
