@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { resetLoginState, signIn } from "../features/auth/authSlice";
+import { resetLoginState, signIn } from "./authSlice";
 import { useNavigate } from "react-router-dom";
 
 function SignIn() {

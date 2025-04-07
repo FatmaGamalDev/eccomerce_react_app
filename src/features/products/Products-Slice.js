@@ -31,7 +31,6 @@ export const fetchProductsByCategory = createAsyncThunk(
       .from("products")
       .select("*")
       .eq("category", categoryName);
-    
     if (error) throw error;
     return data;
   }

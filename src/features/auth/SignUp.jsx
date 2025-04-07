@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signUp } from "../features/auth/authSlice";
+import { signUp } from "../auth/authSlice";
 
 function SignUp() {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ function SignUp() {
         </h1>
         <h6>
         Already have an account?
-          <a href="login"> <span className="text-pink cursor-pointer underline "> Login</span>
+          <a href="login"> <span className="underline cursor-pointer text-pink "> Login</span>
          </a> </h6> 
         <form onSubmit={handleSubmit}>
           <div className="flex gap-4">

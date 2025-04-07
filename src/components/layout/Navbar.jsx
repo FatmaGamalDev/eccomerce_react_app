@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import SearchBar from "../common/SearchBar";
+import SearchBar from "../../features/products/components/SearchBar";
 import Container from "../common/Container";
 import { Heart } from "lucide-react";
 

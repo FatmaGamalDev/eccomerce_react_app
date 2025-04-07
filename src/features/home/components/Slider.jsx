@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from "react";
-import img1 from "../../Assets/banner/main-banner.webp";
-import img2 from "../../Assets/carousel/clothes-1839935_1280.jpg";
+import img1 from "../../../Assets/banner/main-banner.webp";
+import img2 from "../../../Assets/carousel/clothes-1839935_1280.jpg";
 
 const images = [img1, img2];
 
 function Slider() {
   const [currentIndex, setCurrentIndex] = useState(0);
-
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
   };
-
   const prevSlide = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1

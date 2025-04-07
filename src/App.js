@@ -5,19 +5,19 @@ import Footer from "./components/layout/Footer";
 import Navbar from "./components/layout/Navbar";
 import NewsSignup from "./components/ui/NewsSignup";
 import ToastNotification from "./features/toast/ToastNotification";
-import Cart from "./pages/Cart";
-import Home from "./pages/Home";
-import ProductDetails from "./pages/ProductDetails";
-import SignUp from "./pages/SignUp";
-import SearchResults from "./pages/SearchResults";
+import Cart from "./features/cart/Cart";
+import Home from "./features/home/Home";
+import ProductDetails from "./features/productDetails/ProductDetails";
+import SignUp from "./features/auth/SignUp";
+import SearchResults from "./features/products/components/SearchResults";
 import ScrollToTop from "./components/ui/ScrollToTop";
 import Loader from "./features/loading/Loader";
-import SignIn from "./pages/SignIn";
-import Profile from "./pages/Profile";
+import SignIn from "./features/auth/SignIn";
+import Profile from "./features/auth/Profile";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getSession } from "./features/auth/authSlice";
-import Wishlist from "./pages/Wishlist";
+import Wishlist from "./features/wishlist/Wishlist";
 import {
   addToCartInSupabase,
   fetchCartFromSupabase,

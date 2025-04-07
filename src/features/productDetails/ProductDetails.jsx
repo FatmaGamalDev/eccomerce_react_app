@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ProductReviews from "../features/productDetails/components/productReviews";
+import ProductReviews from "./components/productReviews";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProductDetails } from "../features/productDetails/ProaductDetails-Slice";
-import QuantitySelector from "../components/common/QuantitySelector";
-import AddToCartButton from "../components/common/AddToCartButton";
-import WishlistButton from "../components/common/WishlistButton";
-import ProductInfo from "../features/productDetails/components/ProductInfo";
-import ProductImage from "../features/productDetails/components/ProductImage";
-import { startLoading, stopLoading } from "../features/loading/loadingSlice";
+import { fetchProductDetails } from "./ProaductDetails-Slice";
+import QuantitySelector from "../../components/common/QuantitySelector";
+import AddToCartButton from "../../components/common/AddToCartButton";
+import WishlistButton from "../../components/common/WishlistButton";
+import ProductInfo from "./components/ProductInfo";
+import ProductImage from "./components/ProductImage";
+import { startLoading, stopLoading } from "../loading/loadingSlice";
 
 function ProductDetails() {
   const { productID } = useParams();

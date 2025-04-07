@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signOut } from "../features/auth/authSlice";
+import { signOut } from "./authSlice";
 import { useNavigate } from "react-router-dom";
-import { showToast } from "../features/toast/Toast-Slice";
-import { startLoading, stopLoading } from "../features/loading/loadingSlice";
-import { clearCart } from "../features/cart/Cart-Slice";
+import { showToast } from "../toast/Toast-Slice";
+import { startLoading, stopLoading } from "../loading/loadingSlice";
+import { clearCart } from "../cart/Cart-Slice";
 
 const Profile = () => {
   const dispatch = useDispatch();

@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
-import { showToast } from "../features/toast/Toast-Slice";
-import CartSummary from "../features/cart/components/CartSummary";
-import CartProducts from "../features/cart/components/CartProducts";
-import CartEmpty from "../features/cart/components/CartEmpty";
-import Container from "../components/common/Container";
+import { showToast } from "../toast/Toast-Slice";
+import CartSummary from "./components/CartSummary";
+import CartProducts from "./components/CartProducts";
+import CartEmpty from "./components/CartEmpty";
+import Container from "../../components/common/Container";
 import { useEffect, useState } from "react";
 
 function Cart() {

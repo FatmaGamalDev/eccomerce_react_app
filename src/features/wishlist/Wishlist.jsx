@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import CartProducts from "../features/cart/components/CartProducts";
-import { showToast } from "../features/toast/Toast-Slice";
-import Container from "../components/common/Container";
+import CartProducts from "../cart/components/CartProducts";
+import { showToast } from "../toast/Toast-Slice";
+import Container from "../../components/common/Container";
 
 const Wishlist = () => {
   const wishlistItems = useSelector((state) => state.wishlist.wishlist);

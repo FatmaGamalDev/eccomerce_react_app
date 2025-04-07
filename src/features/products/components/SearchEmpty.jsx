@@ -1,10 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import SearchEmptyImg from "../../Assets/search_empty.png";
+import SearchEmptyImg from "../../../Assets/search_empty.png";
 
 function SearchEmpty() {
   const navigate = useNavigate();
-
   return (
     <div className="flex flex-col items-center justify-center p-8 text-center">
       <img src={SearchEmptyImg} alt="Search empty" className="w-1/6 " />

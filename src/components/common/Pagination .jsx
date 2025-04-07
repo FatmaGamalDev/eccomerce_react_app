@@ -1,9 +1,7 @@
 import React from "react";
 import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";
-
 function Pagination({ currentPage, totalPages, setCurrentPage }) {
-  
   const handleNext = () => {
     setCurrentPage((prevPage) =>
       prevPage + 1 <= totalPages ? prevPage + 1 : prevPage
