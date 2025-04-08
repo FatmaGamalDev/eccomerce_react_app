@@ -75,7 +75,7 @@ ecommerce-app/
 Follow these steps to set up the project locally:
 
 1. **Clone the repository**:
-git clone https://github.com/your-username/ecommerce-app.git
+git clone https://github.com/fatmaindex/eccomerce_react_app.git
 cd ecommerce-app
 
 2. **Install dependencies**:
