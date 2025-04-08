@@ -72,7 +72,7 @@ function SearchBar() {
         className="absolute top-2 right-[5%]"
         onClick={handleSubmit}
       >
-        <IoSearchOutline className="text-2xl text-gray-500 pointer" />
+        <IoSearchOutline className="text-2xl text-black pointer" />
       </button>
     </div>
   );

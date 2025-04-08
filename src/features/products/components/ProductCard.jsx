@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { fetchProductDetails } from "../../productDetails/ProaductDetails-Slice";
 import CartIconButton from "../../../components/common/CartIconButton";
 import WishlistButton from "../../../components/common/WishlistButton";
-import { Heart } from "lucide-react";
+
 
 function ProductCard({ product }) {
   const dispatch = useDispatch();
@@ -20,7 +20,9 @@ function ProductCard({ product }) {
   }
   return (
     <div className="relative w-full border border-gray-300 shadow-md card lg:w-[96%] bg-base-100">
-      <figure className=" w-[80%] h-[80%] bg-white aspect-square self-center">
+      <WishlistButton product={product} className="absolute right-[1rem] z-10 top-3" />
+
+      <figure className=" w-[80%] h-[80%] bg-white aspect-square self-center ">
         <div onClick={handleClick} className="cursor-pointer">
           <div className="absolute left-0 w-16 px-2 py-1 text-lg text-white border-none rounded-none bg-pink badge top-3">
             <h6>{`- ${Math.ceil(product.discountPercentage)}% `}</h6>
@@ -30,8 +32,10 @@ function ProductCard({ product }) {
             src={product.images?.[0] || "/assets/ImagePlaceholder.jpg"}
             alt={product.title}
           />
-        </div>
+            </div>
+
       </figure>
+
       <hr className="w-[90%] self-center"></hr>
       <div className="p-[12px] card-body">
         <h2 className="text-gray-800 card-title h-[48px]">{product.title}</h2>
@@ -43,7 +47,7 @@ function ProductCard({ product }) {
             price={product.price}
             discountPercentage={product.discountPercentage}
           />
-          <CartIconButton quantity={1} selectedProduct={product} />
+          {/* <CartIconButton quantity={1} selectedProduct={product} /> */}
         </div>
       </div>
     </div>

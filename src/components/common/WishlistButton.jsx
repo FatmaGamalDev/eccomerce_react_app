@@ -13,7 +13,7 @@ function WishlistButton({ product }) {
   );
   return (
     <button
-      className="ml-4 btn btn-circle"
+      className="btn btn-circle"
       onClick={() => {
         if (isInWishlist) {
           dispatch(deleteFromWishlist(product));

@@ -13,7 +13,6 @@ import SearchResults from "./features/products/components/SearchResults";
 import ScrollToTop from "./components/ui/ScrollToTop";
 import Loader from "./features/loading/Loader";
 import SignIn from "./features/auth/SignIn";
-import Profile from "./features/auth/Profile";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getSession } from "./features/auth/authSlice";
@@ -68,7 +67,6 @@ function App() {
             <Route path="signIn" element={<SignIn />} />
             <Route path="wishList" element={user ? <Wishlist /> : <SignIn />} />
             <Route path="search" element={<SearchResults />} />
-            <Route path="profile" element={user ? <Profile /> : <SignIn />} />
             <Route path="product/:productID" element={<ProductDetails />} />
           </Routes>
           <NewsSignup />

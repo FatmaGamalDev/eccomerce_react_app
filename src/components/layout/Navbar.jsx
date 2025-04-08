@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import SearchBar from "../../features/products/components/SearchBar";
 import Container from "../common/Container";
 import { Heart } from "lucide-react";
+import Logout from "../../features/auth/Logout";
 
 export default function Navbar() {
   //get total number of product in the cart to show it on the cart icon on the nav
@@ -19,7 +20,6 @@ export default function Navbar() {
 
   //get total number of product in the cart to show it on the cart icon on the nav
   const wishlist = useSelector((state) => state.wishlist.wishlist);
-
   return (
     <nav className="sticky top-0 left-0 z-50 w-full bg-white shadow-md navbar">
       <Container className="navbar">
@@ -32,11 +32,13 @@ export default function Navbar() {
           </NavLink>
         </div>
         <SearchBar />
+        {/* three icons div */}
         <div className="flex-none">
           <ul className="flex-row items-center justify-center px-1 menu ">
-            {/* ---dropdown ---*/}
-            <div className="dropdown dropdown-hover">
-              <div tabIndex={0} role="button" className="m-1 btn">
+            {/* --- authentication dropdown ---*/}
+            <div className="flex items-center justify-center dropdown dropdown-hover">
+              {/* user icon */}
+              <div tabIndex={0} role="button" className="relative m-1 btn">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -52,33 +54,33 @@ export default function Navbar() {
                   />
                 </svg>
               </div>
+              {/* authentication list */}
               <ul
                 tabIndex={0}
-                className="p-2 shadow-sm dropdown-content menu bg-base-100 rounded-box z-1 w-52 "
+                className="p-2 absolute top-[3rem] shadow-[0_0px_10px_rgba(0,0,0,0.2)] 
+ dropdown-content menu bg-base-100 rounded-box z-1 w-48 "
               >
                 <li>
-                  <NavLink
-                    to="signUp"
-                    className={({ isActive }) =>
-                      `text-lg font-semibold  ${
-                        isActive ? "text-pink-500" : "text-gray-700"
-                      } `
-                    }
-                  >
-                    signup
+                  <NavLink to="signUp" className="text-lg font-semibold ">
+                    Sign Up
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="signIn">signIn</NavLink>
+                  <NavLink to="signIn" className="text-lg font-semibold">
+                    Sign In
+                  </NavLink>
                 </li>
-                <li>
-                  <NavLink to="profile">profile</NavLink>
+                <li className="w-full">
+                  <NavLink to="profile">
+                    <Logout />
+                  </NavLink>
                 </li>
               </ul>
             </div>
-            {/* ------------------------- */}
+            {/* --------------wishlist icon link----------- */}
             <NavLink to="/wishList" className="relative">
               <Heart />
+              {/* whislist items number  */}
               <div
                 style={{ display: wishlist.length > 0 ? " block" : "none" }}
                 className="absolute bottom-3 left-4 flex text-white font-semibold text-md items-center justify-center bg-pink  w-[18px] h-[18px]  text-[11px] rounded-full  "
@@ -86,9 +88,10 @@ export default function Navbar() {
                 <h6 className="text-center"> {wishlist.length}</h6>
               </div>
             </NavLink>
-
+            {/* --------------cart icon link----------- */}
             <li>
               <NavLink to="/cart" className="hover:bg-transparent">
+                {/* cart svg */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

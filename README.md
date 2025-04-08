@@ -1,70 +1,138 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# E-Commerce App
+
+A modern e-commerce application built with **React** and **Redux Toolkit**, designed to provide a seamless shopping experience. The app includes features like product browsing, cart management, wishlist, user authentication, and more. It uses **Supabase** as the backend for data storage and authentication, and **Redux Toolkit** with `createAsyncThunk` for state management and async operations.
+
+## Table of Contents
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Available Scripts](#available-scripts)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Features
+- Browse products and view detailed product information.
+- Add products to cart and manage cart items.
+- Add/remove products to/from wishlist.
+- User authentication (Sign Up, Sign In) using Supabase.
+- Categories to filter products.
+- Toast notifications for user feedback.
+- Loading states for async operations.
+- Responsive design for mobile and desktop.
+
+## Tech Stack
+- **Frontend**: React, Redux Toolkit (`createAsyncThunk` for async operations)
+- **Backend**: Supabase (for authentication and database)
+- **Styling**: Tailwind CSS (with `index.css` )
+- **State Management**: Redux Toolkit
+- **Routing**: React Router (assumed, based on typical e-commerce apps)
+- **API**: Fetch API (via Supabase client)
+
+## Project Structure
+ecommerce-app/
+├── public/                 # Static files (index.html, favicon, etc.)
+├── src/                    # Source code
+│   ├── api/                # API logic
+│   │   └── supabaseClient.js  # Supabase client configuration
+│   ├── assets/             # Static assets (images, fonts, etc.)
+│   ├── components/         # Reusable React components
+│   │   ├── AddToCartButton.jsx
+│   │   ├── CartIconButton.jsx
+│   │   ├── Container.jsx
+│   │   ├── Icon.jsx
+│   │   ├── Pagination.jsx
+│   │   ├── QuantitySelector.jsx
+│   │   └── WishlistButton.jsx
+│   ├── layout/             # Layout components
+│   │   ├── Footer.jsx
+│   │   └── Navbar.jsx
+│   ├── ui/                 # UI-specific components
+│   │   ├── NewsSignup.jsx
+│   │   └── ScrollToTop.jsx
+│   ├── features/           # Redux Toolkit slices
+│   │   ├── auth/           # Authentication slice
+│   │   ├── cart/           # Cart slice
+│   │   ├── categories/     # Categories slice
+│   │   ├── home/           # Home page slice
+│   │   ├── loading/        # Loading state slice
+│   │   ├── productDetails/ # Product details slice
+│   │   ├── products/       # Products slice
+│   │   ├── toast/          # Toast notifications slice
+│   │   └── wishlist/       # Wishlist slice
+│   ├── store/              # Redux store configuration
+│   │   └── store.js
+│   ├── utils/              # Utility functions
+│   ├── App.jsx             # Main App component
+│   ├── App.css             # App-specific styles
+│   └── index.css           # Global styles
+├── package.json            # Dependencies and scripts
+└── README.md               # Project documentation
+
+## Installation
+Follow these steps to set up the project locally:
+
+1. **Clone the repository**:
+git clone https://github.com/your-username/ecommerce-app.git
+cd ecommerce-app
+
+2. **Install dependencies**:
+Make sure you have [Node.js](https://nodejs.org/) installed, then run:
+npm install
+
+3. **Set up Supabase**:
+- Create a Supabase project at [supabase.com](https://supabase.com).
+- Copy your Supabase URL and API Key.
+- Create a `.env` file in the root directory and add the following:
+REACT_APP_SUPABASE_URL=your-supabase-url
+REACT_APP_SUPABASE_KEY=your-supabase-key
+
+4. **Run the app**:
+npm start
+
+The app will run on `http://localhost:3000`.
+
+## Usage
+- **Home Page**: Browse featured products and categories.
+- **Product Details**: Click on a product to view its details and add it to cart or wishlist.
+- **Cart**: View and manage items in your cart.
+- **Wishlist**: Add/remove products to/from your wishlist.
+- **Authentication**: Sign up or sign in to access user-specific features.
+
+## App Routes
+The application includes the following main routes:
+
+Path	Component	Description
+/	Home	Main landing page with featured products
+/cart	Cart	Shopping cart page
+/signUp	SignUp	User registration page
+/signIn	SignIn	User login page
+/wishlist	Wishlist	Wishlist page (requires authentication)
+/search	SearchResults	Displays filtered search results
+/product/:productID	ProductDetails	Shows details for a specific product
+
+🔐 Note: Access to /wishlist is restricted to authenticated users.
+
 
 ## Available Scripts
-
 In the project directory, you can run:
 
-### `npm start`
+- `npm start`: Runs the app in development mode.
+- `npm build`: Builds the app for production to the `build` folder.
+- `npm test`: (Not implemented yet) Runs the test suite.
+- `npm eject`: Ejects the app from Create React App (use with caution).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Contributing
+Contributions are welcome! To contribute:
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/your-feature`).
+3. Make your changes and commit (`git commit -m "Add your feature"`).
+4. Push to the branch (`git push origin feature/your-feature`).
+5. Open a Pull Request.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Please ensure your code follows the project's coding style and includes appropriate tests (once tests are added).
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
