@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/fatmaindex/eccomerce_react_app.git/static/css/main.fb273aaf.css",
-    "main.js": "/fatmaindex/eccomerce_react_app.git/static/js/main.4ecf50c6.js",
-    "static/js/952.dcfb0992.chunk.js": "/fatmaindex/eccomerce_react_app.git/static/js/952.dcfb0992.chunk.js",
-    "static/media/clothes-1839935_1280.jpg": "/fatmaindex/eccomerce_react_app.git/static/media/clothes-1839935_1280.4033c0d26f31c24e62cb.jpg",
-    "static/media/main-banner.webp": "/fatmaindex/eccomerce_react_app.git/static/media/main-banner.e5afc6500d7445a6e904.webp",
-    "static/media/newsSignUpBG.png": "/fatmaindex/eccomerce_react_app.git/static/media/newsSignUpBG.6d053d209ebd30b42d64.png",
-    "static/media/search_empty.png": "/fatmaindex/eccomerce_react_app.git/static/media/search_empty.b47ae1fb8b77796212d7.png",
-    "static/media/download.svg": "/fatmaindex/eccomerce_react_app.git/static/media/download.64f2ce88e3a9221a5238a016a17036ef.svg",
-    "static/media/instagram.svg": "/fatmaindex/eccomerce_react_app.git/static/media/instagram.823ada6148e64c63119fbc4890e0625e.svg",
-    "static/media/snapchat.svg": "/fatmaindex/eccomerce_react_app.git/static/media/snapchat.285e9e29e181e4c65ed6acbb150614bf.svg",
-    "index.html": "/fatmaindex/eccomerce_react_app.git/index.html",
-    "static/media/tiktok.svg": "/fatmaindex/eccomerce_react_app.git/static/media/tiktok.3edcd1e6f4cbca0b3347ee80b08bfe80.svg",
-    "static/media/youtube.svg": "/fatmaindex/eccomerce_react_app.git/static/media/youtube.633462846e8a6fe5e6d1cd802e412273.svg",
-    "static/media/facebook.svg": "/fatmaindex/eccomerce_react_app.git/static/media/facebook.2eb54bd59c77c3dc2c6c05994d442ade.svg",
-    "main.fb273aaf.css.map": "/fatmaindex/eccomerce_react_app.git/static/css/main.fb273aaf.css.map",
-    "main.4ecf50c6.js.map": "/fatmaindex/eccomerce_react_app.git/static/js/main.4ecf50c6.js.map",
-    "952.dcfb0992.chunk.js.map": "/fatmaindex/eccomerce_react_app.git/static/js/952.dcfb0992.chunk.js.map"
+    "main.css": "/eccomerce_react_app/static/css/main.fb273aaf.css",
+    "main.js": "/eccomerce_react_app/static/js/main.c46bcc64.js",
+    "static/js/952.dcfb0992.chunk.js": "/eccomerce_react_app/static/js/952.dcfb0992.chunk.js",
+    "static/media/clothes-1839935_1280.jpg": "/eccomerce_react_app/static/media/clothes-1839935_1280.4033c0d26f31c24e62cb.jpg",
+    "static/media/main-banner.webp": "/eccomerce_react_app/static/media/main-banner.e5afc6500d7445a6e904.webp",
+    "static/media/newsSignUpBG.png": "/eccomerce_react_app/static/media/newsSignUpBG.6d053d209ebd30b42d64.png",
+    "static/media/search_empty.png": "/eccomerce_react_app/static/media/search_empty.b47ae1fb8b77796212d7.png",
+    "static/media/download.svg": "/eccomerce_react_app/static/media/download.64f2ce88e3a9221a5238a016a17036ef.svg",
+    "static/media/instagram.svg": "/eccomerce_react_app/static/media/instagram.823ada6148e64c63119fbc4890e0625e.svg",
+    "static/media/snapchat.svg": "/eccomerce_react_app/static/media/snapchat.285e9e29e181e4c65ed6acbb150614bf.svg",
+    "index.html": "/eccomerce_react_app/index.html",
+    "static/media/tiktok.svg": "/eccomerce_react_app/static/media/tiktok.3edcd1e6f4cbca0b3347ee80b08bfe80.svg",
+    "static/media/youtube.svg": "/eccomerce_react_app/static/media/youtube.633462846e8a6fe5e6d1cd802e412273.svg",
+    "static/media/facebook.svg": "/eccomerce_react_app/static/media/facebook.2eb54bd59c77c3dc2c6c05994d442ade.svg",
+    "main.fb273aaf.css.map": "/eccomerce_react_app/static/css/main.fb273aaf.css.map",
+    "main.c46bcc64.js.map": "/eccomerce_react_app/static/js/main.c46bcc64.js.map",
+    "952.dcfb0992.chunk.js.map": "/eccomerce_react_app/static/js/952.dcfb0992.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fb273aaf.css",
-    "static/js/main.4ecf50c6.js"
+    "static/js/main.c46bcc64.js"
   ]
 }
