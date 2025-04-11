@@ -9,7 +9,6 @@ export const signUp = createAsyncThunk(
   async ({ email, password }, { rejectWithValue }) => {
     const { data, error } = await supabase.auth.signUp({ email, password });
     if (error) return rejectWithValue(error.message);
-    console.log("Form Data Submitted:", data);
     return data;
   }
 );
@@ -42,6 +41,7 @@ export const signOut = createAsyncThunk(
 export const getSession = createAsyncThunk("auth/getSession", async () => {
   const { data, error } = await supabase.auth.getSession();
   if (error) throw error;
+  console.log(data)
   return data?.session?.user || null;
 });
 
@@ -75,7 +75,6 @@ const authSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-
       // signIn cases
       .addCase(signIn.pending, (state) => {
         state.loading = true;
@@ -90,7 +89,6 @@ const authSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-
       // signOut cases
       .addCase(signOut.pending, (state) => {
         state.loading = true;

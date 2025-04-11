@@ -7,12 +7,7 @@ export const fetchCartFromSupabase = createAsyncThunk(
   async (userId) => {
     const { data, error } = await supabase
       .from("cart")
-      .select(
-        `
-        *,
-        products ( id, title, thumbnail, price,brand,stock )
-      `
-      )
+      .select( ` *, products ( id, title, thumbnail, price,brand,stock ) `)
       .eq("user_id", userId);
     if (error) {
       throw new Error(error.message);
@@ -64,7 +59,6 @@ export const deleteFromCartInSupabase = createAsyncThunk(
       .eq("user_id", userId)
       .eq("product_id", id);
     if (error) throw new Error(error.message);
-    // console.log(`ideeeeeeeee${id}`)
     return id;
   }
 );

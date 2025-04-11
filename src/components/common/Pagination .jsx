@@ -29,8 +29,9 @@ function Pagination({ currentPage, totalPages, setCurrentPage }) {
           >
             {page}
           </button>
+        
         );
-      })}
+      })}  
       <button onClick={handleNext} className="circle-btn">
         <GrNext />
       </button>

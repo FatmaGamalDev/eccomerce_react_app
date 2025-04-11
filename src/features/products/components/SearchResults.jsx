@@ -5,14 +5,16 @@ import SearchEmpty from './SearchEmpty'
 
 function SearchResults() {
 const SearchResults= useSelector((state)=> state.products.searchResult||[])
+const searchQuery= useSelector((state)=> state.products.searchQuery||" ")
+
 return (
 SearchResults.length>0 ?
    <div>
-     <ProductsList products={SearchResults} />
+     <h1 className=" my-8 px-[24px]  text-2xl text-gray-600  font-semibold">Search Results "{searchQuery}"</h1>
+     <ProductsList products={SearchResults} productsPerPage ={12} />
    </div>
   :
   <SearchEmpty/>
 )
 }
-
 export default SearchResults

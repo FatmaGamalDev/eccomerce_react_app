@@ -2,9 +2,10 @@ import React from "react";
 import Icon from "../common/Icon";
 function Footer() {
   return (
-    <footer className="p-10 bg-white footer sm:footer-horizontal text-base-content">
-      <aside>
-        <h1 className="text-3xl text-pink text-bold">luva</h1>
+    <footer className="flex flex-col items-center justify-center px-10 pt-8 pb-4">
+     <div  className="mb-8 footer sm:footer-horizontal text-base-content">
+     <aside>
+        <h1 className="ml-[10px] text-3xl font-semibold text-pink">Lumea</h1>
         <div className="flex items-center justify-center gap-4 cursor-pointer ">
           <Icon name="facebook" className="w-8 h-8 cursor-pointer hover:fill-pink" />
           <Icon name="youtube" className="w-6 h-6 cursor-pointer hover:fill-pink" />
@@ -33,6 +34,8 @@ function Footer() {
         <a className="link link-hover">Privacy policy</a>
         <a className="link link-hover">Cookie policy</a>
       </nav>
+     </div>
+      Developed By ❤️ FATMA
     </footer>
   );
 }

@@ -4,22 +4,19 @@ import { hideToast } from "./Toast-Slice";
 import { Slide, toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { deleteFromCart, deleteFromCartInSupabase } from "../cart/Cart-Slice";
-import { deleteFromWishlist } from "../wishlist/wishlistSlice";
-
 function ToastNotification() {
   const { message, type, show, product, quantity } = useSelector(
     (state) => state.toast
   );
   const user = useSelector((state) => state.auth.user);
-  
   const dispatch = useDispatch();
   //  object mapping on toast types
   const toastTypes = {
     add: (
-      <div className="text-center">
+      <div className="text-center bg-white text-black w-full max-w-[650px] md:w-[650px] rounded-2xl  p-6">
         <h1 className="text-2xl font-semibold uppercase">{message}</h1>
         <hr />
-        <div className="flex items-center justify-center gap-8 p-4 rounded-xl w-[600px] border border-gray-300 my-8">
+        <div className="flex items-center justify-center w-full gap-8 p-4 my-8 border border-gray-300 rounded-xl">
           {product?.images?.[0] && (
             <img
               src={product.images[0]}
@@ -39,19 +36,21 @@ function ToastNotification() {
     ),
 
     deleteFromCart: ({ closeToast }) => (
-      <div className=" text-center flex flex-col items-center justify-center gap-4 p-4 rounded-xl w-[600px] border border-gray-300 my-4">
-        <h1 className="text-xl ">
-          Are you sure you want to delete these items from your cart ?
+      <div className="text-center flex flex-col items-center justify-center gap-4 p-4 rounded-xl w-full max-w-[600px] border border-gray-300 my-4">
+        <h1 className="md:text-xl text-md ">
+          Are you sure you want to delete these items from your cart?
         </h1>
-        <div className="flex justify-center gap-4 mt-4">
+        <div className="flex justify-center w-full gap-4 mt-4">
           <button
-            className="w-48 px-4 py-2 text-black border-2 border-pink"
+            className="w-[45%] px-4 py-2 text-black border-2 border-pink"
             onClick={() => {
-              if(user){
-                dispatch(deleteFromCartInSupabase({ 
-                  id: product?.id, 
-                  userId: user?.id 
-                }))
+              if (user) {
+                dispatch(
+                  deleteFromCartInSupabase({
+                    id: product?.id,
+                    userId: user?.id,
+                  })
+                );
               }
               dispatch(deleteFromCart(product));
               closeToast();
@@ -60,7 +59,7 @@ function ToastNotification() {
             Yes
           </button>
           <button
-            className="w-48 px-4 py-2 text-black border-2 border-black "
+            className="w-[45%] px-4 py-2 text-black border-2 border-black "
             onClick={closeToast}
           >
             Cancel
@@ -69,16 +68,17 @@ function ToastNotification() {
       </div>
     ),
   };
+
   useEffect(() => {
-    //function to show the toast if the show equal true and style the toast container
+    // Function to show the toast if show equals true and style the toast container
     if (show) {
       const toastId = toast(
         toastTypes[type] || (
-          <div className="text-center text-red-600"> There is an error</div>
+          <div className="text-center text-red-600">There is an error</div>
         ),
         {
           position: "top-center",
-          autoClose: type === "delete" ? false : 3000,
+          autoClose: type === "deleteFromCart" ? false : 3000,
           hideProgressBar: true,
           closeOnClick: true,
           pauseOnHover: true,
@@ -87,22 +87,22 @@ function ToastNotification() {
           style: {
             background: "#ffffff",
             color: "black",
-            width: "650px",
-            maxWidth: "none",
+            width: "95%",
+            maxWidth: "650px",
             borderRadius: "20px",
             boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-            position: "relative",
-            top: "200px",
+            margin: "0 auto",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            position: "relative",
+            top: "200px",
+            padding: "0 16px",
           },
           onClose: () => dispatch(hideToast()),
         }
       );
-      return () => {
-        toast.dismiss(toastId);
-      };
+      return () => toast.dismiss(toastId);
     }
   }, [message, type, show, product, dispatch]);
 

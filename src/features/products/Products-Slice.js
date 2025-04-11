@@ -9,7 +9,7 @@ export const fetchProducts = createAsyncThunk(
       .from("products")
       .select("*")
       .order("id", { ascending: true })
-      .limit(100)
+      .limit(40)
       .neq("category", "mens-shoes")
       .neq("category", "mens-shirts")
       .neq("category", "groceries")
@@ -39,6 +39,7 @@ const productsSlice = createSlice({
   name: "products",
   initialState: {
     products: [],
+    searchQuery:"",
     searchResult: [],
     loading: false,
     error: null,
@@ -49,6 +50,7 @@ const productsSlice = createSlice({
       if (!searchQuery.trim()) {
         return [];
       }
+      state.searchQuery=action.payload
       state.searchResult = state.products.filter(
         (product) =>
           product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||

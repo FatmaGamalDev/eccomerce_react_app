@@ -21,7 +21,6 @@ function SignIn() {
     dispatch(signIn({ email: formData.email, password: formData.password }));
   };
 
-  // مراقبة loginSuccess فقط بعد نجاح تسجيل الدخول
   useEffect(() => {
     if (loginSuccess) {
       navigate("/");
@@ -37,7 +36,7 @@ function SignIn() {
         </h1>
         <h6>
           Login with email address or
-          <a href="signUp"> <span className="text-pink cursor-pointer underline text-sm "> create account</span>
+          <a href="signUp"> <span className="text-sm underline cursor-pointer text-pink "> create account</span>
          </a> </h6>
         <form onSubmit={handleSubmit}>
           <div className="mt-4 mb-4">
@@ -63,10 +62,6 @@ function SignIn() {
               value={formData.password}
               required
             />
-            <span className="text-[13px]">
-              Password must have minimum 8 characters, at least 1 uppercase,
-              lowercase, special character & number
-            </span>
           </div>
           <div className="flex items-center mb-4">
             <input

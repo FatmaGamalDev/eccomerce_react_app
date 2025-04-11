@@ -15,7 +15,8 @@ function Home() {
     <>
       <Slider />
       <Categories />
-      <ProductsList products={products} />
+      <h1 className="my-8 px-[24px]  text-3xl font-bold underline underline-offset-4">NEW ARRIVALS</h1>
+      <ProductsList products={products} productsPerPage ={12} />
     </>
   );
 }

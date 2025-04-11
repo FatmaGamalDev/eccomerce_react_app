@@ -1,4 +1,4 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, HashRouter as Router, Routes } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import Footer from "./components/layout/Footer";
@@ -21,11 +21,12 @@ import {
   addToCartInSupabase,
   fetchCartFromSupabase,
 } from "./features/cart/Cart-Slice";
+import Profile from "./features/user/Profile";
 
 function App() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
-  // get the session when we open the app
+  // get the session when we open the website
   useEffect(() => {
     dispatch(getSession());
   }, [dispatch]);
@@ -65,7 +66,8 @@ function App() {
             <Route path="cart" element={<Cart />} />
             <Route path="signUp" element={<SignUp />} />
             <Route path="signIn" element={<SignIn />} />
-            <Route path="wishList" element={user ? <Wishlist /> : <SignIn />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="wishList" element={ <Wishlist />} />
             <Route path="search" element={<SearchResults />} />
             <Route path="product/:productID" element={<ProductDetails />} />
           </Routes>

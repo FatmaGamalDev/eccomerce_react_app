@@ -9,7 +9,7 @@ function CartProducts({ cartProducts, showToast ,isWishlist}) {
   const dispatch = useDispatch();
   
   return (
-    <div className="flex flex-col items-center w-full md:w-2/3">
+    <div className="flex flex-col items-center w-full mb-8 md:w-2/3">
       <div className="flex flex-col w-[95%] gap-4 ">
         {cartProducts.map((cartItem) => (
           <div key={cartItem.id} className="p-4 bg-white shadow-md rounded-xl">

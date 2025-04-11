@@ -22,7 +22,7 @@ function Cart() {
   if (cartProducts.length > 0) {
     return (
       <Container className="bg-softbeige ">
-        <section className="py-4">
+        <section className="pt-4">
           <h1 className="self-start  text-2xl font-semibold uppercase mt-0 mb-4 ml-[18px]">
             Bag Summary ({cartItems} )
           </h1>

@@ -8,7 +8,7 @@ function ProductRating({ rating }) {
         key={index + 1}
         type="radio"
         name="rating-10"
-        className="bg-black mask mask-star-2"
+        className="bg-yellow-500 mask mask-star-2"
         aria-label={`${index + 1} star`}
         checked={index + 1 === Math.round(rating)}
         readOnly

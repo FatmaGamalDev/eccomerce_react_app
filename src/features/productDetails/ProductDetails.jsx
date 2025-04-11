@@ -9,6 +9,7 @@ import WishlistButton from "../../components/common/WishlistButton";
 import ProductInfo from "./components/ProductInfo";
 import ProductImage from "./components/ProductImage";
 import { startLoading, stopLoading } from "../loading/loadingSlice";
+import RelatedProducts from "../products/components/RelatedProducts";
 
 function ProductDetails() {
   const { productID } = useParams();
@@ -56,7 +57,7 @@ function ProductDetails() {
               quantity={quantity}
               className="w-1/2"
             />
-            <WishlistButton product={product} />
+            <WishlistButton product={product} className="btn" />
           </div>
         </div>
       </div>
@@ -66,6 +67,9 @@ function ProductDetails() {
       </div>
       <div className="flex flex-col items-center ">
       <ProductReviews reviews={product?.reviews} />
+      </div>
+      <div>
+        <RelatedProducts category={product.category}/>
       </div>
     </section>
   );

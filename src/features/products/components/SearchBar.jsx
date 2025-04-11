@@ -41,7 +41,7 @@ function SearchBar() {
     setSearchQuery("");
   }
   return (
-    <div className="relative flex items-center justify-center w-[25%]">
+    <div className="relative flex items-center justify-center w-full ">
       <div className="relative w-full">
         {/* Search input */}
         <input
@@ -49,7 +49,7 @@ function SearchBar() {
           value={searchQuery}
           onChange={handleInputChange}
           placeholder="Search products..."
-          className="w-full pl-4 pr-12 py-[8px] border border-gray-300 rounded-md focus:shadow-md outline-none"
+          className="w-full pl-4 pr-12 py-[8px] border border-gray-300 rounded-full focus:shadow-md outline-none"
         />
         {/* Search suggestions list */}
         {filteredProducts.length > 0 && (
