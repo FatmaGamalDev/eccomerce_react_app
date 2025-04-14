@@ -4,10 +4,12 @@ import QuantitySelector from "../../../components/common/QuantitySelector";
 import AddToCartButton from "../../../components/common/AddToCartButton";
 import { deleteFromWishlist } from "../../wishlist/wishlistSlice";
 
-function CartProducts({ cartProducts, showToast ,isWishlist}) {
-  const userId = useSelector((state) => state.auth.user?state.auth.user.id:null);
+function CartProducts({ cartProducts, showToast, isWishlist }) {
+  const userId = useSelector((state) =>
+    state.auth.user ? state.auth.user.id : null
+  );
   const dispatch = useDispatch();
-  
+
   return (
     <div className="flex flex-col items-center w-full mb-8 md:w-2/3">
       <div className="flex flex-col w-[95%] gap-4 ">
@@ -34,43 +36,54 @@ function CartProducts({ cartProducts, showToast ,isWishlist}) {
             </div>
             <div className="flex justify-between">
               {/* products quantity*/}
-              {
-                isWishlist?    <div className="flex justify-start w-full gap-8 ">
-                <AddToCartButton
-                  selectedProduct={cartItem}
-                  fromDetails={false}
-                  className="w-40 bg-white text-pink"
-                />
-              </div>:
-              <div className="flex mt-4 ">
-              <QuantitySelector
-               quantity={cartItem.quantity}
-                selectedProduct={cartItem}
-                setQuantity={(newQuantity) =>{
-                  dispatch(
-                    updateQuantity({ id: cartItem.id, quantity: newQuantity })
-                  )
-                  if(userId){
-                    dispatch(
-                      updateQuantityInSupabase({ userId:userId, productId: cartItem.id, quantity:newQuantity, price:cartItem.price })
-                    )
-                  } }  }
-              />
-            </div>
-              }
+              {isWishlist ? (
+                <div className="flex justify-start w-full gap-8 ">
+                  <AddToCartButton
+                    selectedProduct={cartItem}
+                    fromDetails={false}
+                    className="w-40 bg-white text-pink"
+                  />
+                </div>
+              ) : (
+                <div className="flex mt-4 ">
+                  <QuantitySelector
+                    quantity={cartItem.quantity}
+                    selectedProduct={cartItem}
+                    setQuantity={(newQuantity) => {
+                      dispatch(
+                        updateQuantity({
+                          id: cartItem.id,
+                          quantity: newQuantity,
+                        })
+                      );
+                      if (userId) {
+                        dispatch(
+                          updateQuantityInSupabase({
+                            userId: userId,
+                            productId: cartItem.id,
+                            quantity: newQuantity,
+                            price: cartItem.price,
+                          })
+                        );
+                      }
+                    }}
+                  />
+                </div>
+              )}
               {/* remove button*/}
               <div className="flex justify-end">
                 <button
                   className="text-xs font-bold underline text-pink hover:text-black hover:border-black"
                   onClick={() => {
-                    isWishlist? dispatch(deleteFromWishlist(cartItem)):
-                    dispatch(
-                      showToast({
-                        message: " ",
-                        type:"deleteFromCart",
-                        product:cartItem, 
-                      })
-                    );
+                    isWishlist
+                      ? dispatch(deleteFromWishlist(cartItem))
+                      : dispatch(
+                          showToast({
+                            message: " ",
+                            type: "deleteFromCart",
+                            product: cartItem,
+                          })
+                        );
                   }}
                 >
                   REMOVE

@@ -77,26 +77,21 @@ export const updateQuantityInSupabase = createAsyncThunk(
   }
 );
 
-const getInitialState = () => {
-  const cart = localStorage.getItem("cart");
-  return {
-    cart: cart ? JSON.parse(cart) : [],
-    cartTotal: cart
-      ? JSON.parse(cart).reduce(
-          (total, cartItem) => total + (cartItem.subtotal || 0),
-          0
-        )
-      : 0,
-  };
-};
 const cartSlice = createSlice({
   name: "cartSlice",
-  initialState: getInitialState(),
+  initialState:{
+    cart:[],
+    cartTotal:0,
+    loading:false,
+    error:null
+  },
   reducers: {
     addToCart: (state, action) => {
       const existingItem = state.cart.find(
         (item) => item.id === action.payload.id
       );
+      //add the new quantity to the old quantity of the product if the product exist in the cart
+      //update the suptotal of the product 
       if (existingItem) {
         const newQuantity = existingItem.quantity + action.payload.quantity;
         if (newQuantity <= existingItem.stock) {
@@ -112,15 +107,13 @@ const cartSlice = createSlice({
           ...action.payload,
           quantity: action.payload.quantity,
           subtotal: action.payload.price,
-        });
+        })
+        state.cartTotal = state.cart.reduce(
+          (total, item) => total + item.subtotal,
+          0
+        );
       }
-      state.cartTotal = state.cart.reduce(
-        (total, item) => total + item.subtotal,
-        0
-      );
-
-      localStorage.setItem("cart", JSON.stringify(state.cart));
-    },
+         },
     deleteFromCart: (state, action) => {
       state.cart = state.cart.filter(
         (product) => product.id !== action.payload.id
@@ -129,7 +122,6 @@ const cartSlice = createSlice({
         (total, item) => total + (item.subtotal || 0),
         0
       );
-      localStorage.setItem("cart", JSON.stringify(state.cart));
     },
     updateQuantity: (state, action) => {
       const { id, quantity } = action.payload;
@@ -144,15 +136,12 @@ const cartSlice = createSlice({
         (total, item) => total + item.subtotal,
         0
       );
-      localStorage.setItem("cart", JSON.stringify(state.cart));
     },
     clearCart: (state) => {
       state.cart = [];
       state.cartTotal = 0;
-      localStorage.removeItem("cart");
     },
   },
-
   extraReducers: (builder) => {
     builder
       .addCase(fetchCartFromSupabase.pending, (state) => {
@@ -184,7 +173,6 @@ const cartSlice = createSlice({
           (total, item) => total + item.subtotal,
           0
         );
-        // localStorage.setItem("cart", JSON.stringify(state.cart));
       })
       //--------------------delete from cart state-------------------------
       .addCase(deleteFromCartInSupabase.fulfilled, (state, action) => {

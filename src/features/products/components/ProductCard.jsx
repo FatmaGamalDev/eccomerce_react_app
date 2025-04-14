@@ -27,17 +27,18 @@ function ProductCard({ product }) {
             {/* WishlistButton */}
             <WishlistButton
               product={product}
-              className="absolute right-[6rem] bg-transparent top-3 z-1000 bg-white text-red-500 border-red-500"
+              className="absolute bg-transparent border-none right-[5px] text-lg -top-2 z-10000  "
             />
           </div>
           <img
             className="object-cover w-full h-full rounded-t-lg"
-            src={product.images?.[0] || "/assets/ImagePlaceholder.jpg"}
+            src={product.images?.[0]|| "/assets/ImagePlaceholder.jpg"}
             alt={product.title}
+            loading="lazy"
           />
         </div>
       </figure>
-      <hr className="w-[90%] self-center"></hr>
+      <hr className="w-[90%] self-center"/>
       <div className="p-[12px] card-body">
         <h2 className="text-gray-800 card-title h-[48px]">{product.title}</h2>
         <p className="text-sm text-gray-600 line-clamp-2">

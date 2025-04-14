@@ -6,15 +6,15 @@ import {
 } from "../../features/wishlist/wishlistSlice";
 import { Heart } from "lucide-react";
 
-function WishlistButton({ product }) {
+function WishlistButton({ product, className = "" }) {
   const dispatch = useDispatch();
   let isInWishlist = useSelector((state) =>
     state.wishlist.wishlist.some((item) => item.id === product.id)
   );
   return (
     <button
-      className="btn btn-circle"
-      onClick={() => {
+      className={`btn btn-circle ${className}`}
+      onClick={(e) => {
         if (isInWishlist) {
           dispatch(deleteFromWishlist(product));
           isInWishlist = false;
@@ -22,9 +22,11 @@ function WishlistButton({ product }) {
           dispatch(addToWishlist(product));
           isInWishlist = true;
         }
+        e.stopPropagation()
       }}
     >
       <Heart
+      strokeWidth={1.25}
         className="size-[1.4em]"
         fill={isInWishlist ? "#e31870" : "none"}
         stroke={isInWishlist ? "#e31870" : "currentColor"}

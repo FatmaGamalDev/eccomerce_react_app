@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signUp } from "../auth/authSlice";
+import { signUp } from "./authSlice";
 import { updateUserData } from "../user/UserSlice";
 import { useNavigate } from "react-router-dom";
 import { showToast } from "../toast/Toast-Slice";
 
-function SignUp() {
+function SignUpPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loading, error } = useSelector((state) => state.auth);
+  const { error } = useSelector((state) => state.auth);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -27,12 +27,11 @@ function SignUp() {
   const handleSignUpSubmit = async (e) => {
     e.preventDefault();
     try {
-      //  Sign up with email and password
+      //  sign up with email and password
       const data = await dispatch(
         signUp({ email: formData.email, password: formData.password })
       ).unwrap();
-      // Save extra user info in 'users' table
-
+      // save extra user info in supabase users table
       if (data?.user) {
         try {
           const updatedUser = await dispatch(
@@ -58,8 +57,6 @@ function SignUp() {
             showToast({ type: "error", message: "User data update failed." })
           );
         }
-
-        console.log(formData, data);
       }
     } catch (err) {
       console.error("SignUp Error:", err.message);
@@ -249,4 +246,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default SignUpPage;

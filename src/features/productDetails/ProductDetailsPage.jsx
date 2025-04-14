@@ -11,7 +11,7 @@ import ProductImage from "./components/ProductImage";
 import { startLoading, stopLoading } from "../loading/loadingSlice";
 import RelatedProducts from "../products/components/RelatedProducts";
 
-function ProductDetails() {
+function ProductDetailsPage() {
   const { productID } = useParams();
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
@@ -75,5 +75,5 @@ function ProductDetails() {
   );
 }
 
-export default ProductDetails;
+export default ProductDetailsPage;
 

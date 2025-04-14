@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import SearchBar from "../../features/products/components/SearchBar";
 import Container from "../common/Container";
-import { Heart } from "lucide-react";
-import Logout from "../../features/auth/Logout";
+import { Heart, UserRound } from "lucide-react";
+import SignOutButton from "../common/SignOutButton";
 
 export default function Navbar() {
   const cartProducts = useSelector((state) => state.cart.cart);
@@ -69,7 +69,7 @@ export default function Navbar() {
                   </li>
                   <li className="w-full">
                     <NavLink to="profile">
-                      <Logout />
+                      <SignOutButton/>
                     </NavLink>
                   </li>
                 </ul>
@@ -124,21 +124,7 @@ export default function Navbar() {
             {/* Authentication Dropdown */}
             <li className="flex items-center justify-center p-0 dropdown dropdown-hover">
               <div tabIndex={0} role="button" className="relative p-0 m-0 bg-transparent border-none btn hover:text-pink">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="size-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
-                  />
-                </svg>
-              </div>
+              <UserRound strokeWidth={1.25} />              </div>
               <ul
                 tabIndex={0}
                 className="p-2 absolute top-[3rem] right-0 shadow-[0_0px_10px_rgba(0,0,0,0.2)] dropdown-content menu bg-base-100 rounded-box z-10 w-48"
@@ -160,7 +146,7 @@ export default function Navbar() {
                 </li>
                 <li className="w-full">
                   <NavLink to="profile">
-                    <Logout />
+                    <SignOutButton/>
                   </NavLink>
                 </li>
               </ul>
@@ -168,7 +154,7 @@ export default function Navbar() {
                 {/* Wishlist Icon */}
                 <li>
               <NavLink to="/wishList" className="relative flex items-center p-0 hover:text-pink hover:bg-transparent">
-                <Heart />
+                <Heart strokeWidth={1.25} />
                 <div
                   style={{ display: wishlist.length > 0 ? "block" : "none" }}
                   className="absolute bottom-3 left-4 flex text-white font-semibold text-md items-center justify-center bg-pink w-[18px] h-[18px] text-[11px] rounded-full"
@@ -184,7 +170,7 @@ export default function Navbar() {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  strokeWidth="1.5"
+                  strokeWidth="1.25"
                   stroke="currentColor"
                   className="w-6 h-6 cursor-pointer"
                 >

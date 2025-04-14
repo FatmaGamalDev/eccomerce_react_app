@@ -5,7 +5,7 @@ import { fetchProductsByCategory } from "../Products-Slice";
 
 function RelatedProducts({ category }) {
   const dispatch = useDispatch(fetchProductsByCategory(category));
-  const products = useSelector((state) => state.products.products);
+  const products = useSelector((state) => state.products.categoryProducts);
   useEffect(() => {
     dispatch(fetchProductsByCategory(category));
   }, [category, dispatch]);

@@ -31,46 +31,6 @@ A modern e-commerce application built with **React** and **Redux Toolkit**, desi
 - **Routing**: React Router (assumed, based on typical e-commerce apps)
 - **API**: Fetch API (via Supabase client)
 
-## Project Structure
-ecommerce-app/
-├── public/                 # Static files (index.html, favicon, etc.)
-├── src/                    # Source code
-│   ├── api/                # API logic
-│   │   └── supabaseClient.js  # Supabase client configuration
-│   ├── assets/             # Static assets (images, fonts, etc.)
-│   ├── components/         # Reusable React components
-│   │   ├── AddToCartButton.jsx
-│   │   ├── CartIconButton.jsx
-│   │   ├── Container.jsx
-│   │   ├── Icon.jsx
-│   │   ├── Pagination.jsx
-│   │   ├── QuantitySelector.jsx
-│   │   └── WishlistButton.jsx
-│   ├── layout/             # Layout components
-│   │   ├── Footer.jsx
-│   │   └── Navbar.jsx
-│   ├── ui/                 # UI-specific components
-│   │   ├── NewsSignup.jsx
-│   │   └── ScrollToTop.jsx
-│   ├── features/           # Redux Toolkit slices
-│   │   ├── auth/           # Authentication slice
-│   │   ├── cart/           # Cart slice
-│   │   ├── categories/     # Categories slice
-│   │   ├── home/           # Home page slice
-│   │   ├── loading/        # Loading state slice
-│   │   ├── productDetails/ # Product details slice
-│   │   ├── products/       # Products slice
-│   │   ├── toast/          # Toast notifications slice
-│   │   └── wishlist/       # Wishlist slice
-│   ├── store/              # Redux store configuration
-│   │   └── store.js
-│   ├── utils/              # Utility functions
-│   ├── App.jsx             # Main App component
-│   ├── App.css             # App-specific styles
-│   └── index.css           # Global styles
-├── package.json            # Dependencies and scripts
-└── README.md               # Project documentation
-
 ## Installation
 Follow these steps to set up the project locally:
 
@@ -112,9 +72,6 @@ Path	Component	Description
 /wishlist	Wishlist	Wishlist page (requires authentication)
 /search	SearchResults	Displays filtered search results
 /product/:productID	ProductDetails	Shows details for a specific product
-
-🔐 Note: Access to /wishlist is restricted to authenticated users.
-
 
 ## Available Scripts
 In the project directory, you can run:

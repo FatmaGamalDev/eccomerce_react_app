@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { resetLoginState, signIn } from "./authSlice";
 import { useNavigate } from "react-router-dom";
 
-function SignIn() {
+function SignInPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -141,4 +141,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default SignInPage;

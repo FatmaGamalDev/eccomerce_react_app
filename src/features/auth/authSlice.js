@@ -1,38 +1,43 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { supabase } from "../../api/supabaseClient";
+import { resetUserData } from "../user/UserSlice";
 
 //create thunk action called signUp and the action payload is the api response
 //data => {user: {…}, session: {…}}
 // regest new user
 export const signUp = createAsyncThunk(
   "auth/signUp",
-  async ({ email, password }, { rejectWithValue }) => {
+  async ({ email, password }, { rejectWithValue , dispatch }) => {
     const { data, error } = await supabase.auth.signUp({ email, password });
     if (error) return rejectWithValue(error.message);
+    // eslint-disable-next-line no-undef
+    dispatch(resetUserData());
     return data;
   }
 );
 // user signIn
 export const signIn = createAsyncThunk(
   "auth/signIn",
-  async ({ email, password }, { rejectWithValue }) => {
+  async ({ email, password }, { rejectWithValue , dispatch }) => {
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
     if (error) {
-      console.error("Login Error:", error);
       return rejectWithValue(error.message);
     }
-    console.log("Logging in with:", data);
+    // eslint-disable-next-line no-undef
+    dispatch(resetUserData());
     return data;
   }
 );
 //user signOut
 export const signOut = createAsyncThunk(
   "auth/signOut",
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue , dispatch }) => {
     const { error } = await supabase.auth.signOut();
+    // eslint-disable-next-line no-undef
+    dispatch(resetUserData());
     if (error) return rejectWithValue(error.message);
     return {};
   }
@@ -41,7 +46,6 @@ export const signOut = createAsyncThunk(
 export const getSession = createAsyncThunk("auth/getSession", async () => {
   const { data, error } = await supabase.auth.getSession();
   if (error) throw error;
-  console.log(data)
   return data?.session?.user || null;
 });
 

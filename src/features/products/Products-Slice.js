@@ -10,17 +10,21 @@ export const fetchProducts = createAsyncThunk(
       .select("*")
       .order("id", { ascending: true })
       .limit(40)
-      .neq("category", "mens-shoes")
       .neq("category", "mens-shirts")
+      .neq("category", "mens-shoes")
       .neq("category", "groceries")
       .neq("category", "vehicle")
       .neq("category", "motorcycle")
       .neq("category", "mens-watches")
       .neq("category", "sports-accessories");
+      console.log("lllll",data) // هل تظهر البيانات هنا؟
+
     if (error) {
       throw new Error(error.message);
+
+
     }
-    return data; 
+    return data;
   }
 );
 //fetch products by category name
@@ -38,8 +42,13 @@ export const fetchProductsByCategory = createAsyncThunk(
 const productsSlice = createSlice({
   name: "products",
   initialState: {
+    // all products
     products: [],
-    searchQuery:"",
+    //specific category products
+    categoryProducts: [],
+    //flag to identify what will be showed in the productlist component ?products or categoy products
+    activeCategory: null,
+    searchQuery: "",
     searchResult: [],
     loading: false,
     error: null,
@@ -50,13 +59,16 @@ const productsSlice = createSlice({
       if (!searchQuery.trim()) {
         return [];
       }
-      state.searchQuery=action.payload
+      state.searchQuery = action.payload;
       state.searchResult = state.products.filter(
         (product) =>
           product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
           product.brand?.toLowerCase().includes(searchQuery.toLowerCase())
       );
     },
+    setActiveCategory: (state, action) => {
+      state.activeCategory = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -72,9 +84,9 @@ const productsSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-      //category products reducers
+      //category products cases
       .addCase(fetchProductsByCategory.fulfilled, (state, action) => {
-        state.products = action.payload;
+        state.categoryProducts = action.payload;
         state.loading = false;
       })
       .addCase(fetchProductsByCategory.pending, (state) => {
@@ -87,5 +99,5 @@ const productsSlice = createSlice({
       });
   },
 });
-export const { searchProducts } = productsSlice.actions;
+export const { searchProducts ,  setActiveCategory } = productsSlice.actions;
 export default productsSlice.reducer;

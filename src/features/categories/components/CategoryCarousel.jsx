@@ -14,7 +14,6 @@ function CategoryCarousel({ filteredCategories, children }) {
       setCategoriesPerView(1);
     }
   };
-
   useEffect(() => {
     updateCategoriesPerView();
     window.addEventListener("resize", updateCategoriesPerView);

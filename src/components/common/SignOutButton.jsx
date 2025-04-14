@@ -1,12 +1,12 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { showToast } from "../toast/Toast-Slice";
-import { startLoading, stopLoading } from "../loading/loadingSlice";
-import { clearCart } from "../cart/Cart-Slice";
-import { signOut } from "./authSlice";
+import { showToast } from "../../features/toast/Toast-Slice";
+import { startLoading, stopLoading } from "../../features/loading/loadingSlice";
+import { clearCart } from "../../features/cart/Cart-Slice";
+import { signOut } from "../../features/auth/authSlice";
 
-function Logout() {
+function SignOutButton() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleSignOut = async () => {
@@ -24,11 +24,11 @@ function Logout() {
   return (
     <button
       onClick={handleSignOut}
-      className="w-full px-4 py-2 mt-2 border rounded-full border-pink text-pink"
+      className="w-full px-4 py-2 flex items-center justify-center mt-2 border rounded-full border-black text-black hover:text-pink hover:border-pink"
     >
-      Sign Out
+      <span> Sign Out</span>
     </button>
   );
 }
 
-export default Logout;
+export default SignOutButton;

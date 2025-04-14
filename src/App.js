@@ -5,36 +5,38 @@ import Footer from "./components/layout/Footer";
 import Navbar from "./components/layout/Navbar";
 import NewsSignup from "./components/ui/NewsSignup";
 import ToastNotification from "./features/toast/ToastNotification";
-import Cart from "./features/cart/Cart";
-import Home from "./features/home/Home";
-import ProductDetails from "./features/productDetails/ProductDetails";
-import SignUp from "./features/auth/SignUp";
+import CartPage from "./features/cart/CartPage";
+import HomePage from "./features/home/HomePage";
+import ProductDetailsPage from "./features/productDetails/ProductDetailsPage";
+import SignUpPage from "./features/auth/SignUpPage";
 import SearchResults from "./features/products/components/SearchResults";
 import ScrollToTop from "./components/ui/ScrollToTop";
 import Loader from "./features/loading/Loader";
-import SignIn from "./features/auth/SignIn";
+import SignInPage from "./features/auth/SignInPage";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getSession } from "./features/auth/authSlice";
-import Wishlist from "./features/wishlist/Wishlist";
+import WishlistPage from "./features/wishlist/WishlistPage";
 import {
   addToCartInSupabase,
+  clearCart,
   fetchCartFromSupabase,
 } from "./features/cart/Cart-Slice";
-import Profile from "./features/user/Profile";
+import ProfilePage from "./features/user/ProfilePage";
 
 function App() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
+  const localCart = useSelector((state) => state.cart.cart);
   // get the session when we open the website
   useEffect(() => {
     dispatch(getSession());
   }, [dispatch]);
-   // fetch cart products from supabase if user sign in and delete the local cart
+  // merge the product from local cart with supabase cart when the user signin or sign up and remove the lo
   useEffect(() => {
     if (user) {
       dispatch(fetchCartFromSupabase(user.id)).then((res) => {
-        const localCart = JSON.parse(localStorage.getItem("cart")) || [];
+        // const localCart = JSON.parse(localStorage.getItem("cart")) || [];
         localCart.forEach((item) => {
           const exists = res.payload?.some(
             (dbItem) => dbItem.product_id === item.id
@@ -48,8 +50,10 @@ function App() {
             );
           }
         });
-        localStorage.removeItem("cart");
       });
+    } else {
+      // Clear cart when user logs out
+      dispatch(clearCart());
     }
   }, [user]);
 
@@ -62,14 +66,14 @@ function App() {
           <Navbar />
           <Loader />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="cart" element={<Cart />} />
-            <Route path="signUp" element={<SignUp />} />
-            <Route path="signIn" element={<SignIn />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="wishList" element={ <Wishlist />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="cart" element={<CartPage />} />
+            <Route path="signUp" element={<SignUpPage />} />
+            <Route path="signIn" element={<SignInPage />} />
+            <Route path="Profile" element={<ProfilePage />} />
+            <Route path="wishList" element={<WishlistPage />} />
             <Route path="search" element={<SearchResults />} />
-            <Route path="product/:productID" element={<ProductDetails />} />
+            <Route path="product/:productID" element={<ProductDetailsPage />} />
           </Routes>
           <NewsSignup />
           <Footer />

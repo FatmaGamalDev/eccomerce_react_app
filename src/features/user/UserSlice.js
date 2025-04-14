@@ -4,28 +4,35 @@ import { supabase } from "../../api/supabaseClient";
 export const getUserData = createAsyncThunk(
   "user/getUserData",
   async (_, { getState, rejectWithValue }) => {
-    const { auth } = getState();
-    const user = auth.user;
-    
+    const state = getState();
+    const user = state.auth.user;
+    if (
+      state.user.userData &&
+      state.user.userData.id === user?.id
+    ) {
+      return state.user.userData;
+    }
     if (!user) return rejectWithValue("No authenticated user");
+    try {
+      //get user profile data from supabase user taple
+      const { data, error } = await supabase
+        .from("users")
+        .select("id, firstName, lastName, email, address, phoneNumber")
+        .eq("id", user.id)
+        .single();
 
-    const { data, error } = await supabase
-      .from("users")
-      .select("*")
-      .eq("id", user.id)
-      .single();
-
-    if (error) return rejectWithValue(error.message);
-    return data;
+      if (error) return rejectWithValue(error.message);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
   }
 );
-
 export const updateUserData = createAsyncThunk(
   "user/updateUserData",
   async (userData, { rejectWithValue, getState }) => {
     const { auth } = getState();
     const user = auth.user;
-    // console.log(user)
     if (!user) return rejectWithValue("No authenticated user");
 
     const { data, error } = await supabase
@@ -46,7 +53,14 @@ const userSlice = createSlice({
     loading: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    resetUserData: (state) => {
+      state.userData = null;
+      state.lastFetched = null;
+      state.loading = false;
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       // getUserData cases
@@ -78,5 +92,5 @@ const userSlice = createSlice({
       });
   },
 });
-
+export const { resetUserData } = userSlice.actions;
 export default userSlice.reducer;

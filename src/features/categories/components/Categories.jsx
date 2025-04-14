@@ -3,13 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchProductsByCategory,
 } from "../../products/Products-Slice";
-import {  fetchCategories} from "../CategoriesSlice";
+import { fetchCategories } from "../CategoriesSlice";
 import Container from "../../../components/common/Container";
 import CategoryCard from "../components/CategoryCard";
 import CategoryCarousel from "../components/CategoryCarousel";
 
 function Categories() {
-  const { categories, loading, error } = useSelector((state) => state.categories);
+  const { categories} = useSelector(
+    (state) => state.categories
+  );
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,17 +24,18 @@ function Categories() {
   }
 
   const filteredCategories = categories?.filter(
-    (category) => ![
-      "groceries",
-      "vehicle",
-      "motorcycle",
-      "mens-watches",
-      "mens-shoes",
-      "mens-shirts",
-      "sports-accessories",
-    ].includes(category)
+    (category) =>
+      ![
+        "groceries",
+        "vehicle",
+        "motorcycle",
+        "mens-watches",
+        "mens-shoes",
+        "mens-shirts",
+        "sports-accessories",
+      ].includes(category)
   );
-  
+
   return (
     <Container size="xl">
       <div className="my-8 overflow-hidden">
@@ -52,6 +56,7 @@ function Categories() {
               getProductsByCategory={getProductsByCategory}
             />
           ))}
+      
         </CategoryCarousel>
       </div>
     </Container>

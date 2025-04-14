@@ -6,7 +6,7 @@ import CartEmpty from "./components/CartEmpty";
 import Container from "../../components/common/Container";
 import { useEffect, useState } from "react";
 
-function Cart() {
+function CartPage() {
   const cartProducts = useSelector((state) => state.cart.cart) || [];
   const cartTotal = useSelector((state) => state.cart.cartTotal) || 0;
   //Calculate the total number of items in the cart
@@ -41,4 +41,4 @@ function Cart() {
     return <CartEmpty />;
   }
 }
-export default Cart;
+export default CartPage;
