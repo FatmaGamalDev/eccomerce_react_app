@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { supabase } from "../../api/supabaseClient";
 import { resetUserData } from "../user/UserSlice";
 import { clearCart } from "../cart/Cart-Slice";
+import { clearWishlist } from "../wishlist/WishlistSlice";
 
 //create thunk action called signUp and the action payload is the api response
 //data => {user: {…}, session: {…}}
@@ -40,6 +41,7 @@ export const signOut = createAsyncThunk(
     // eslint-disable-next-line no-undef
     dispatch(resetUserData());
     dispatch(clearCart());
+    dispatch(clearWishlist());
     if (error) return rejectWithValue(error.message);
     return {};
   }

@@ -14,48 +14,42 @@ import SearchResults from "./features/products/components/SearchResults";
 import ScrollToTop from "./components/ui/ScrollToTop";
 import Loader from "./features/loading/Loader";
 import SignInPage from "./features/auth/SignInPage";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-// import { getSession } from "./features/auth/authSlice";
 import WishlistPage from "./features/wishlist/WishlistPage";
-// import {
-//   addToCartInSupabase,
-//   clearCart,
-//   fetchCartFromSupabase,
-//   setWasGuest,
-// } from "./features/cart/Cart-Slice";
 import ProfilePage from "./features/user/ProfilePage";
 import { setUser } from "./features/auth/authSlice";
 import useMergeGuestCart from "./features/cart/hooks/useMergeGuestCart";
+import useMergeGuestWishlist from "./features/wishlist/hooks/useMergeGuestWishlist";
 
 function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     const getInitialSession = async () => {
       const { data } = await supabase.auth.getSession();
       if (data?.session?.user) {
         dispatch(setUser(data.session.user));
-      }
+      } 
     };
     getInitialSession();
-
-    const { data: listener } = supabase.auth.onAuthStateChange(
-      (event, session) => {
-        if (session?.user) {
-          dispatch(setUser(session.user));
-        } else {
-          dispatch(setUser(null));
-        }
-      }
-    );
-
-    return () => {
-      listener?.subscription?.unsubscribe();
-    };
-  }, [dispatch]);
-
+    // const { data: listener } = supabase.auth.onAuthStateChange(
+    //   (event, session) => {
+    //     if (session?.user) {
+    //       dispatch(setUser(session.user));
+    //     } else {
+    //       dispatch(setUser(null));
+    //     }
+    //   }
+    // );
+    // return () => {
+    //   listener?.subscription?.unsubscribe();
+    // };
+  }, []);
+// get the cart when open the app and merge it with local cart if the user was useing the cart as aguest
   useMergeGuestCart();
-
+// get the wishlist when open the app and merge it with local wishlist if the user was useing the wishlist as aguest
+useMergeGuestWishlist();
   return (
     <>
       <ToastNotification />

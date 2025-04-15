@@ -7,7 +7,7 @@ import toastSlice from "../features/toast/Toast-Slice";
 import ProductDetailsSlice from "../features/productDetails/ProaductDetails-Slice";
 import loadingSlice from "../features/loading/loadingSlice";
 import authSlice from "../features/auth/authSlice";
-import wishlistSlice from "../features/wishlist/wishlistSlice";
+import wishlistSlice from "../features/wishlist/WishlistSlice";
 import CategoriesSlice from "../features/categories/CategoriesSlice";
 import UserSlice from "../features/user/UserSlice";
 
@@ -15,7 +15,7 @@ import UserSlice from "../features/user/UserSlice";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["user","cart","categories","productDetails"],
+  whitelist: ["user","cart","wishlist","categories","productDetails"],
 };
 
 // Combine reducers

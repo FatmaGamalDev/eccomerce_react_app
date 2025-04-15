@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { updateQuantity, updateQuantityInSupabase } from "../Cart-Slice";
+import { updateQuantity} from "../Cart-Slice";
 import QuantitySelector from "../../../components/common/QuantitySelector";
 import AddToCartButton from "../../../components/common/AddToCartButton";
-import { deleteFromWishlist } from "../../wishlist/wishlistSlice";
+import { deleteFromWishlist } from "../../wishlist/WishlistSlice";
+import { updateQuantityInSupabase } from "../CartThunks";
 
 function CartProducts({ cartProducts, showToast, isWishlist }) {
   const userId = useSelector((state) =>

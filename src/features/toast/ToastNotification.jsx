@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { hideToast } from "./Toast-Slice";
 import { Slide, toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { deleteFromCart, deleteFromCartInSupabase } from "../cart/Cart-Slice";
+import { deleteFromCart} from "../cart/Cart-Slice";
+import { deleteFromCartInSupabase } from "../cart/CartThunks";
 function ToastNotification() {
   const { message, type, show, product, quantity } = useSelector(
     (state) => state.toast

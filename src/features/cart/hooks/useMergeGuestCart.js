@@ -1,17 +1,14 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addToCartInSupabase,
-  fetchCartFromSupabase,
-  setWasGuest,
-} from "../Cart-Slice";
+import { addToCartInSupabase, fetchCartFromSupabase } from "../CartThunks";
+import { setWasGuest } from "../Cart-Slice";
 
 export const useMergeGuestCart = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
   const localCart = useSelector((state) => state.cart.cart);
   const wasGuest = useSelector((state) => state.cart.wasGuest);
-  
+
   // merge the product from local cart with supabase cart if user use the cart as a guest and then signin or sign up
   useEffect(() => {
     if (!user) return;
