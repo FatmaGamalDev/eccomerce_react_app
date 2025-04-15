@@ -7,6 +7,7 @@ export const fetchCartFromSupabase = createAsyncThunk(
   async (userId) => {
     const { data, error } = await supabase
       .from("cart")
+      // there is a relation between cart taple and products taple 
       .select( ` *, products ( id, title, thumbnail, price,brand,stock ) `)
       .eq("user_id", userId);
     if (error) {
@@ -82,6 +83,7 @@ const cartSlice = createSlice({
   initialState:{
     cart:[],
     cartTotal:0,
+    wasGuest: false,
     loading:false,
     error:null
   },
@@ -113,6 +115,8 @@ const cartSlice = createSlice({
           0
         );
       }
+      state.wasGuest = true;
+
          },
     deleteFromCart: (state, action) => {
       state.cart = state.cart.filter(
@@ -141,18 +145,21 @@ const cartSlice = createSlice({
       state.cart = [];
       state.cartTotal = 0;
     },
+    setWasGuest: (state, action) => {
+      state.wasGuest = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCartFromSupabase.pending, (state) => {
-        state.loadind = true;
+        state.loading = true;
       })
       .addCase(fetchCartFromSupabase.fulfilled, (state, action) => {
-        state.loadind = false;
+        state.loading = false;
         state.cart = action.payload;
       })
       .addCase(fetchCartFromSupabase.rejected, (state, action) => {
-        state.loadind = false;
+        state.loading = false;
         state.error = action.error.message;
       })
       //-------------------add to cart-----------------------------
@@ -174,7 +181,7 @@ const cartSlice = createSlice({
           0
         );
       })
-      //--------------------delete from cart state-------------------------
+      //--------------------delete from cart -------------------------
       .addCase(deleteFromCartInSupabase.fulfilled, (state, action) => {
         state.cart = state.cart.filter((item) => item.id !== action.payload);
         state.cartTotal = state.cart.reduce(
@@ -199,6 +206,6 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, deleteFromCart, updateQuantity, clearCart } =
+export const { addToCart, deleteFromCart, updateQuantity, clearCart, setWasGuest } =
   cartSlice.actions;
 export default cartSlice.reducer;

@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { supabase } from "../../api/supabaseClient";
-// get user addetional data from supabase
+// get user meta data from supabase
 export const getUserData = createAsyncThunk(
   "user/getUserData",
   async (_, { getState, rejectWithValue }) => {

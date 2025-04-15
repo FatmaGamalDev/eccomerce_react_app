@@ -17,12 +17,8 @@ export const fetchProducts = createAsyncThunk(
       .neq("category", "motorcycle")
       .neq("category", "mens-watches")
       .neq("category", "sports-accessories");
-      console.log("lllll",data) // هل تظهر البيانات هنا؟
-
     if (error) {
       throw new Error(error.message);
-
-
     }
     return data;
   }
@@ -46,7 +42,7 @@ const productsSlice = createSlice({
     products: [],
     //specific category products
     categoryProducts: [],
-    //flag to identify what will be showed in the productlist component ?products or categoy products
+    //flag to identify what will be showed in the productlist component ?all products or categoy products
     activeCategory: null,
     searchQuery: "",
     searchResult: [],
@@ -68,7 +64,7 @@ const productsSlice = createSlice({
     },
     setActiveCategory: (state, action) => {
       state.activeCategory = action.payload;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -99,5 +95,5 @@ const productsSlice = createSlice({
       });
   },
 });
-export const { searchProducts ,  setActiveCategory } = productsSlice.actions;
+export const { searchProducts, setActiveCategory } = productsSlice.actions;
 export default productsSlice.reducer;

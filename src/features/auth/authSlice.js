@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { supabase } from "../../api/supabaseClient";
 import { resetUserData } from "../user/UserSlice";
+import { clearCart } from "../cart/Cart-Slice";
 
 //create thunk action called signUp and the action payload is the api response
 //data => {user: {…}, session: {…}}
@@ -38,6 +39,7 @@ export const signOut = createAsyncThunk(
     const { error } = await supabase.auth.signOut();
     // eslint-disable-next-line no-undef
     dispatch(resetUserData());
+    dispatch(clearCart());
     if (error) return rejectWithValue(error.message);
     return {};
   }
@@ -45,6 +47,8 @@ export const signOut = createAsyncThunk(
 
 export const getSession = createAsyncThunk("auth/getSession", async () => {
   const { data, error } = await supabase.auth.getSession();
+  console.log("🔥 Supabase getSession result:", data);
+
   if (error) throw error;
   return data?.session?.user || null;
 });
@@ -58,8 +62,12 @@ const authSlice = createSlice({
     loginSuccess: false,
 
   },
-  reducers: { resetLoginState: (state) => {
+  reducers: {
+     resetLoginState: (state) => {
       state.loginSuccess = false; 
+    },
+    setUser: (state, action) => {
+      state.user = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -119,6 +127,6 @@ const authSlice = createSlice({
       });
   },
 });
-export const {resetLoginState} = authSlice.actions;
+export const {resetLoginState,setUser} = authSlice.actions;
 
 export default authSlice.reducer;

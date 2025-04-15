@@ -1,11 +1,19 @@
 import React from "react";
+
+import visa from '../../../Assets/payment/visa.webp';
+import maestro from '../../../Assets/payment/maestro.webp';
+import paypal from '../../../Assets/payment/paypal.webp';
+import pay from '../../../Assets/payment/pay.webp';
+import jcb from '../../../Assets/payment/JCB.webp';
+import cash from '../../../Assets/payment/cash.png';
+
 const paymentLogos = [
-  { src: "/payment/visa.webp", alt: "Visa" },
-  { src: "/payment/maestro.webp", alt: "MasterCard" },
-  { src: "/payment/paypal.webp", alt: "PayPal" },
-  { src: "/payment/pay.webp", alt: "Apple Pay" },
-  { src: "/payment/JCB.webp", alt: "JCB" },
-  { src: "/payment/cash.png", alt: "cash" },
+  { src: visa, alt: "Visa" },
+  { src: maestro, alt: "MasterCard" },
+  { src: paypal, alt: "PayPal" },
+  { src: pay, alt: "Apple Pay" },
+  { src: jcb, alt: "JCB" },
+  { src: cash, alt: "cash" },
 ];
 function PaymentMethods() {
   return (

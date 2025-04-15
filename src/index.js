@@ -9,6 +9,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+    {/* persist gate prevent any rendering lel components before the entire state come from the local storage*/}
       <PersistGate loading={null} persistor={persistor}>
           <App />
       </PersistGate>

@@ -15,7 +15,7 @@ import UserSlice from "../features/user/UserSlice";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["user", "auth","cart","categories","productDetails"],
+  whitelist: ["user","cart","categories","productDetails"],
 };
 
 // Combine reducers

@@ -13,7 +13,7 @@ function ToastNotification() {
   //  object mapping on toast types
   const toastTypes = {
     add: (
-      <div className="text-center bg-white text-black w-full max-w-[650px] md:w-[650px] rounded-2xl  p-6">
+      <div className="text-center bg-white text-black w-full max-w-[650px] md:w-[650px] rounded-2xl p-6">
         <h1 className="text-2xl font-semibold uppercase">{message}</h1>
         <hr />
         <div className="flex items-center justify-center w-full gap-8 p-4 my-8 border border-gray-300 rounded-xl">
@@ -59,12 +59,22 @@ function ToastNotification() {
             Yes
           </button>
           <button
-            className="w-[45%] px-4 py-2 text-black border-2 border-black "
+            className="w-[45%] px-4 py-2 text-black border-2 border-black"
             onClick={closeToast}
           >
             Cancel
           </button>
         </div>
+      </div>
+    ),
+    success: (
+      <div className="text-center  w-full max-w-[600px] md:w-[600px] rounded-2xl p-6">
+        <h1 className="text-lg font-bold uppercase">{message}</h1>
+      </div>
+    ),
+    error: (
+      <div className="text-center bg-red-100 text-red-800 w-full max-w-[650px] md:w-[650px] rounded-2xl p-6 border border-red-300 shadow">
+        <h1 className="text-2xl font-bold uppercase">{message}</h1>
       </div>
     ),
   };
