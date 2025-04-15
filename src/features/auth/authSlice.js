@@ -47,7 +47,7 @@ export const signOut = createAsyncThunk(
 
 export const getSession = createAsyncThunk("auth/getSession", async () => {
   const { data, error } = await supabase.auth.getSession();
-  console.log("🔥 Supabase getSession result:", data);
+  // console.log("🔥 Supabase getSession result:", data);
 
   if (error) throw error;
   return data?.session?.user || null;
