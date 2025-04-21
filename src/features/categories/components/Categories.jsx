@@ -4,7 +4,7 @@ import {
   fetchProductsByCategory,
 } from "../../products/Products-Slice";
 import { fetchCategories } from "../CategoriesSlice";
-import Container from "../../../components/common/Container";
+import Container from "../../../components/ui/Container";
 import CategoryCard from "../components/CategoryCard";
 import CategoryCarousel from "../components/CategoryCarousel";
 
@@ -32,6 +32,7 @@ function Categories() {
         "mens-watches",
         "mens-shoes",
         "mens-shirts",
+        "smartphones",
         "sports-accessories",
       ].includes(category)
   );

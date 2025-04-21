@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import img1 from "../../../Assets/banner/main-banner.webp";
-import img2 from "../../../Assets/carousel/clothes-1839935_1280.jpg";
+import img2 from "../../../Assets/banner/banner2.jpg";
+import img3 from "../../../Assets/carousel/clothes-1839935_1280.jpg";
 
-const images = [img1, img2];
+const images = [img1, img2, img3];
 
 function Slider() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -20,30 +21,27 @@ function Slider() {
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 4000);
+    }, 6000);
     return () => clearInterval(interval);
   }, [currentIndex]);
-  
+
   return (
-    <div className="relative w-full overflow-hidden h-[60vh] md:h-[70vh] sm:h-[40vh] min-h-[300px]">
+    <div className="relative w-full overflow-hidden h-[50vh] md:h-[60vh] sm:h-[50vh] min-h-[300px]">
       <div
         className="flex h-full transition-transform duration-700 ease-in-out"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {images.map((img, index) => (
-          <div key={index} className="h-full min-w-full ">
+          <div key={index} className="relative h-full min-w-full">
             <img
               src={img}
-              className="object-cover w-full h-full "
+              className="object-cover w-full h-full"
               alt={`Slide ${index + 1}`}
             />
           </div>
         ))}
       </div>
-      <button
-        className="absolute w-32 main-btn left-20 top-2/3 "
-        onClick={prevSlide}
-      >
+      <button className="absolute w-48 main-btn left-20 top-2/3 ">
         <span className="z-10"> SHOP NOW</span>
       </button>
 
@@ -58,5 +56,3 @@ function Slider() {
 }
 
 export default Slider;
-
-

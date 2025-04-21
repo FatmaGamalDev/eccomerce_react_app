@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { updateQuantity} from "../Cart-Slice";
-import QuantitySelector from "../../../components/common/QuantitySelector";
-import AddToCartButton from "../../../components/common/AddToCartButton";
+import QuantitySelector from "../../../components/ui/QuantitySelector";
+import AddToCartButton from "../../../components/ui/AddToCartButton";
 import { deleteFromWishlist } from "../../wishlist/WishlistSlice";
 import { updateQuantityInSupabase } from "../CartThunks";
 

@@ -6,10 +6,7 @@ export const getUserData = createAsyncThunk(
   async (_, { getState, rejectWithValue }) => {
     const state = getState();
     const user = state.auth.user;
-    if (
-      state.user.userData &&
-      state.user.userData.id === user?.id
-    ) {
+    if (state.user.userData && state.user.userData.id === user?.id) {
       return state.user.userData;
     }
     if (!user) return rejectWithValue("No authenticated user");
@@ -70,7 +67,7 @@ const userSlice = createSlice({
       })
       .addCase(getUserData.fulfilled, (state, action) => {
         state.loading = false;
-        state.userData = action.payload; 
+        state.userData = action.payload;
       })
       .addCase(getUserData.rejected, (state, action) => {
         state.loading = false;

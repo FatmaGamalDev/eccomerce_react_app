@@ -4,8 +4,9 @@ import ProductPrice from "../../productDetails/components/ProductPrice";
 import { startLoading, stopLoading } from "../../loading/loadingSlice";
 import { useDispatch } from "react-redux";
 import { fetchProductDetails } from "../../productDetails/ProaductDetails-Slice";
-import CartIconButton from "../../../components/common/CartIconButton";
-import WishlistButton from "../../../components/common/WishlistButton";
+import WishlistButton from "../../../components/ui/WishlistButton";
+import ProductImagePlaceholder from "../../../Assets/ImagePlaceholder.jpg";
+import CartIconButton from "../../../components/ui/CartIconButton";
 
 function ProductCard({ product }) {
   const dispatch = useDispatch();
@@ -17,9 +18,12 @@ function ProductCard({ product }) {
     navigate(`/product/${product.id}`);
   }
   return (
-    <div className="relative w-full border border-gray-300 shadow-md card lg:w-[96%] bg-base-100">
-      <figure className="w-[80%] h-[80%] bg-white aspect-square self-center">
-        <div onClick={handleClick} className="cursor-pointer">
+    <div
+      onClick={handleClick}
+      className="ease-in-out hover:scale-[1.02] hover:shadow-xl  duration-300 transform transition-all cursor-pointer relative w-full border border-gray-300 shadow-md card lg:w-[96%] bg-base-100"
+    >
+      <figure className="w-[80%] h-[80%]  aspect-square self-center ">
+        <div>
           <div className="absolute left-0 flex items-center justify-between w-full pr-[4px] top-[10px]">
             <div className="z-10 w-16 px-2 py-1 text-white border-none rounded-none text-md bg-pink badge top-3">
               <h6>{`- ${Math.ceil(product.discountPercentage)}%`}</h6>
@@ -31,14 +35,16 @@ function ProductCard({ product }) {
             />
           </div>
           <img
-            className="object-cover w-full h-full rounded-t-lg"
-            src={product.images?.[0]|| "/assets/ImagePlaceholder.jpg"}
+            className="object-cover w-full h-full rounded-t-lg "
+            src={
+              product.images?.[0] ? product.images[0] : ProductImagePlaceholder
+            }
             alt={product.title}
             loading="lazy"
           />
         </div>
       </figure>
-      <hr className="w-[90%] self-center"/>
+      <hr className="w-[90%] self-center" />
       <div className="p-[12px] card-body">
         <h2 className="text-gray-800 card-title h-[48px]">{product.title}</h2>
         <p className="text-sm text-gray-600 line-clamp-2">

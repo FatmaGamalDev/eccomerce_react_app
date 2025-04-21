@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import SearchBar from "../../features/products/components/SearchBar";
-import Container from "../common/Container";
+import Container from "../ui/Container";
 import { Heart, UserRound } from "lucide-react";
-import SignOutButton from "../common/SignOutButton";
+import SignOutButton from "../ui/SignOutButton";
 
 export default function Navbar() {
   const cartProducts = useSelector((state) => state.cart.cart);
@@ -16,12 +16,11 @@ export default function Navbar() {
     );
     setCartItems(totalQuantity);
   }, [cartProducts]);
-  
+
   const wishlist = useSelector((state) => state.wishlist.wishlist);
   return (
     <nav className="sticky top-0 left-0 z-50 w-full bg-white shadow-md navbar py-2 min-h-[85px]">
       <Container className="px-[5px] sm:px-[24px] flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0">
-        {/* Row 1: Logo and Icons on small screens */}
         <div className="flex items-center justify-between w-full sm:w-auto">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -37,34 +36,58 @@ export default function Navbar() {
             <ul className="flex flex-row items-center gap-[6px] px-0 menu sm:gap-[6px]">
               {/* Authentication Dropdown */}
               <li className="flex items-center justify-center p-0 dropdown dropdown-hover">
-                <div tabIndex={0} role="button" className="relative p-0 m-0 bg-transparent border-none btn">
-                <UserRound strokeWidth={1.25} />            
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="relative p-0 m-0 bg-transparent border-none btn"
+                >
+                  <UserRound strokeWidth={1.25} />
                 </div>
                 <ul
                   tabIndex={0}
-                  className="p-2 absolute top-[3rem] right-0 shadow-[0_0px_10px_rgba(0,0,0,0.2)] dropdown-content menu bg-base-100 rounded-box z-10 w-48"
+                  className="p-2 absolute top-[3rem] right-0 shadow-lg bg-base-100 bg-gradient-to-b from-base-100 to-base-200 border border-gray-200 dropdown-content menu rounded-xl z-10 w-40 sm:w-48 animate-dropdown"
                 >
                   <li>
-                    <NavLink to="signUp" className="text-lg font-semibold">
+                    <NavLink
+                      to="profile"
+                      className="text-base transition-all duration-300 sm:p-3 hover:text-pink hover:bg-gray-100"
+                    >
+                      My Account
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="signUp"
+                      className="text-base transition-all duration-300 sm:p-3 hover:text-pink hover:bg-gray-100"
+                    >
                       Sign Up
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="signIn" className="text-lg font-semibold">
+                    <NavLink
+                      to="signIn"
+                      className="text-base transition-all duration-300 sm:p-3 hover:text-pink hover:bg-gray-100"
+                    >
                       Sign In
                     </NavLink>
                   </li>
                   <li className="w-full">
-                    <NavLink to="profile">
-                      <SignOutButton/>
+                    <NavLink
+                      to="profile"
+                      className="p-2 transition-all duration-300 sm:p-3 hover:bg-gray-100"
+                    >
+                      <SignOutButton className="w-full text-base hover:text-pink hover:bg-transparent" />
                     </NavLink>
                   </li>
                 </ul>
               </li>
               {/* Wishlist Icon */}
               <li>
-                <NavLink to="/wishList" className="relative flex items-center p-0">
-                <Heart strokeWidth={1.25} />
+                <NavLink
+                  to="/wishList"
+                  className="relative flex items-center p-0 "
+                >
+                  <Heart strokeWidth={1.25} />
                   <div
                     style={{ display: wishlist.length > 0 ? "block" : "none" }}
                     className="absolute bottom-3 left-4 flex text-white font-semibold text-md items-center justify-center bg-pink w-[18px] h-[18px] text-[11px] rounded-full"
@@ -75,7 +98,10 @@ export default function Navbar() {
               </li>
               {/* Cart Icon */}
               <li>
-                <NavLink to="/cart" className="relative flex items-center p-0 hover:bg-transparent">
+                <NavLink
+                  to="/cart"
+                  className="relative flex items-center p-0 hover:bg-transparent"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -107,40 +133,61 @@ export default function Navbar() {
         </div>
         {/* Icons on large screens only */}
         <div className="hidden sm:flex sm:flex-none">
+          {/* Icons on big screens only */}
           <ul className="flex flex-row items-center justify-end gap-[6px] px-0 menu">
             {/* Authentication Dropdown */}
             <li className="flex items-center justify-center p-0 dropdown dropdown-hover">
-              <div tabIndex={0} role="button" className="relative p-0 m-0 bg-transparent border-none btn hover:text-pink">
-              <UserRound strokeWidth={1.25} />              </div>
+              <div
+                tabIndex={0}
+                role="button"
+                className="relative p-0 m-0 bg-transparent border-none btn hover:text-pink "
+              >
+                <UserRound strokeWidth={1.25} />
+              </div>
               <ul
                 tabIndex={0}
-                className="p-2 absolute top-[3rem] right-0 shadow-[0_0px_10px_rgba(0,0,0,0.2)] dropdown-content menu bg-base-100 rounded-box z-10 w-48"
+                className="p-2 absolute top-[3rem] right-0 shadow-lg bg-base-100 bg-gradient-to-b from-base-100 to-base-200 border border-gray-200 dropdown-content menu rounded-xl z-10 w-40 sm:w-48 animate-dropdown"
               >
-                  <li>
-                  <NavLink to="profile" className="text-lg font-semibold hover:text-pink">
+                <li>
+                  <NavLink
+                    to="profile"
+                    className="text-base transition-all duration-300 sm:p-3 hover:text-pink hover:bg-gray-100"
+                  >
                     My Account
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="signUp" className="text-lg font-semibold hover:text-pink">
+                  <NavLink
+                    to="signUp"
+                    className="text-base transition-all duration-300 sm:p-3 hover:text-pink hover:bg-gray-100"
+                  >
                     Sign Up
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="signIn" className="text-lg font-semibold hover:text-pink">
+                  <NavLink
+                    to="signIn"
+                    className="text-base transition-all duration-300 sm:p-3 hover:text-pink hover:bg-gray-100"
+                  >
                     Sign In
                   </NavLink>
                 </li>
                 <li className="w-full">
-                  <NavLink to="profile">
-                    <SignOutButton/>
+                  <NavLink
+                    to="profile"
+                    className="p-2 transition-all duration-300 sm:p-3 hover:bg-gray-100"
+                  >
+                    <SignOutButton className="w-full text-base hover:text-pink hover:bg-transparent" />
                   </NavLink>
                 </li>
               </ul>
             </li>
-                {/* Wishlist Icon */}
-                <li>
-              <NavLink to="/wishList" className="relative flex items-center p-0 hover:text-pink hover:bg-transparent">
+            {/* Wishlist Icon */}
+            <li>
+              <NavLink
+                to="/wishList"
+                className="relative flex items-center p-0 hover:text-pink hover:bg-transparent"
+              >
                 <Heart strokeWidth={1.25} />
                 <div
                   style={{ display: wishlist.length > 0 ? "block" : "none" }}
@@ -152,7 +199,10 @@ export default function Navbar() {
             </li>
             {/* Cart Icon */}
             <li>
-              <NavLink to="/cart" className="relative flex items-center p-0 hover:bg-transparent hover:text-pink">
+              <NavLink
+                to="/cart"
+                className="relative flex items-center p-0 hover:bg-transparent hover:text-pink"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -175,7 +225,6 @@ export default function Navbar() {
                 </div>
               </NavLink>
             </li>
-        
           </ul>
         </div>
       </Container>

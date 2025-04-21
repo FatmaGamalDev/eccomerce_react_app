@@ -5,7 +5,7 @@ import NewsSignUpBG from ".././../Assets/newsSignUpBG.png";
 function NewsSignup() {
   return (
     <section
-      className="flex items-center justify-center bg-cover "
+      className="flex items-center justify-center w-full bg-cover "
       style={{
         backgroundImage: `url(${NewsSignUpBG})`,
         backgroundPosition: "center top -20px",

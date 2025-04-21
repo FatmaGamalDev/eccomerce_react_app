@@ -1,14 +1,13 @@
 
 import React from "react";
 
-const Container = ({ className, children, ...props }) => {
+const Container = ({ className, children}) => {
   return (
-    <section
-      {...props}
+    <div
       className={"max-w-7xl mx-auto px-[24px] w-full" + (className ? " " + className : "")}
     >
       {children}
-    </section>
+    </div>
   );
 };
 

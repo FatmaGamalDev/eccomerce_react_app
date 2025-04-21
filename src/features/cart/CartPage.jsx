@@ -3,7 +3,7 @@ import { showToast } from "../toast/Toast-Slice";
 import CartSummary from "./components/CartSummary";
 import CartProducts from "./components/CartProducts";
 import CartEmpty from "./components/CartEmpty";
-import Container from "../../components/common/Container";
+import Container from "../../components/ui/Container";
 import { useEffect, useState } from "react";
 
 function CartPage() {
@@ -21,8 +21,8 @@ function CartPage() {
 
   if (cartProducts.length > 0) {
     return (
-      <Container className="bg-softbeige ">
-        <section className="pt-4">
+      <section className="pt-4 bg-softbeige">
+        <Container>
           <h1 className="self-start  text-2xl font-semibold uppercase mt-0 mb-4 ml-[18px]">
             Bag Summary ({cartItems} )
           </h1>
@@ -34,8 +34,8 @@ function CartPage() {
             />
             <CartSummary cartTotal={cartTotal} />
           </div>
-        </section>
-      </Container>
+        </Container>
+      </section>
     );
   } else {
     return <CartEmpty />;

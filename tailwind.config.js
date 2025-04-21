@@ -13,11 +13,7 @@ export default {
         softbeige:"#f6f0ef",
         nude:"#f5ddd8"
       },
-      },
-      container: {
-        center: true, 
-        padding: "2rem", 
-      },  
+      }
     },
     plugins: [require("daisyui")], 
   };

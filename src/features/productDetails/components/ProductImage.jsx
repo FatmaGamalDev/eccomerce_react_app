@@ -7,7 +7,7 @@ function ProductImage({ imageUrl, discount, title }) {
     <h6>{`- ${Math.ceil(discount)}% `}</h6>
     </small>
     <img
-      className="object-cover w-full h-full p-4 "
+      className="object-cover p-4 w-ful "
       src={
       imageUrl || "/assets/ImagePlaceholder.jpg"
       }

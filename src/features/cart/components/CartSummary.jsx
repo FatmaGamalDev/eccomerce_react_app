@@ -1,5 +1,4 @@
 import React from "react";
-
 import { FiPlus } from "react-icons/fi";
 import PaymentMethods from "./PaymentMethods";
 
@@ -7,7 +6,9 @@ function CartSummary({ cartTotal }) {
   return (
     <div className="w-[90%] flex flex-col flex-grow gap-6 bg-white  rounded-lg  border-black pb-8 p-4 md:border-none md:w-1/3  md:h-full">
       <div className="relative flex flex-col gap-2">
-        <label className="font-semibold">Do you have a promo code?</label>
+        <label className=" font-semibold md:text-[14px] lg:text-lg">
+          Do you have a promo code?
+        </label>
         <input type="text" className="border-gray-700 form-input" />
         <FiPlus className="absolute text-2xl top-10 right-4" />
       </div>

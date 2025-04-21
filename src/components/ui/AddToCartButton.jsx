@@ -1,5 +1,5 @@
 import React from "react";
-import { addToCart} from "../../features/cart/Cart-Slice";
+import { addToCart } from "../../features/cart/Cart-Slice";
 import { showToast } from "../../features/toast/Toast-Slice";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCartInSupabase } from "../../features/cart/CartThunks";
@@ -11,7 +11,9 @@ function AddToCartButton({
   className = "",
 }) {
   const dispatch = useDispatch();
-  const userId = useSelector((state) => state.auth.user?state.auth.user.id:null);
+  const userId = useSelector((state) =>
+    state.auth.user ? state.auth.user.id : null
+  );
   // Handle adding to cart
   const handleAddToCart = (product) => {
     const productWithQuantity = {
@@ -21,30 +23,33 @@ function AddToCartButton({
     if (userId) {
       dispatch(
         addToCartInSupabase({ product: productWithQuantity, userId: userId })
-      )
-    }else{
+      );
+    } else {
       dispatch(
         addToCart({
-          ...selectedProduct,
+          ...product,
           quantity: fromDetails ? quantity : 1,
         })
       );
     }
-      dispatch(
-        showToast({
-          message: "Added to Bag",
-          type: "add",
-          product: selectedProduct,
-          quantity: fromDetails ? quantity : 1,
-        })
-      );
-    }
-  
+    dispatch(
+      showToast({
+        message: "Added to Bag",
+        type: "add",
+        product: product,
+        quantity: fromDetails ? quantity : 1,
+      })
+    );
+  };
+
   return (
     <button
-      className={`main-btn
+      className={`main-btn bg-pink
            ${className}`}
-      onClick={() =>handleAddToCart(selectedProduct)}
+      onClick={(e) => {
+        handleAddToCart(selectedProduct);
+        e.stopPropagation();
+      }}
     >
       <span className="z-10">Add To Bag</span>
     </button>

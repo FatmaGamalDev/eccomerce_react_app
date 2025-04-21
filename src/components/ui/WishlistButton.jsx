@@ -5,8 +5,10 @@ import {
   deleteFromWishlist,
 } from "../../features/wishlist/WishlistSlice";
 import { Heart } from "lucide-react";
-import { addToWishlistInSupabase, deleteFromWishlistInSupabase } from "../../features/wishlist/WishlistThunks";
-import { deleteFromCartInSupabase } from "../../features/cart/CartThunks";
+import {
+  addToWishlistInSupabase,
+  deleteFromWishlistInSupabase,
+} from "../../features/wishlist/WishlistThunks";
 
 function WishlistButton({ product, className = "" }) {
   const dispatch = useDispatch();
@@ -19,11 +21,13 @@ function WishlistButton({ product, className = "" }) {
 
   return (
     <button
-      className={`btn btn-circle ${className}`}
+      className={`btn btn-circle shadow-none ${className}`}
       onClick={(e) => {
         if (isInWishlist) {
           if (userId) {
-            dispatch(deleteFromWishlistInSupabase({id:product.id,userId:userId}));
+            dispatch(
+              deleteFromWishlistInSupabase({ id: product.id, userId: userId })
+            );
           } else {
             dispatch(deleteFromWishlist(product));
           }

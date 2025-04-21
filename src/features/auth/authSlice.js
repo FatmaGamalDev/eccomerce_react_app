@@ -6,7 +6,7 @@ import { clearWishlist } from "../wishlist/WishlistSlice";
 
 //create thunk action called signUp and the action payload is the api response
 //data => {user: {…}, session: {…}}
-// regest new user
+// SignUp new user
 export const signUp = createAsyncThunk(
   "auth/signUp",
   async ({ email, password }, { rejectWithValue , dispatch }) => {
@@ -47,14 +47,6 @@ export const signOut = createAsyncThunk(
   }
 );
 
-export const getSession = createAsyncThunk("auth/getSession", async () => {
-  const { data, error } = await supabase.auth.getSession();
-  // console.log("🔥 Supabase getSession result:", data);
-
-  if (error) throw error;
-  return data?.session?.user || null;
-});
-
 const authSlice = createSlice({
   name: "auth",
   initialState: {
@@ -83,7 +75,6 @@ const authSlice = createSlice({
         state.loading = false;
         state.user = action.payload.user;
         state.loginSuccess = true; 
-
       })
       .addCase(signUp.rejected, (state, action) => {
         state.loading = false;
@@ -115,18 +106,6 @@ const authSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      //get session cases
-      .addCase(getSession.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(getSession.fulfilled, (state, action) => {
-        state.loading = false;
-        state.user = action.payload;
-      })
-      .addCase(getSession.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      });
   },
 });
 export const {resetLoginState,setUser} = authSlice.actions;
