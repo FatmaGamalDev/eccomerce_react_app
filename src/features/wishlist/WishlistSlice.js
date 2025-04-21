@@ -22,7 +22,7 @@ const wishlistSlice = createSlice({
       if (!existingItem) {
         state.wishlist.push({
           ...action.payload,
-        })
+        });
         state.wasGuest = true;
       }
       // localStorage.setItem("wishlist", JSON.stringify(state.wishlist));
@@ -86,8 +86,7 @@ const wishlistSlice = createSlice({
           (total, item) => total + item.quantity * item.price,
           0
         );
-      })
-      
+      });
   },
 });
 
