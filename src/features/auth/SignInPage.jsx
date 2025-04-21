@@ -36,7 +36,7 @@ function SignInPage() {
         </h1>
         <h6>
           Login with email address or
-          <Link href="signUp">
+          <Link to="/signUp">
             <span className="text-sm underline cursor-pointer text-pink ">
               create account
             </span>

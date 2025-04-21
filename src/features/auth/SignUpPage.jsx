@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signUp } from "./authSlice";
 import { updateUserData } from "../user/UserSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { showToast } from "../toast/Toast-Slice";
 import { Loader} from "lucide-react";
 import QuickLogin from "../../components/ui/QuickLogin";
@@ -73,9 +73,9 @@ function SignUpPage() {
         </h1>
         <h6>
           Already have an account?
-          <a href="login">
+          <Link to="/signIn">
             <span className="underline cursor-pointer text-pink "> Login</span>
-          </a>
+          </Link>
         </h6>
         <form onSubmit={handleSignUpSubmit}>
           <div className="flex gap-4">
