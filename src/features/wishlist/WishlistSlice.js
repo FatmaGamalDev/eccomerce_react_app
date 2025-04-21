@@ -22,7 +22,8 @@ const wishlistSlice = createSlice({
       if (!existingItem) {
         state.wishlist.push({
           ...action.payload,
-        });
+        })
+        state.wasGuest = true;
       }
       // localStorage.setItem("wishlist", JSON.stringify(state.wishlist));
     },

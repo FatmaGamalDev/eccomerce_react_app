@@ -88,23 +88,23 @@ function CartProducts({ cartProducts, showToast, isWishlist }) {
                               userId: userId,
                             })
                           )
-                        :
-                           dispatch(showToast(
-                            {type:"deleteFromCart",
-                              message:"delete from cart",
-                              product:cartItem
-
-                            }
-                          ))
+                        : dispatch(
+                            showToast({
+                              type: "deleteFromCart",
+                              message: "delete from cart",
+                              product: cartItem,
+                            })
+                          );
                     } else {
                       isWishlist
-                        ? dispatch(deleteFromWishlist(cartItem)):
-                          dispatch(showToast(
-                            {type:" deleteFromCart",
-                              message:"delete from cart",
-                              product:cartItem
-                            }
-                          ))
+                        ? dispatch(deleteFromWishlist(cartItem))
+                        : dispatch(
+                            showToast({
+                              type: " deleteFromCart",
+                              message: "delete from cart",
+                              product: cartItem,
+                            })
+                          );
                     }
                   }}
                 >
