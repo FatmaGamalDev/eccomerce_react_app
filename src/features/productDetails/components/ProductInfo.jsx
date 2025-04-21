@@ -6,7 +6,9 @@ function ProductInfo({ title, brand, description, rating, price, discount }) {
   return (
     <>
       <h1 className="text-2xl font-semibold capitalize">{title}</h1>
-      <span className="badge badge-soft badge-neutral">{brand}</span>
+      {brand ? (
+        <span className="badge badge-soft badge-neutral">{brand}</span>
+      ) : null}
       <p className="capitalize text-md font-simibold ">
         <span className="block">Discription:</span>
         {description}

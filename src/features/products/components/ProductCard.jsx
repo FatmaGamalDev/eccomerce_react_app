@@ -36,8 +36,9 @@ function ProductCard({ product }) {
           </div>
           <img
             className="object-cover w-full h-full rounded-t-lg "
+  
             src={
-              product.images?.[0] ? product.images[0] : ProductImagePlaceholder
+              product?product.thumbnail : ProductImagePlaceholder
             }
             alt={product.title}
             loading="lazy"

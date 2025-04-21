@@ -100,7 +100,7 @@ function CartProducts({ cartProducts, showToast, isWishlist }) {
                         ? dispatch(deleteFromWishlist(cartItem))
                         : dispatch(
                             showToast({
-                              type: " deleteFromCart",
+                              type: "deleteFromCart",
                               message: "delete from cart",
                               product: cartItem,
                             })
