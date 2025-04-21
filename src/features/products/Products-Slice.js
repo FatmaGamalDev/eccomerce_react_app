@@ -24,29 +24,6 @@ export const fetchProducts = createAsyncThunk(
     return data;
   }
 );
-// fetch products count
-export const fetchProductCount = createAsyncThunk(
-  "products/fetchProductCount",
-  async () => {
-    const { count, error } = await supabase
-      .from("products")
-      .select("*", { count: "exact", head: true })
-      .neq("category", "mens-shirts")
-      .neq("category", "mens-shoes")
-      .neq("category", "groceries")
-      .neq("category", "vehicle")
-      .neq("category", "motorcycle")
-      .neq("category", "mens-watches")
-      .neq("category", "sports-accessories");
-
-    if (error) {
-      throw new Error(error.message);
-    }
-
-    return count;
-  }
-);
-
 //fetch products by category name
 export const fetchProductsByCategory = createAsyncThunk(
   "products/fetchProductsByCategory",
@@ -118,18 +95,6 @@ const productsSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-      // fetch products count  cases
-      .addCase(fetchProductCount.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(fetchProductCount.fulfilled, (state, action) => {
-        state.loading = false;
-        state.productCount = action.payload;
-      })
-      .addCase(fetchProductCount.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message;
-      });
   },
 });
 export const { searchProducts, setActiveCategory } = productsSlice.actions;
