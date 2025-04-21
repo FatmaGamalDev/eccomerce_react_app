@@ -1,9 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
-import { updateQuantity} from "../Cart-Slice";
+import { deleteFromCart, updateQuantity } from "../Cart-Slice";
 import QuantitySelector from "../../../components/ui/QuantitySelector";
 import AddToCartButton from "../../../components/ui/AddToCartButton";
 import { deleteFromWishlist } from "../../wishlist/WishlistSlice";
-import { updateQuantityInSupabase } from "../CartThunks";
+import {
+  deleteFromCartInSupabase,
+  updateQuantityInSupabase,
+} from "../CartThunks";
+import { deleteFromWishlistInSupabase } from "../../wishlist/WishlistThunks";
 
 function CartProducts({ cartProducts, showToast, isWishlist }) {
   const userId = useSelector((state) =>
@@ -76,15 +80,32 @@ function CartProducts({ cartProducts, showToast, isWishlist }) {
                 <button
                   className="text-xs font-bold underline text-pink hover:text-black hover:border-black"
                   onClick={() => {
-                    isWishlist
-                      ? dispatch(deleteFromWishlist(cartItem))
-                      : dispatch(
-                          showToast({
-                            message: " ",
-                            type: "deleteFromCart",
-                            product: cartItem,
-                          })
-                        );
+                    if (userId) {
+                      isWishlist
+                        ? dispatch(
+                            deleteFromWishlistInSupabase({
+                              id: cartItem.id,
+                              userId: userId,
+                            })
+                          )
+                        :
+                           dispatch(showToast(
+                            {type:"deleteFromCart",
+                              message:"delete from cart",
+                              product:cartItem
+
+                            }
+                          ))
+                    } else {
+                      isWishlist
+                        ? dispatch(deleteFromWishlist(cartItem)):
+                          dispatch(showToast(
+                            {type:" deleteFromCart",
+                              message:"delete from cart",
+                              product:cartItem
+                            }
+                          ))
+                    }
                   }}
                 >
                   REMOVE

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { showToast } from "../../features/toast/Toast-Slice";
 import { clearCart } from "../../features/cart/Cart-Slice";
 import { signOut } from "../../features/auth/authSlice";
-import { Loader } from "lucide-react";
+import { Loader, Loader2, Loader2Icon, LoaderCircle } from "lucide-react";
 
 function SignOutButton() {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ function SignOutButton() {
       className="flex items-center justify-center w-full px-4 py-2 mt-2 text-black border border-black rounded-full hover:text-pink hover:border-pink"
     >
       <span> Sign Out</span>
-      {loading ? <Loader className="ml-2 animate-spin" /> : ""}
+      {loading ? <LoaderCircle className="ml-2 animate-spin" /> : ""}
     </button>
   );
 }

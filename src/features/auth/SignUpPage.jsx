@@ -4,7 +4,7 @@ import { signUp } from "./authSlice";
 import { updateUserData } from "../user/UserSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { showToast } from "../toast/Toast-Slice";
-import { Loader} from "lucide-react";
+import { Loader, LoaderCircle } from "lucide-react";
 import QuickLogin from "../../components/ui/QuickLogin";
 
 function SignUpPage() {
@@ -62,7 +62,6 @@ function SignUpPage() {
       }
     } catch (err) {
       console.error("SignUp Error:", err.message);
-
     }
   };
   return (
@@ -179,16 +178,16 @@ function SignUpPage() {
           </div>
           {/* error message */}
           {error && <p className="text-red-500">{error}</p>}
-          <button type="submit" className="w-full main-btn" disabled={loading}>
+          <button type="submit" className="w-full main-btn">
             <span className="z-10">Create Account & Continue </span>
             <span>
-              {loading ? <Loader className="ml-2 animate-spin" /> : ""}
+              {loading ? <LoaderCircle className="ml-2 animate-spin" /> : null}
             </span>
           </button>
           <p className="relative text-center my-4 text-gray-600 before:content-[''] before:absolute before:w-[45%] before:h-[1px] before:bg-gray-400 before:left-0 before:top-1/2 after:content-[''] after:absolute after:w-[45%]  after:h-[1px] after:bg-gray-400 after:right-0 after:top-1/2">
             or
           </p>
-        <QuickLogin/>
+          <QuickLogin />
         </form>
       </div>
     </section>
