@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/eccomerce_react_app/static/css/main.03b75f7a.css",
-    "main.js": "/eccomerce_react_app/static/js/main.feda33cf.js",
+    "main.css": "/eccomerce_react_app/static/css/main.2a00cb66.css",
+    "main.js": "/eccomerce_react_app/static/js/main.46bd8cc0.js",
     "static/js/952.dcfb0992.chunk.js": "/eccomerce_react_app/static/js/952.dcfb0992.chunk.js",
-    "static/media/clothes-1839935_1280.jpg": "/eccomerce_react_app/static/media/clothes-1839935_1280.4033c0d26f31c24e62cb.jpg",
-    "static/media/banner2.jpg": "/eccomerce_react_app/static/media/banner2.e2405d8b4303f6b341d3.jpg",
-    "static/media/main-banner.webp": "/eccomerce_react_app/static/media/main-banner.e5afc6500d7445a6e904.webp",
+    "static/media/decoration.jpg": "/eccomerce_react_app/static/media/decoration.9c866671f28b89b0a635.jpg",
     "static/media/newsSignUpBG.png": "/eccomerce_react_app/static/media/newsSignUpBG.6d053d209ebd30b42d64.png",
+    "static/media/makeup.jpg": "/eccomerce_react_app/static/media/makeup.1b6196b4cec6fc99f83f.jpg",
     "static/media/ImagePlaceholder.jpg": "/eccomerce_react_app/static/media/ImagePlaceholder.fa450a20a6e3125a2ca1.jpg",
     "static/media/search_empty.png": "/eccomerce_react_app/static/media/search_empty.b47ae1fb8b77796212d7.png",
+    "static/media/fragranceimg.jpg": "/eccomerce_react_app/static/media/fragranceimg.31fe4b97c7ef0cd2fe54.jpg",
     "static/media/download.svg": "/eccomerce_react_app/static/media/download.64f2ce88e3a9221a5238a016a17036ef.svg",
     "static/media/paypal.webp": "/eccomerce_react_app/static/media/paypal.4b235195aa3edb9399ad.webp",
     "static/media/maestro.webp": "/eccomerce_react_app/static/media/maestro.7be0ff1eba8598ad6df0.webp",
@@ -21,12 +21,12 @@
     "static/media/tiktok.svg": "/eccomerce_react_app/static/media/tiktok.3edcd1e6f4cbca0b3347ee80b08bfe80.svg",
     "static/media/youtube.svg": "/eccomerce_react_app/static/media/youtube.633462846e8a6fe5e6d1cd802e412273.svg",
     "static/media/facebook.svg": "/eccomerce_react_app/static/media/facebook.2eb54bd59c77c3dc2c6c05994d442ade.svg",
-    "main.03b75f7a.css.map": "/eccomerce_react_app/static/css/main.03b75f7a.css.map",
-    "main.feda33cf.js.map": "/eccomerce_react_app/static/js/main.feda33cf.js.map",
+    "main.2a00cb66.css.map": "/eccomerce_react_app/static/css/main.2a00cb66.css.map",
+    "main.46bd8cc0.js.map": "/eccomerce_react_app/static/js/main.46bd8cc0.js.map",
     "952.dcfb0992.chunk.js.map": "/eccomerce_react_app/static/js/952.dcfb0992.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.03b75f7a.css",
-    "static/js/main.feda33cf.js"
+    "static/css/main.2a00cb66.css",
+    "static/js/main.46bd8cc0.js"
   ]
 }
