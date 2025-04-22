@@ -25,7 +25,6 @@ const wishlistSlice = createSlice({
         });
         state.wasGuest = true;
       }
-      // localStorage.setItem("wishlist", JSON.stringify(state.wishlist));
     },
     deleteFromWishlist: (state, action) => {
       state.wishlist = state.wishlist.filter(
@@ -35,7 +34,6 @@ const wishlistSlice = createSlice({
         (total, item) => total + (item.subtotal || 0),
         0
       );
-      // localStorage.setItem("wishlist", JSON.stringify(state.wishlist));
     },
     clearWishlist: (state) => {
       state.wishlist = [];
@@ -58,18 +56,13 @@ const wishlistSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-      //-------------------add to Wishlist-----------------------------
+      //-------------------add to Wishlist InSupabase-----------------------------
       .addCase(addToWishlistInSupabase.fulfilled, (state, action) => {
         const newItem = {
           ...action.payload.products,
-          quantity: action.payload.quantity,
-          subtotal: action.payload.subtotal,
         };
         const exists = state.wishlist.find((item) => item.id === newItem.id);
-        if (exists) {
-          exists.quantity = newItem.quantity;
-          exists.subtotal = newItem.subtotal;
-        } else {
+        if (!exists) {
           state.wishlist.push(newItem);
         }
         state.wishlistTotal = state.wishlist.reduce(

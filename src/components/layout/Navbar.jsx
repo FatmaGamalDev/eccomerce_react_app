@@ -7,6 +7,7 @@ import NavIcons from "./NavIcons";
 export default function Navbar() {
   return (
     <nav className="sticky top-0 left-0 z-50 w-full bg-white shadow-md navbar py-2 min-h-[85px]">
+
       <Container className="px-[5px] sm:px-[24px] flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0">
         <div className="flex items-center justify-between w-full sm:w-auto">
           {/* Logo */}
@@ -31,6 +32,7 @@ export default function Navbar() {
         <div className="hidden sm:flex sm:flex-none">
           <NavIcons />
         </div>
+        
       </Container>
     </nav>
   );

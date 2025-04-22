@@ -8,6 +8,7 @@ export default {
       extend: {
       colors:{
         pink:"#e31870",
+        lightPink:"#fef6fa",
         grayColor:"#f5f5f5",
         beige:"#f9f3eb",
         softbeige:"#f6f0ef",

@@ -1,15 +1,10 @@
 import React from "react";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
-import NewsSignUpBG from ".././../Assets/newsSignUpBG.png";
 
 function NewsSignup() {
   return (
     <section
-      className="flex items-center justify-center w-full bg-cover "
-      style={{
-        backgroundImage: `url(${NewsSignUpBG})`,
-        backgroundPosition: "center top -20px",
-      }}
+      className="flex items-center justify-center w-full bg-lightPink "
     >
       <div className="flex flex-col items-center justify-center p-2 space-y-4 w-96 md:w-1/2 ">
         <hr />

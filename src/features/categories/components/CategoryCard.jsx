@@ -22,7 +22,6 @@ function CategoryCard({ category, getProductsByCategory }) {
           isActive ? "text-pink" : "text-gray-700"
         }`}
       >
-        {" "}
         {category.replaceAll("-", " ")}
       </p>
       <div className="absolute flex content-center w-20 bg-white border border-gray-200 rounded-md h-28 bottom-3 right-3 align-center">

@@ -15,7 +15,7 @@ function ProductsList({ products, productsPerPage, loading, productsCount }) {
   return (
     <Container size="xl">
       {/* desplay all the products we get them from the api */}
-      <div className="grid grid-cols-1 gap-x-2 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
+      <div className="grid grid-cols-2 gap-x-2 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
         {loading
           ? Array.from({ length: productsCount || productsPerPage }).map(
               (_, idx) => <ProductCardSkeleton key={idx} />

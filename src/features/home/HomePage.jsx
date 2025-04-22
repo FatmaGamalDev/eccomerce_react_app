@@ -1,10 +1,10 @@
 import React from "react";
-import Slider from "./components/Slider";
 import ProductsList from "../products/components/ProductsList";
 import Categories from "../categories/components/Categories";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts, setActiveCategory } from "../products/Products-Slice";
+import Hero from "./components/Hero";
 function HomePage() {
   const { products, loading, productsCount } = useSelector(
     (state) => state.products
@@ -19,7 +19,7 @@ function HomePage() {
   }, [dispatch]);
   return (
     <React.Fragment>
-      <Slider />
+      <Hero />
       <Categories />
       <div className="flex">
         <button

@@ -6,6 +6,7 @@ import NewsSignup from "../ui/NewsSignup";
 import ToastNotification from "../../features/toast/ToastNotification";
 import ScrollToTop from "../ui/ScrollToTop";
 import { Outlet } from "react-router-dom";
+import ScrollToTopButton from "../ui/ScrollToTopButton";
 function MainLayout() {
   return (
     <>
@@ -16,6 +17,7 @@ function MainLayout() {
       <Outlet />
       <NewsSignup />
       <Footer />
+      <ScrollToTopButton/>
     </>
   );
 }

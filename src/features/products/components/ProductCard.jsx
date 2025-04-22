@@ -22,8 +22,8 @@ function ProductCard({ product }) {
       onClick={handleClick}
       className="ease-in-out hover:scale-[1.02] hover:shadow-xl  duration-300 transform transition-all cursor-pointer relative w-full border border-gray-300 shadow-md card lg:w-[96%] bg-base-100"
     >
-      <figure className="w-[80%] h-[80%]  aspect-square self-center ">
-        <div>
+      <figure className="w-full h-full  aspect-square self-center ">
+        <div className=" flex items-center justify-center">
           <div className="absolute left-0 flex items-center justify-between w-full pr-[4px] top-[10px]">
             <div className="z-10 w-16 px-2 py-1 text-white border-none rounded-none text-md bg-pink badge top-3">
               <h6>{`- ${Math.ceil(product.discountPercentage)}%`}</h6>
@@ -35,7 +35,7 @@ function ProductCard({ product }) {
             />
           </div>
           <img
-            className="object-cover w-full h-full rounded-t-lg "
+            className="object-cover  w-[80%] h-[80%] rounded-t-lg "
   
             src={
               product?product.thumbnail : ProductImagePlaceholder
@@ -47,7 +47,7 @@ function ProductCard({ product }) {
       </figure>
       <hr className="w-[90%] self-center" />
       <div className="p-[12px] card-body">
-        <h2 className="text-gray-800 card-title h-[48px]">{product.title}</h2>
+        <h2 className="text-gray-800 text-sm md:text-lg card-title h-[48px]">{product.title}</h2>
         <p className="text-sm text-gray-600 line-clamp-2">
           {product.description}
         </p>

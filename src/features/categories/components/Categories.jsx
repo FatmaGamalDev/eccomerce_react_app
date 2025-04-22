@@ -39,7 +39,7 @@ function Categories() {
 
   return (
     <Container size="xl">
-      <div className="my-8 overflow-hidden">
+      <div className="mb-8 mt-12 overflow-hidden">
         {/* categories heading */}
         <div className="flex items-center justify-between ">
           <div>
