@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToWishlistInSupabase, fetchWishlistFromSupabase } from "../WishlistThunks";
+import {
+  addToWishlistInSupabase,
+  fetchWishlistFromSupabase,
+} from "../WishlistThunks";
 import { setWasGuest } from "../WishlistSlice";
 
 export const useMergeGuestWishlist = () => {

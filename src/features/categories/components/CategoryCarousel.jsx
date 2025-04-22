@@ -1,109 +1,82 @@
-import React, { useEffect, useState } from "react";
+
+import React, { useState } from "react";
+import { useKeenSlider } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
 import { FaArrowRightLong, FaArrowLeftLong } from "react-icons/fa6";
 
-// function CategoryCarousel({ filteredCategories, children }) {
-//   const [currentIndex, setCurrentIndex] = useState(0);
-//   const [categoriesPerView, setCategoriesPerView] = useState(1);
-//   const categoryWidth = 304;
-//   const updateCategoriesPerView = () => {
-//     if (window.innerWidth >= 1024) {
-//       setCategoriesPerView(4);
-//     } else if (window.innerWidth >= 768) {
-//       setCategoriesPerView(3);
-//     } else {
-//       setCategoriesPerView(1);
-//     }
-//   };
-//   useEffect(() => {
-//     updateCategoriesPerView();
-//     window.addEventListener("resize", updateCategoriesPerView);
-//     return () => window.removeEventListener("resize", updateCategoriesPerView);
-//   }, []);
+const CategoryCarousel = ({ children }) => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [loaded, setLoaded] = useState(false);
 
- 
-//   const maxIndex = Math.max(0, filteredCategories.length - categoriesPerView );
+  const [sliderRef, instanceRef] = useKeenSlider({
+    loop: false,
+    slides: {
+      perView: 1,
+      spacing: 5,
+    },
+    breakpoints: {
+      "(min-width: 640px)": {
+        slides: { perView: 3, spacing: 10 },
+      },
+      "(min-width: 1024px)": {
+        slides: { perView: 4, spacing: 15 },
+      },
+    },
+    initial: 0,
+    slideChanged(slider) {
+      setCurrentSlide(slider.track.details.rel);
+    },
+    created() {
+      setLoaded(true);
+    },
+  });
 
-//   const nextSlide = () => setCurrentIndex((prev) => (prev < maxIndex ? prev + 1 : prev));
-//   const prevSlide = () => setCurrentIndex((prev) => (prev > 0 ? prev - 1 : prev));
-
-//   return (
-//     <div className="relative">
-//       {/* carousel buttons*/}
-//       <div className="flex justify-end gap-4 mb-12">
-//         <button onClick={prevSlide} className="circle-btn">
-//           <FaArrowLeftLong />
-//         </button>
-//         <button onClick={nextSlide} className="circle-btn">
-//           <FaArrowRightLong />
-//         </button>
-//       </div>
-
-//       {/* carousel*/}
-//       <div className=" min-w-max">
-//         <div
-//           className="flex gap-4 transition-transform duration-500 ease-in-out"
-//           style={{
-//             transform: `translateX(-${Math.min(currentIndex, maxIndex) * categoryWidth}px)`,
-//           }}
-//         >
-//           {children}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-
-function CategoryCarousel({ filteredCategories, children }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [categoriesPerView, setCategoriesPerView] = useState(1);
-
-  const updateCategoriesPerView = () => {
-    if (window.innerWidth >= 1024) {
-      setCategoriesPerView(4);
-    } else if (window.innerWidth >= 768) {
-      setCategoriesPerView(3);
-    } else {
-      setCategoriesPerView(1);
-    }
+  // Navigation functions
+  const goToPrev = () => {
+    instanceRef.current?.prev();
   };
 
-  useEffect(() => {
-    updateCategoriesPerView();
-    window.addEventListener("resize", updateCategoriesPerView);
-    return () => window.removeEventListener("resize", updateCategoriesPerView);
-  }, []);
+  const goToNext = () => {
+    instanceRef.current?.next();
+  };
 
-  const categoryWidth = window.innerWidth >= 1024 ? 304 : window.innerWidth >= 768 ? 240 : 200;
-
-  const maxIndex = Math.max(0, filteredCategories.length - categoriesPerView);
-
-  const nextSlide = () => setCurrentIndex((prev) => (prev < maxIndex ? prev + 1 : prev));
-  const prevSlide = () => setCurrentIndex((prev) => (prev > 0 ? prev - 1 : prev));
+  // Calculate if arrows should be disabled
+  const isPrevDisabled = currentSlide === 0;
+  const isNextDisabled =
+    currentSlide >=
+    (instanceRef.current?.track.details.slides.length || 0) -
+      instanceRef.current?.options.slides.perView;
 
   return (
     <div className="relative">
-      <div className="flex justify-end gap-4 mb-12">
-        <button onClick={prevSlide} className="circle-btn">
-          <FaArrowLeftLong />
-        </button>
-        <button onClick={nextSlide} className="circle-btn">
-          <FaArrowRightLong />
-        </button>
-      </div>
-
-      <div className="min-w-max">
-        <div
-          className="flex gap-4 transition-transform duration-500 ease-in-out"
-          style={{
-            transform: `translateX(-${Math.min(currentIndex, maxIndex) * categoryWidth}px)`,
-          }}
-        >
-          {children}
+      {/* Navigation Buttons */}
+      {loaded && instanceRef.current && (
+        <div className="flex justify-end gap-4 mb-4">
+          <button
+            onClick={goToPrev}
+            disabled={isPrevDisabled}
+            className={`circle-btn ${isPrevDisabled ? "opacity-50 cursor-not-allowed" : ""}`}
+          >
+            <FaArrowLeftLong />
+          </button>
+          <button
+            onClick={goToNext}
+            disabled={isNextDisabled}
+            className={`circle-btn ${isNextDisabled ? "opacity-50 cursor-not-allowed" : ""}`}
+          >
+            <FaArrowRightLong />
+          </button>
         </div>
+      )}
+
+      {/* Carousel Container */}
+      <div ref={sliderRef} className="keen-slider  ">
+        {React.Children.map(children, (child) => (
+          <div className="keen-slider__slide h-full">{child}</div>
+        ))}
       </div>
     </div>
   );
-}
+};
 
 export default CategoryCarousel;

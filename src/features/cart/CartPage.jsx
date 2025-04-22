@@ -21,12 +21,12 @@ function CartPage() {
 
   if (cartProducts.length > 0) {
     return (
-      <section className="pt-4 bg-softbeige">
+      <section className="pt-4 bg-lightPink">
         <Container>
           <h1 className="self-start  text-2xl font-semibold uppercase mt-0 mb-4 ml-[18px]">
             Bag Summary ({cartItems} )
           </h1>
-          <div className="flex flex-col items-center pb-8 h-max md:items-start bg-softbeige md:flex-row">
+          <div className="flex flex-col items-center pb-8 h-max md:items-start bg-lightPink md:flex-row">
             <CartProducts
               cartProducts={cartProducts}
               showToast={showToast}

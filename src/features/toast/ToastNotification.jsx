@@ -18,9 +18,9 @@ function ToastNotification() {
         <h1 className="text-2xl font-semibold uppercase">{message}</h1>
         <hr />
         <div className="flex items-center justify-center w-full gap-8 p-4 my-8 border border-gray-300 rounded-xl">
-          {product?.images?.[0] && (
+          {product?.thumbnail && (
             <img
-              src={product.images[0]}
+              src={product.thumbnail}
               alt={product.title}
               className="object-cover w-24 h-24 rounded-lg"
             />

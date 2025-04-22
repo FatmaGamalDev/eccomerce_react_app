@@ -46,9 +46,9 @@ function ProfilePage() {
   const firstLetter = profileData.firstName.charAt(0).toUpperCase();
 
   return (
-    <Container>
-      <section className="flex items-center justify-center w-full py-4">
-        <div className="w-11/12 p-6 overflow-auto bg-white shadow-lg sm:w-2/3 md:w-1/2 rounded-2xl sm:p-8 animate-fadeIn">
+    <Container className="bg-lightPink">
+      <section className=" flex items-center justify-center w-full py-4 ">
+        <div className="  w-11/12 p-6 overflow-auto  shadow-lg sm:w-2/3 md:w-1/2 rounded-2xl sm:p-8 animate-fadeIn">
           <div className="flex flex-col items-center mb-8">
             <div className="flex items-center justify-center w-20 h-20 text-4xl font-semibold text-white transition-transform duration-300 rounded-full shadow-md sm:w-24 sm:h-24 sm:text-5xl bg-pink hover:scale-105 glow animate-scaleIn">
               {firstLetter}
@@ -58,7 +58,7 @@ function ProfilePage() {
             </h1>
           </div>
 
-          <div className="flex flex-col items-center justify-center gap-3 mb-6 sm:flex-row sm:gap-4">
+          <div className=" flex flex-col items-center justify-center gap-3 mb-6 sm:flex-row sm:gap-4">
             <div className="w-full space-y-4 sm:flex-1">
               <div>
                 <p className="text-sm font-medium text-gray-700">Full Name</p>

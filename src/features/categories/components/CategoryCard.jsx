@@ -11,7 +11,7 @@ function CategoryCard({ category, getProductsByCategory }) {
   return (
     <div
       key={category}
-      className="relative flex items-center h-24 p-6  rounded-sm cursor-pointer bg-softbeige min-w-[18rem]"
+      className="relative flex items-center mt-8 h-24 p-6 rounded-sm cursor-pointer bg-lightPink lg:min-w-[14.5rem] md:min-w-[13rem] "
       onClick={() => {
         getProductsByCategory(category);
         dispatch(setActiveCategory(category));

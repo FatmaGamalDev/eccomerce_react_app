@@ -7,7 +7,8 @@ import Container from "../../../components/ui/Container";
 
 function Hero() {
   return (
-    <div className="relative  lg:h-[102vh]  bg-gradient-to-br from-[#e31870]/5 via-[#e31870]/3 to-white ">
+    // <div className="relative  lg:h-[102vh]  bg-gradient-to-br from-[#e31870]/5 via-[#e31870]/3 to-white ">
+    <div className="relative  lg:h-[102vh]  bg-lightPink ">
       <Container>
         {/* Reduced and more subtle abstract shapes */}
         <div className="absolute inset-0">
@@ -19,7 +20,7 @@ function Hero() {
           <div className="grid lg:grid-cols-2 gap-12 items-start h-full py-8">
             {/* Left column - Text content */}
             <div className="space-y-8 mt-4 text-center lg:text-left">
-              <div className="inline-block px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full">
+              <div className="inline-block px-4 py-2 bg-white backdrop-blur-sm rounded-full">
                 <span className="inline-flex items-center gap-2 text-sm font-medium text-black px-4 py-1  mb-1 self-start ">
                   <ShoppingBag className="w-5 h-5" />
                   Your favorite collections await
@@ -28,16 +29,13 @@ function Hero() {
               <h1 className="text-3xl lg:text-4xl font-bold leading-tight">
                 Create Your
                 <span className="block mt-2 text-pink ">
-                  {" "}
                   Amazing Looks & Living
                 </span>
               </h1>
-
-              <p className="text-lg text-gray-600 max-w-xl">
-                Shop the best handpicked selection of premium lifestyle products
-                that transform your everyday experiences into moments of luxury.
+              <p className="text-lg text-gray-900 max-w-xl">
+                Shop the best selection of premium lifestyle products that
+                transform your everyday experiences into moments of luxury.
               </p>
-
               <div className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start">
                 <button className=" w-48 main-btn before:bg-softbeige  ">
                   <span className="z-10"> Explore Now</span>

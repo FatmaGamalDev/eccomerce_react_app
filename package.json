@@ -10,6 +10,7 @@
     "cra-template": "1.2.0",
     "daisyui": "^5.0.0",
     "downshift": "^9.0.9",
+    "keen-slider": "^6.8.6",
     "lucide-react": "^0.484.0",
     "node-fetch": "^3.3.2",
     "punycode": "^2.3.1",

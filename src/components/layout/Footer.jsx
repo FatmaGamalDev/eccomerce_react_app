@@ -3,8 +3,8 @@ import Icon from "../ui/Icon";
 import Container from "../ui/Container";
 function Footer() {
   return (
-    <Container>
-      <footer className="flex flex-col items-center justify-center px-10 pt-8 pb-4">
+    <Container className="bg-lightPink">
+      <footer className="flex flex-col  bg-lightPink items-center justify-center px-10 pt-8 pb-4">
         <div className="mb-8 footer sm:footer-horizontal text-base-content">
           <aside>
             <h1 className="ml-[10px] text-3xl font-semibold text-pink">

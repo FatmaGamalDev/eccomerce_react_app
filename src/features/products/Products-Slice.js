@@ -94,7 +94,7 @@ const productsSlice = createSlice({
       .addCase(fetchProductsByCategory.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
-      })
+      });
   },
 });
 export const { searchProducts, setActiveCategory } = productsSlice.actions;

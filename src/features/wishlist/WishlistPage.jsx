@@ -7,7 +7,7 @@ import Container from "../../components/ui/Container";
 const WishlistPage = () => {
   const wishlistItems = useSelector((state) => state.wishlist.wishlist);
   return (
-    <section className="flex flex-col items-center py-8 mx-auto h-max bg-softbeige">
+    <section className="flex flex-col items-center py-8 mx-auto h-max bg-lightPink">
       <Container className="flex flex-col items-center">
         <h1 className="text-2xl font-bold mb-4  mt-0 mb-4 ml-[18px] ">
           {wishlistItems.length > 0 ? " My Wishlist" : "wish list is empty "}

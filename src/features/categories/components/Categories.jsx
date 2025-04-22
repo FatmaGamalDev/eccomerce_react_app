@@ -1,17 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchProductsByCategory,
-} from "../../products/Products-Slice";
+import { fetchProductsByCategory } from "../../products/Products-Slice";
 import { fetchCategories } from "../CategoriesSlice";
 import Container from "../../../components/ui/Container";
 import CategoryCard from "../components/CategoryCard";
 import CategoryCarousel from "../components/CategoryCarousel";
 
 function Categories() {
-  const { categories} = useSelector(
-    (state) => state.categories
-  );
+  const { categories } = useSelector((state) => state.categories);
 
   const dispatch = useDispatch();
 
@@ -36,10 +32,9 @@ function Categories() {
         "sports-accessories",
       ].includes(category)
   );
-
   return (
     <Container size="xl">
-      <div className="mb-8 mt-12 overflow-hidden">
+      <div className="mb-8 mt-12 ">
         {/* categories heading */}
         <div className="flex items-center justify-between ">
           <div>
@@ -49,7 +44,7 @@ function Categories() {
         </div>
 
         {/* categories Carousel */}
-        <CategoryCarousel filteredCategories={filteredCategories}>
+        <CategoryCarousel>
           {filteredCategories.map((category) => (
             <CategoryCard
               key={category}
@@ -57,7 +52,6 @@ function Categories() {
               getProductsByCategory={getProductsByCategory}
             />
           ))}
-      
         </CategoryCarousel>
       </div>
     </Container>
