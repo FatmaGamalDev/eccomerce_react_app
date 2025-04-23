@@ -1,4 +1,5 @@
 import React from 'react'
+import ProductImagePlaceholder from "../../../Assets/ImagePlaceholder.jpg";
 
 function ProductImage({ imageUrl, discount, title }) {
   return (
@@ -9,7 +10,7 @@ function ProductImage({ imageUrl, discount, title }) {
     <img
       className="object-cover p-4 w-ful "
       src={
-      imageUrl || "/assets/ImagePlaceholder.jpg"
+      imageUrl || ProductImagePlaceholder
       }
       alt={title}
     />

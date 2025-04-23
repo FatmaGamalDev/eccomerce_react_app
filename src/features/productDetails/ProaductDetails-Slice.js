@@ -9,17 +9,16 @@ export const fetchProductDetails = createAsyncThunk(
       .from("products")
       .select("*")
       .eq("id", productID)
-      .single(); 
+      .single();
 
     if (productError) throw new Error(productError.message);
     const { data: reviews, error: reviewsError } = await supabase
-      .from("reviews") 
+      .from("reviews")
       .select("*")
-      .eq("product_id", productID); 
+      .eq("product_id", productID);
 
     if (reviewsError) throw new Error(reviewsError.message);
-
-    return { ...product, reviews }; 
+    return { ...product, reviews };
   }
 );
 

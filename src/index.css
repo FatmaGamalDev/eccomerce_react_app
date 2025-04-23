@@ -5,6 +5,14 @@
  body {
   font-family: 'Poppins', sans-serif;
 }
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important; 
+  box-shadow: 0 0 0 1000px white inset !important;
+  -webkit-text-fill-color: #000 !important;
+  transition: background-color 5000s ease-in-out 0s;
+  border: 1px solid #ccc !important; 
+  border-radius: 9999px !important; 
+}
 
 @layer components {
   .circle-btn {

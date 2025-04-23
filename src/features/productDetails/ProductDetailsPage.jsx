@@ -40,7 +40,7 @@ function ProductDetailsPage() {
           <div className="flex-col w-[90%] space-y-4 md:w-[50%]">
             <ProductInfo
               title={product?.title}
-              brand={product.brand? product.brand: null}
+              brand={product.brand? product.brand: "brand"}
               description={product?.description}
               rating={product?.reviews?.[2]?.rating}
               price={product?.price}

@@ -4,7 +4,7 @@ import { signUp } from "./authSlice";
 import { updateUserData } from "../user/UserSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { showToast } from "../toast/Toast-Slice";
-import { Loader, LoaderCircle } from "lucide-react";
+import {LoaderCircle} from "lucide-react";
 import QuickLogin from "../../components/ui/QuickLogin";
 
 function SignUpPage() {
@@ -177,7 +177,7 @@ function SignUpPage() {
             </label>
           </div>
           {/* error message */}
-          {error && <p className="text-red-500">{error}</p>}
+          {error ? <p className="text-red-500">{error}</p> : null}
           <button type="submit" className="w-full main-btn">
             <span className="z-10">Create Account & Continue </span>
             <span>

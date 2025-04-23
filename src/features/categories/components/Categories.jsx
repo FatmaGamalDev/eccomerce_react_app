@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProductsByCategory } from "../../products/Products-Slice";
+// import { fetchProductsByCategory } from "../../products/Products-Slice";
 import { fetchCategories } from "../CategoriesSlice";
 import Container from "../../../components/ui/Container";
 import CategoryCard from "../components/CategoryCard";
@@ -15,10 +15,21 @@ function Categories() {
     dispatch(fetchCategories());
   }, [dispatch]);
 
-  function getProductsByCategory(categoryName) {
-    dispatch(fetchProductsByCategory(categoryName));
-  }
+  const allProducts = useSelector((state) => state.products.products);
 
+  // function getProductsByCategory(categoryName) {
+  //   dispatch(fetchProductsByCategory(categoryName));
+  // }
+
+
+  function getProductsByCategory(categoryName) {
+    const categoryProducts = allProducts.filter(
+      (product) => product.category === categoryName
+    );
+    
+    console.log(categoryProducts);
+  }
+  
   const filteredCategories = categories?.filter(
     (category) =>
       ![
@@ -34,7 +45,7 @@ function Categories() {
   );
   return (
     <Container size="xl">
-      <div className="mb-8 mt-12 ">
+      <div className="mt-12 mb-8 ">
         {/* categories heading */}
         <div className="flex items-center justify-between ">
           <div>

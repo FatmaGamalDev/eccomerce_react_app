@@ -14,6 +14,14 @@ export default {
         softbeige:"#f6f0ef",
         nude:"#f5ddd8"
       },
+      // fontFamily: {
+      //   poppins: ['Poppins', 'sans-serif'],
+      //   heading: ['"Dancing Script"', 'cursive'], // الخط الأنثوي للعناوين
+      // },
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'],
+        heading: ['"Quicksand"', 'sans-serif'], // تغيير الخط للعناوين
+      },
       }
     },
     plugins: [require("daisyui")], 

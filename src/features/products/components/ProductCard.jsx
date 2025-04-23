@@ -22,8 +22,8 @@ function ProductCard({ product }) {
       onClick={handleClick}
       className="ease-in-out hover:scale-[1.02] hover:shadow-xl  duration-300 transform transition-all cursor-pointer relative w-full border border-gray-300 shadow-md card lg:w-[96%] bg-base-100"
     >
-      <figure className=" bg-lightPink w-full h-full  aspect-square self-center ">
-        <div className=" flex items-center justify-center">
+      <figure className="self-center w-full h-full  aspect-square">
+        <div className="flex items-center justify-center ">
           <div className="absolute left-0 flex items-center justify-between w-full pr-[4px] top-[10px]">
             <div className="z-10 w-16 px-2 py-1 text-white border-none rounded-none text-md bg-pink badge top-3">
               <h6>{`- ${Math.ceil(product.discountPercentage)}%`}</h6>
