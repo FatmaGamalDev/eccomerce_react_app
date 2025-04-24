@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/eccomerce_react_app/static/css/main.2a00cb66.css",
-    "main.js": "/eccomerce_react_app/static/js/main.46bd8cc0.js",
-    "static/js/952.dcfb0992.chunk.js": "/eccomerce_react_app/static/js/952.dcfb0992.chunk.js",
+    "main.css": "/eccomerce_react_app/static/css/main.5420f756.css",
+    "main.js": "/eccomerce_react_app/static/js/main.70af6100.js",
+    "static/js/198.403c21d1.chunk.js": "/eccomerce_react_app/static/js/198.403c21d1.chunk.js",
     "static/media/decoration.jpg": "/eccomerce_react_app/static/media/decoration.9c866671f28b89b0a635.jpg",
     "static/media/newsSignUpBG.png": "/eccomerce_react_app/static/media/newsSignUpBG.6d053d209ebd30b42d64.png",
     "static/media/makeup.jpg": "/eccomerce_react_app/static/media/makeup.1b6196b4cec6fc99f83f.jpg",
@@ -21,12 +21,12 @@
     "static/media/tiktok.svg": "/eccomerce_react_app/static/media/tiktok.3edcd1e6f4cbca0b3347ee80b08bfe80.svg",
     "static/media/youtube.svg": "/eccomerce_react_app/static/media/youtube.633462846e8a6fe5e6d1cd802e412273.svg",
     "static/media/facebook.svg": "/eccomerce_react_app/static/media/facebook.2eb54bd59c77c3dc2c6c05994d442ade.svg",
-    "main.2a00cb66.css.map": "/eccomerce_react_app/static/css/main.2a00cb66.css.map",
-    "main.46bd8cc0.js.map": "/eccomerce_react_app/static/js/main.46bd8cc0.js.map",
-    "952.dcfb0992.chunk.js.map": "/eccomerce_react_app/static/js/952.dcfb0992.chunk.js.map"
+    "main.5420f756.css.map": "/eccomerce_react_app/static/css/main.5420f756.css.map",
+    "main.70af6100.js.map": "/eccomerce_react_app/static/js/main.70af6100.js.map",
+    "198.403c21d1.chunk.js.map": "/eccomerce_react_app/static/js/198.403c21d1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2a00cb66.css",
-    "static/js/main.46bd8cc0.js"
+    "static/css/main.5420f756.css",
+    "static/js/main.70af6100.js"
   ]
 }
