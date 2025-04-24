@@ -101,12 +101,13 @@ function ProfilePage() {
             </button>
           </div>
           <div className="relative my-4 text-center sm:my-6">
+          <div className="absolute w-[45%]  h-[1px] bg-gray-400 top-1/2"></div>
+
             <span className="relative px-4 font-medium text-gray-600 bg-white">
               or
             </span>
-            <div className="absolute w-full h-[1px] bg-gray-400 top-1/2"></div>
-            <div className="absolute w-2 h-2 -translate-y-1/2 bg-gray-400 rounded-full left-1/4 top-1/2"></div>
-            <div className="absolute w-2 h-2 -translate-y-1/2 bg-gray-400 rounded-full right-1/4 top-1/2"></div>
+            <div className="absolute right-1 w-[45%] h-[1px] bg-gray-400 top-1/2"></div>
+
           </div>
 
           <div className="flex flex-col gap-4">

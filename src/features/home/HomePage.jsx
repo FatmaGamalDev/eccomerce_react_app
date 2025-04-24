@@ -11,7 +11,7 @@ function HomePage() {
   const activeCategory = useSelector((state) => state.products.activeCategory);
   const { products, loading } = useSelector((state) => state.products);
   const dispatch = useDispatch();
-  // function for filtration
+  // function for filtration by category
   const filteredProducts = useMemo(()=>{
     if(!activeCategory ) return products
     return  products.filter((product) => product.category === activeCategory)
@@ -23,7 +23,6 @@ function HomePage() {
       dispatch(fetchProducts());
     }
   }, [dispatch, products, loading]);
-
 
   return (
     <React.Fragment>

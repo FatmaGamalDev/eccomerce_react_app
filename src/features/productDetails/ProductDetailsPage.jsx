@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ProductReviews from "./components/productReviews";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProductDetails } from "./ProaductDetails-Slice";
+// import { fetchProductDetails } from "./ProaductDetails-Slice";
 import QuantitySelector from "../../components/ui/QuantitySelector";
 import AddToCartButton from "../../components/ui/AddToCartButton";
 import WishlistButton from "../../components/ui/WishlistButton";
@@ -17,12 +17,12 @@ function ProductDetailsPage() {
   const { productID } = useParams();
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
-  const  product  = useSelector((state) => state.products.selectedProduct);
-
+  const product = useSelector((state) => state.products.selectedProduct);
+  
   useEffect(() => {
     if (!product || product.id !== Number(productID)) {
       dispatch(startLoading());
-      dispatch(getProductDetails(productID))
+      dispatch(getProductDetails(productID));
     }
   }, [dispatch, productID, product]);
 
@@ -39,7 +39,7 @@ function ProductDetailsPage() {
           <div className="flex-col w-[90%] space-y-4 md:w-[50%]">
             <ProductInfo
               title={product?.title}
-              brand={product.brand? product.brand: "brand"}
+              brand={product.brand ? product.brand : "brand"}
               description={product?.description}
               rating={product?.reviews?.[2]?.rating}
               price={product?.price}
@@ -74,7 +74,7 @@ function ProductDetailsPage() {
           <ProductReviews reviews={product?.reviews} />
         </div>
         <div>
-          {/* <RelatedProducts category={product.category} /> */}
+          <RelatedProducts category={product.category} />
         </div>
       </Container>
     </>

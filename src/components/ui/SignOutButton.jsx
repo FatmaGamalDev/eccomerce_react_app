@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { showToast } from "../../features/toast/Toast-Slice";
 import { clearCart } from "../../features/cart/Cart-Slice";
 import { signOut } from "../../features/auth/authSlice";
-import { Loader, Loader2, Loader2Icon, LoaderCircle } from "lucide-react";
+import { LoaderCircle } from "lucide-react";
 
 function SignOutButton() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loading } = useSelector((state) => state.auth);
+  const {loading } = useSelector((state) => state.auth);
 
   const handleSignOut = async () => {
     const resultAction = await dispatch(signOut());

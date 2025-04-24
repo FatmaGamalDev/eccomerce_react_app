@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import SearchBar from "../../features/products/components/SearchBar";
 import Container from "../ui/Container";
 import NavIcons from "./NavIcons";
+import { setActiveCategory } from "../../features/products/Products-Slice";
 
 export default function Navbar() {
   return (

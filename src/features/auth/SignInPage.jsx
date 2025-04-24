@@ -4,6 +4,7 @@ import { resetLoginState, signIn } from "./authSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { Loader, LoaderCircle } from "lucide-react";
 import QuickLogin from "../../components/ui/QuickLogin";
+import { showToast } from "../toast/Toast-Slice";
 
 function SignInPage() {
   const dispatch = useDispatch();
@@ -88,7 +89,7 @@ function SignInPage() {
           <p className="relative text-center my-4 text-gray-600 before:content-[''] before:absolute before:w-[45%] before:h-[1px] before:bg-gray-400 before:left-0 before:top-1/2 after:content-[''] after:absolute after:w-[45%]  after:h-[1px] after:bg-gray-400 after:right-0 after:top-1/2">
             or
           </p>
-         <QuickLogin/>
+          <QuickLogin />
         </form>
       </div>
     </section>

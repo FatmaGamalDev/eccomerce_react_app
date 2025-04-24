@@ -7,7 +7,8 @@ export const fetchProducts = createAsyncThunk(
   async () => {
     const { data, error } = await supabase
       .from("products")
-      .select("*")
+      // .select("*")
+      .select("*, reviews(*)")
       .order("id", { ascending: true })
       .limit(194)
       .neq("category", "mens-shirts")
@@ -21,10 +22,10 @@ export const fetchProducts = createAsyncThunk(
     if (error) {
       throw new Error(error.message);
     }
-    return data;
+    console.log(data)
+    return data;  
   }
 );
-
 const productsSlice = createSlice({
   name: "products",
   initialState: {
