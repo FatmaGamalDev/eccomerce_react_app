@@ -9,7 +9,7 @@ export const fetchProducts = createAsyncThunk(
       .from("products")
       .select("*")
       .order("id", { ascending: true })
-      .limit(40)
+      .limit(194)
       .neq("category", "mens-shirts")
       .neq("category", "mens-shoes")
       .neq("category", "smartphones")
@@ -24,27 +24,12 @@ export const fetchProducts = createAsyncThunk(
     return data;
   }
 );
-//fetch products by category name
-export const fetchProductsByCategory = createAsyncThunk(
-  "products/fetchProductsByCategory",
-  async (categoryName) => {
-    let { data, error } = await supabase
-      .from("products")
-      .select("*")
-      .eq("category", categoryName);
-    if (error) throw error;
-    return data;
-  }
-);
+
 const productsSlice = createSlice({
   name: "products",
   initialState: {
-    // all products
     products: [],
     productsCount: 0,
-    //specific category products
-    categoryProducts: [],
-    //flag to identify what will be showed in the productlist component ?all products or categoy products
     activeCategory: null,
     searchQuery: "",
     searchResult: [],
@@ -82,19 +67,6 @@ const productsSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-      //category products cases
-      .addCase(fetchProductsByCategory.fulfilled, (state, action) => {
-        state.categoryProducts = action.payload;
-        state.loading = false;
-      })
-      .addCase(fetchProductsByCategory.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(fetchProductsByCategory.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message;
-      });
   },
 });
 export const { searchProducts, setActiveCategory } = productsSlice.actions;

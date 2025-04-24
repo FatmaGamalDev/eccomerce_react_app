@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { fetchProductsByCategory } from "../../products/Products-Slice";
+import { setActiveCategory } from "../../products/Products-Slice";
 import { fetchCategories } from "../CategoriesSlice";
 import Container from "../../../components/ui/Container";
 import CategoryCard from "../components/CategoryCard";
 import CategoryCarousel from "../components/CategoryCarousel";
+import useGetProductsByCategory from "../../../hooks/useGetProductsByCategory";
 
-function Categories() {
+function Categories({ setCurrentPage }) {
   const { categories } = useSelector((state) => state.categories);
 
   const dispatch = useDispatch();
@@ -15,21 +16,11 @@ function Categories() {
     dispatch(fetchCategories());
   }, [dispatch]);
 
-  const allProducts = useSelector((state) => state.products.products);
 
-  // function getProductsByCategory(categoryName) {
-  //   dispatch(fetchProductsByCategory(categoryName));
-  // }
-
-
-  function getProductsByCategory(categoryName) {
-    const categoryProducts = allProducts.filter(
-      (product) => product.category === categoryName
-    );
-    
-    console.log(categoryProducts);
-  }
-  
+function getProductsByCategory(categoryName) {
+  dispatch(setActiveCategory(categoryName));
+  setCurrentPage(1); 
+}
   const filteredCategories = categories?.filter(
     (category) =>
       ![

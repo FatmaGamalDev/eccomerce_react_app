@@ -75,7 +75,7 @@ function ProductDetailsPage() {
           <ProductReviews reviews={product?.reviews} />
         </div>
         <div>
-          <RelatedProducts category={product.category} />
+          {/* <RelatedProducts category={product.category} /> */}
         </div>
       </Container>
     </>

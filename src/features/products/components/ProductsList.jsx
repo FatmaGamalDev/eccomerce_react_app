@@ -4,12 +4,12 @@ import Pagination from "../../../components/ui/Pagination ";
 import Container from "../../../components/ui/Container";
 import ProductCardSkeleton from "./ProductCardSkeleton";
 
-function ProductsList({ products, productsPerPage, loading, productsCount }) {
+function ProductsList({ products, productsPerPage, loading, productsCount, currentPage,
+  setCurrentPage }) {
   let totalPages = useMemo(
     () => Math.ceil(products.length / productsPerPage),
     [products, productsPerPage]
   );
-  let [currentPage, setCurrentPage] = useState(1);
   const startIndex = (currentPage - 1) * productsPerPage;
   const endIndex = startIndex + productsPerPage;
   return (
@@ -36,3 +36,4 @@ function ProductsList({ products, productsPerPage, loading, productsCount }) {
 }
 
 export default ProductsList;
+
