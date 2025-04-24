@@ -8,22 +8,21 @@ import AddToCartButton from "../../components/ui/AddToCartButton";
 import WishlistButton from "../../components/ui/WishlistButton";
 import ProductInfo from "./components/ProductInfo";
 import ProductImage from "./components/ProductImage";
-import { startLoading, stopLoading } from "../loading/loadingSlice";
+import { startLoading } from "../loading/loadingSlice";
 import RelatedProducts from "../products/components/RelatedProducts";
 import Container from "../../components/ui/Container";
+import { getProductDetails } from "../products/Products-Slice";
 
 function ProductDetailsPage() {
   const { productID } = useParams();
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
-  const { product } = useSelector((state) => state.productDetails);
+  const  product  = useSelector((state) => state.products.selectedProduct);
 
   useEffect(() => {
     if (!product || product.id !== Number(productID)) {
       dispatch(startLoading());
-      dispatch(fetchProductDetails(productID)).finally(() => {
-        dispatch(stopLoading());
-      });
+      dispatch(getProductDetails(productID))
     }
   }, [dispatch, productID, product]);
 

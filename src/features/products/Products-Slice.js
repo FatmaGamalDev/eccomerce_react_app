@@ -29,7 +29,7 @@ const productsSlice = createSlice({
   name: "products",
   initialState: {
     products: [],
-    productsCount: 0,
+    selectedProduct: null,
     activeCategory: null,
     searchQuery: "",
     searchResult: [],
@@ -49,6 +49,11 @@ const productsSlice = createSlice({
           product.brand?.toLowerCase().includes(searchQuery.toLowerCase())
       );
     },
+    getProductDetails: (state, action) => {
+      const productId = action.payload;
+      state.selectedProduct = state.products.find((product) => product.id === productId);
+    }
+,    
     setActiveCategory: (state, action) => {
       state.activeCategory = action.payload;
     },
@@ -69,5 +74,5 @@ const productsSlice = createSlice({
       })
   },
 });
-export const { searchProducts, setActiveCategory } = productsSlice.actions;
+export const { searchProducts, setActiveCategory, getProductDetails} = productsSlice.actions;
 export default productsSlice.reducer;

@@ -3,17 +3,17 @@ import { useNavigate } from "react-router-dom";
 import ProductPrice from "../../productDetails/components/ProductPrice";
 import { startLoading, stopLoading } from "../../loading/loadingSlice";
 import { useDispatch } from "react-redux";
-import { fetchProductDetails } from "../../productDetails/ProaductDetails-Slice";
 import WishlistButton from "../../../components/ui/WishlistButton";
 import ProductImagePlaceholder from "../../../Assets/ImagePlaceholder.jpg";
 import CartIconButton from "../../../components/ui/CartIconButton";
+import { getProductDetails } from "../Products-Slice";
 
 function ProductCard({ product }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   async function handleClick() {
     dispatch(startLoading());
-    await dispatch(fetchProductDetails(product.id));
+    await dispatch(getProductDetails(product.id));
     dispatch(stopLoading());
     navigate(`/product/${product.id}`);
   }
@@ -36,7 +36,6 @@ function ProductCard({ product }) {
           </div>
           <img
             className="object-cover  w-[80%] h-[80%] rounded-t-lg "
-  
             src={
               product?product.thumbnail : ProductImagePlaceholder
             }
