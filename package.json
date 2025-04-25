@@ -2,7 +2,7 @@
   "name": "ecommerce-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://fatmaindex.github.io/eccomerce_react_app",
+"homepage": "https://fatmaindex.github.io/ecommerce_react_app",
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.1",
     "@supabase/supabase-js": "^2.49.4",
