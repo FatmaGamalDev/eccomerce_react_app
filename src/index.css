@@ -2,21 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
- body {
-  font-family: 'Poppins', sans-serif;
+body {
+  font-family: "Poppins", sans-serif;
 }
 html {
   scroll-behavior: smooth;
 }
 input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px white inset !important; 
-  box-shadow: 0 0 0 1000px white inset !important;
-  -webkit-text-fill-color: #000 !important;
   transition: background-color 5000s ease-in-out 0s;
-  border: 1px solid #ccc !important; 
-  border-radius: 9999px !important; 
 }
-
 @layer components {
   .circle-btn {
     @apply w-10 h-10 rounded-full border border-pink 
@@ -32,13 +26,13 @@ input:-webkit-autofill {
   .form-input {
     @apply w-full p-2 border border-gray-400 rounded-full  outline-none focus:border-none focus:ring-1 focus:ring-gray-500;
   }
-  .form-label{
+  .form-label {
     @apply text-sm font-semibold text-gray-800;
   }
   .activePage {
-    @apply text-pink
-}
-.slider-btn {
-  @apply absolute flex items-center justify-center w-8 h-8 p-2 text-white -translate-y-1/2 rounded-full bg-pink right-5 top-1/2 
-}
+    @apply text-pink;
+  }
+  .slider-btn {
+    @apply absolute flex items-center justify-center w-8 h-8 p-2 text-white -translate-y-1/2 rounded-full bg-pink right-5 top-1/2;
+  }
 }
